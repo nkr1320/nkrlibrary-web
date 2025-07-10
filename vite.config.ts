@@ -1,6 +1,8 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
+import viteCompression from 'vite-plugin-compression';
+import { visualizer } from 'rollup-plugin-visualizer';
 // Removed lovable-tagger import
 
 // https://vitejs.dev/config/
@@ -12,6 +14,8 @@ export default defineConfig(({ mode }) => ({
   plugins: [
     react(),
     // Removed componentTagger()
+    viteCompression(),
+    visualizer({ open: false })
   ],
   resolve: {
     alias: {

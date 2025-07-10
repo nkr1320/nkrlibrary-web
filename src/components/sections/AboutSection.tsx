@@ -3,10 +3,12 @@ import { motion, useInView } from 'framer-motion';
 import { Typography, Card, CardContent } from '@mui/material';
 import { School, Security, Code, People } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const AboutSection = () => {
+  const { t } = useTranslation();
   const [typedText, setTypedText] = useState('');
-  const heading = 'Who We Are';
+  const heading = t('aboutSection.heading');
   
   // Typewriter effect for heading
   useEffect(() => {
@@ -136,34 +138,34 @@ const AboutSection = () => {
   const features = [
     {
       icon: School,
-      title: "Student-Focused",
-      description: "Educational content designed specifically for students and freshers entering the tech world.",
+      title: t('aboutSection.featureStudentTitle'),
+      description: t('aboutSection.featureStudentDesc'),
       link: "/about/student-focused"
     },
     {
       icon: Security,
-      title: "Scam Awareness",
-      description: "Protecting our community from digital threats and fraudulent schemes targeting students.",
+      title: t('aboutSection.featureScamTitle'),
+      description: t('aboutSection.featureScamDesc'),
       link: "/about/scam-awareness"
     },
     {
       icon: Code,
-      title: "Free Websites",
-      description: "Custom websites for students at no cost, helping build their digital presence.",
+      title: t('aboutSection.featureWebsitesTitle'),
+      description: t('aboutSection.featureWebsitesDesc'),
       link: "/about/free-websites"
     },
     {
       icon: People,
-      title: "Community Driven",
-      description: "Building a supportive community of learners, creators, and tech enthusiasts.",
+      title: t('aboutSection.featureCommunityTitle'),
+      description: t('aboutSection.featureCommunityDesc'),
       link: "/about/community-driven"
     }
   ];
 
   return (
-    <section className="py-16 sm:py-20 md:py-24 px-4 sm:px-6 md:px-8 bg-gradient-to-br from-muted/20 to-accent/10 relative overflow-hidden">
+    <section className="py-10 sm:py-16 md:py-20 px-2 sm:px-4 md:px-8 bg-gradient-to-br from-muted/20 to-accent/10 relative overflow-hidden">
       <FloatingParticles />
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-2xl sm:max-w-4xl md:max-w-5xl lg:max-w-7xl mx-auto">
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -171,15 +173,15 @@ const AboutSection = () => {
           viewport={{ once: true, margin: "-100px" }}
         >
           {/* Section Header */}
-          <motion.div variants={fadeUp} className="mb-12 sm:mb-16">
-            <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8 lg:gap-16 px-4">
+          <motion.div variants={fadeUp} className="mb-8 sm:mb-12 md:mb-16">
+            <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 lg:gap-16 px-2 sm:px-4">
               <motion.div 
                 className="relative"
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.3 }}
               >
                 <motion.h2 
-                  className="font-montserrat text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent leading-tight"
+                  className="font-montserrat text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent leading-tight"
                   animate={{ 
                     backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
                   }}
@@ -216,8 +218,7 @@ const AboutSection = () => {
                 viewport={{ once: true }}
               >
                 <Typography variant="h6" className="text-lg sm:text-xl text-muted-foreground leading-relaxed font-medium">
-                  At NKR Library, we create content that bridges software skills, cyber safety, and science. 
-                  We empower learners with practical knowledge and build a safer digital future together.
+                  {t('aboutSection.intro')}
                 </Typography>
               </motion.div>
             </div>
@@ -331,17 +332,13 @@ const AboutSection = () => {
               className="space-y-6"
             >
               <h3 className="text-2xl md:text-3xl font-bold">
-                Who is behind NKR Library?
+                {t('aboutSection.behindTitle')}
               </h3>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                I'm a tech creator passionate about helping students and freshers become digitally confident. 
-                Through NKR Library, I share knowledge about software installation, digital security, and provide 
-                free custom websites to students who need them most.
+                {t('aboutSection.behindPara1')}
               </p>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                My mission is simple: make technology accessible, understandable, and safe for everyone. 
-                From tutorial videos to scam awareness content, everything is designed to empower learners 
-                in their digital journey.
+                {t('aboutSection.behindPara2')}
               </p>
             </motion.div>
           </div>
@@ -349,7 +346,7 @@ const AboutSection = () => {
           {/* Features Grid */}
           <motion.div
             variants={containerVariants}
-            className="grid sm:grid-cols-2 gap-6 mb-12"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8 px-2 sm:px-4"
           >
             {features.map((feature, index) => (
               <motion.div
@@ -467,15 +464,15 @@ const AboutSection = () => {
                     transition={{ duration: 0.6 }}
                   >
                     <Typography variant="h5" className="font-bold mb-6 text-foreground">
-                      Our Impact
+                      {t('aboutSection.impactTitle')}
                     </Typography>
                   </motion.div>
                   
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8">
                     {[
-                      { value: 10000, suffix: '+', label: 'Students Empowered' },
-                      { value: 100, suffix: '+', label: 'Tutorial Videos' },
-                      { value: 50, suffix: '+', label: 'Free Resources' }
+                      { value: 10000, suffix: '+', label: t('aboutSection.impactStatStudents') },
+                      { value: 100, suffix: '+', label: t('aboutSection.impactStatVideos') },
+                      { value: 50, suffix: '+', label: t('aboutSection.impactStatResources') }
                     ].map((stat, index) => (
                       <motion.div
                         key={stat.label}

@@ -7,6 +7,7 @@ import { MagneticCard } from '@/components/ui/magnetic-card';
 import { ElasticText } from '@/components/ui/elastic-text';
 import { ParticleSystem } from '@/components/ui/particle-system';
 import { useMotionPreferences, getAnimationConfig } from '@/hooks/use-motion-preferences';
+import { useTranslation } from 'react-i18next';
 
 interface Video {
   id: string;
@@ -51,19 +52,20 @@ const videos: Video[] = [
   { id: '22', title: 'Latest Job Notification Amazon ML Data Associate', url: 'https://www.youtube.com/watch?v=2ip7wtiDVgQ', category: 'Career', year: '2024' },
 ];
 
-const allCategories = [
-  { name: 'All', description: 'All Categories', count: videos.length },
-  { name: 'Software', description: 'Development & Programming', count: videos.filter(v => v.category === 'Software').length },
-  { name: 'CyberScams', description: 'Security & Awareness', count: videos.filter(v => v.category === 'CyberScams').length },
-  { name: 'Medical', description: 'Medical Coding', count: videos.filter(v => v.category === 'Medical').length },
-  { name: 'Science', description: 'Tech & Innovation', count: videos.filter(v => v.category === 'Science').length },
-  { name: 'Career', description: 'Jobs & Professional', count: videos.filter(v => v.category === 'Career').length },
-];
-
 const VideoShowcase = React.memo(() => {
+  const { t } = useTranslation();
   const { prefersReducedMotion } = useMotionPreferences();
   const animationConfig = getAnimationConfig(prefersReducedMotion);
   const [selectedCategory, setSelectedCategory] = React.useState<string>('All');
+
+  const allCategories = [
+    { name: t('videoShowcase.all'), description: t('videoShowcase.allDesc'), count: videos.length },
+    { name: t('videoShowcase.software'), description: t('videoShowcase.softwareDesc'), count: videos.filter(v => v.category === 'Software').length },
+    { name: t('videoShowcase.cyberScams'), description: t('videoShowcase.cyberScamsDesc'), count: videos.filter(v => v.category === 'CyberScams').length },
+    { name: t('videoShowcase.medical'), description: t('videoShowcase.medicalDesc'), count: videos.filter(v => v.category === 'Medical').length },
+    { name: t('videoShowcase.science'), description: t('videoShowcase.scienceDesc'), count: videos.filter(v => v.category === 'Science').length },
+    { name: t('videoShowcase.career'), description: t('videoShowcase.careerDesc'), count: videos.filter(v => v.category === 'Career').length },
+  ];
   
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -122,10 +124,10 @@ const VideoShowcase = React.memo(() => {
               className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 px-4 bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent"
               style={{ backgroundSize: '200% 200%' }}
             >
-              <ElasticText delay={0.2}>Featured Videos</ElasticText>
+              <ElasticText delay={0.2}>{t('videoShowcase.header')}</ElasticText>
             </Typography>
             <Typography variant="h6" className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto mb-6 sm:mb-8 px-4">
-              Explore our comprehensive library of tutorials, guides, and educational content.
+              {t('videoShowcase.subtitle')}
             </Typography>
             
             <motion.div
@@ -155,7 +157,7 @@ const VideoShowcase = React.memo(() => {
                   },
                 }}
               >
-                View All Videos
+                {t('videoShowcase.viewAllVideos')}
               </Button>
             </motion.div>
           </motion.div>
@@ -222,7 +224,7 @@ const VideoShowcase = React.memo(() => {
                 },
               }}
             >
-              Explore All Categories
+              {t('videoShowcase.exploreAllCategories')}
             </Button>
           </motion.div>
         </motion.div>

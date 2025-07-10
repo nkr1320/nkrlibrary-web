@@ -7,8 +7,10 @@ import { MagneticCard } from '@/components/ui/magnetic-card';
 import { ElasticText } from '@/components/ui/elastic-text';
 import { ParticleSystem } from '@/components/ui/particle-system';
 import { useMotionPreferences } from '@/hooks/use-motion-preferences';
+import { useTranslation } from 'react-i18next';
 
 const CyberScamsSection = () => {
+  const { t } = useTranslation();
   const { prefersReducedMotion } = useMotionPreferences();
   
   const containerVariants = {
@@ -36,58 +38,58 @@ const CyberScamsSection = () => {
 
   const scamTypes = [
     {
-      title: "Data Leaks",
+      title: t('cyberscams.dataLeaksTitle'),
       icon: VpnKey,
-      description: "How scammers steal and misuse your personal data",
+      description: t('cyberscams.dataLeaksDesc'),
       severity: "high",
       path: "/cyberscams/data-leaks"
     },
     {
-      title: "Honey Trap",
+      title: t('cyberscams.honeyTrapTitle'),
       icon: SentimentVeryDissatisfied,
-      description: "Fake romantic scams targeting emotions",
+      description: t('cyberscams.honeyTrapDesc'),
       severity: "high",
       path: "/cyberscams/honey-trap"
     },
     {
-      title: "Phishing",
+      title: t('cyberscams.phishingTitle'),
       icon: Email,
-      description: "Fraudulent login pages and fake emails",
+      description: t('cyberscams.phishingDesc'),
       severity: "critical",
       path: "/cyberscams/phishing"
     },
     {
-      title: "Cyber Attacks",
+      title: t('cyberscams.cyberAttacksTitle'),
       icon: BugReport,
-      description: "Malware, trojans, and system attacks",
+      description: t('cyberscams.cyberAttacksDesc'),
       severity: "critical",
       path: "/cyberscams/cyber-attacks"
     },
     {
-      title: "Sextortion",
+      title: t('cyberscams.sextortionTitle'),
       icon: Warning,
-      description: "Blackmail through compromising content",
+      description: t('cyberscams.sextortionDesc'),
       severity: "high",
       path: "/cyberscams/sextortion"
     },
     {
-      title: "Stranger Calls",
+      title: t('cyberscams.strangerCallsTitle'),
       icon: PhoneAndroid,
-      description: "Unknown number scams and fraud calls",
+      description: t('cyberscams.strangerCallsDesc'),
       severity: "medium",
       path: "/cyberscams/stranger-calls"
     },
     {
-      title: "GB WhatsApp",
+      title: t('cyberscams.gbWhatsappTitle'),
       icon: PhoneAndroid,
-      description: "Risks of unofficial messaging apps",
+      description: t('cyberscams.gbWhatsappDesc'),
       severity: "medium",
       path: "/cyberscams/gb-whatsapp"
     },
     {
-      title: "Cyberbullying",
+      title: t('cyberscams.cyberbullyingTitle'),
       icon: Report,
-      description: "Online harassment and digital abuse",
+      description: t('cyberscams.cyberbullyingDesc'),
       severity: "high",
       path: "/cyberscams/cyberbullying"
     }
@@ -103,7 +105,7 @@ const CyberScamsSection = () => {
   };
 
   return (
-    <section className="py-16 sm:py-20 md:py-24 px-4 sm:px-6 md:px-8 bg-gradient-to-br from-destructive/5 to-accent/10 relative overflow-hidden">
+    <section className="py-10 sm:py-16 md:py-20 px-2 sm:px-4 md:px-8 bg-gradient-to-br from-destructive/5 to-accent/10 relative overflow-hidden">
       {/* Enhanced Background */}
       <motion.div
         className="absolute inset-0 bg-gradient-to-r from-destructive/5 to-accent/10"
@@ -136,8 +138,8 @@ const CyberScamsSection = () => {
           viewport={{ once: true, margin: "-100px" }}
         >
           {/* Section Header */}
-          <motion.div variants={cardVariants} className="text-center mb-12 sm:mb-16">
-            <div className="flex flex-col sm:flex-row items-center justify-center mb-4 px-4">
+          <motion.div variants={cardVariants} className="text-center mb-8 sm:mb-12 md:mb-16">
+            <div className="flex flex-col sm:flex-row items-center justify-center mb-2 sm:mb-4 px-2 sm:px-4">
               <motion.div
                 animate={{
                   rotate: [0, 10, -10, 0],
@@ -149,21 +151,21 @@ const CyberScamsSection = () => {
                   ease: "easeInOut"
                 }}
               >
-                <Security className="text-3xl sm:text-4xl text-primary mb-2 sm:mb-0 sm:mr-3" />
+                <Security className="text-2xl sm:text-3xl md:text-4xl text-primary mb-2 sm:mb-0 sm:mr-3" />
               </motion.div>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-destructive via-primary to-accent bg-clip-text text-transparent">
-                <ElasticText delay={0.4}>CyberScams & Awareness</ElasticText>
+              <h2 className="text-xl sm:text-2xl md:text-4xl font-bold bg-gradient-to-r from-destructive via-primary to-accent bg-clip-text text-transparent">
+                <ElasticText delay={0.4}>{t('cyberscams.header')}</ElasticText>
               </h2>
             </div>
-            <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto px-4">
-              Understand and stay protected from the latest digital fraud. Knowledge is your best defense.
+            <p className="text-sm sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto px-2 sm:px-4">
+              {t('cyberscams.subtitle')}
             </p>
           </motion.div>
 
           {/* Scams Grid */}
           <motion.div
             variants={containerVariants}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 mb-8 sm:mb-12"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 mb-6 sm:mb-8 px-2 sm:px-0"
           >
             {scamTypes.map((scam, index) => (
               <motion.div
@@ -233,7 +235,7 @@ const CyberScamsSection = () => {
                               ease: "easeInOut"
                             }}
                           >
-                            {scam.severity.toUpperCase()}
+                            {t(`cyberscams.severity.${scam.severity}`)}
                           </motion.span>
                         </div>
                         
@@ -308,7 +310,7 @@ const CyberScamsSection = () => {
                   transition: 'all 0.3s ease',
                 }}
               >
-                Learn More About Digital Safety
+                {t('cyberscams.cta')}
               </Button>
             </MagneticCard>
           </motion.div>

@@ -5,8 +5,10 @@ import { Computer, Apps, School, PhotoCamera } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
 import { MagneticCard } from '@/components/ui/magnetic-card';
 import { useMotionPreferences, getAnimationConfig } from '@/hooks/use-motion-preferences';
+import { useTranslation } from 'react-i18next';
 
 const SoftwareSkills = () => {
+  const { t } = useTranslation();
   const { prefersReducedMotion } = useMotionPreferences();
   
   const containerVariants = {
@@ -41,41 +43,61 @@ const SoftwareSkills = () => {
 
   const skillCards = [
     {
-      title: "Computer Basics",
+      title: t('software.computerBasicsTitle'),
       icon: Computer,
-      description: "Master fundamental computer skills",
-      topics: ["Adjust Display Settings", "Uninstall Programs", "Windows Themes", "Internet Speed in Taskbar", "Windows 11 Features"],
+      description: t('software.computerBasicsDesc'),
+      topics: [
+        t('software.computerBasicsTopic1'),
+        t('software.computerBasicsTopic2'),
+        t('software.computerBasicsTopic3'),
+        t('software.computerBasicsTopic4'),
+        t('software.computerBasicsTopic5'),
+      ],
       path: "/software/computer-basics",
       available: true
     },
     {
-      title: "Software Installations",
+      title: t('software.installationsTitle'),
       icon: Apps,
-      description: "Install and configure software correctly",
-      topics: ["Git Installation", "Node.js", "React JS", "Windows Setup", "Bootstrap"],
+      description: t('software.installationsDesc'),
+      topics: [
+        t('software.installationsTopic1'),
+        t('software.installationsTopic2'),
+        t('software.installationsTopic3'),
+        t('software.installationsTopic4'),
+        t('software.installationsTopic5'),
+      ],
       path: "/software/installations",
       available: true
     },
     {
-      title: "All Courses",
+      title: t('software.coursesTitle'),
       icon: School,
-      description: "Comprehensive learning paths",
-      topics: ["Project-based Learning", "Interactive Tutorials", "Real-world Examples"],
+      description: t('software.coursesDesc'),
+      topics: [
+        t('software.coursesTopic1'),
+        t('software.coursesTopic2'),
+        t('software.coursesTopic3'),
+      ],
       path: "/software/courses",
       available: true
     },
     {
-      title: "Photoshop",
+      title: t('software.photoshopTitle'),
       icon: PhotoCamera,
-      description: "Design and photo editing",
-      topics: ["Logo Designing", "Photo Editing", "UI Design"],
+      description: t('software.photoshopDesc'),
+      topics: [
+        t('software.photoshopTopic1'),
+        t('software.photoshopTopic2'),
+        t('software.photoshopTopic3'),
+      ],
       path: "/software/photoshop",
       available: false
     }
   ];
 
   return (
-    <section className="py-16 sm:py-20 md:py-24 px-4 sm:px-6 md:px-8 bg-gradient-to-br from-card to-muted/30">
+    <section className="py-10 sm:py-16 md:py-20 px-2 sm:px-4 md:px-8 bg-gradient-to-br from-card to-muted/30">
       <div className="max-w-7xl mx-auto">
         <motion.div
           variants={containerVariants}
@@ -84,17 +106,17 @@ const SoftwareSkills = () => {
           viewport={{ once: true, margin: "-100px" }}
         >
           {/* Section Header */}
-          <motion.div variants={cardVariants} className="text-center mb-12 sm:mb-16">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 px-4">Software</h2>
-            <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto px-4">
-              Learn top IT software from scratch.
+          <motion.div variants={cardVariants} className="text-center mb-8 sm:mb-12 md:mb-16">
+            <h2 className="text-xl sm:text-3xl md:text-4xl font-bold mb-2 sm:mb-4 px-2 sm:px-4">{t('software.header')}</h2>
+            <p className="text-sm sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto px-2 sm:px-4">
+              {t('software.subtitle')}
             </p>
           </motion.div>
 
           {/* Skills Grid */}
           <motion.div
             variants={containerVariants}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 md:gap-8"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 md:gap-8 px-2 sm:px-0"
           >
             {skillCards.map((skill, index) => (
               <MagneticCard 
@@ -142,7 +164,7 @@ const SoftwareSkills = () => {
                           <h3 className="font-semibold text-base sm:text-lg group-hover:text-primary transition-colors duration-300">{skill.title}</h3>
                           {!skill.available && (
                             <span className="text-xs text-orange-700 dark:text-orange-300 bg-orange-100 dark:bg-orange-900/30 px-2 py-0.5 sm:py-1 rounded border border-orange-200 dark:border-orange-800">
-                              In Development
+                              {t('software.inDevelopment')}
                             </span>
                           )}
                         </div>
@@ -162,7 +184,7 @@ const SoftwareSkills = () => {
                           ))}
                           {skill.topics.length > 3 && (
                             <li className="text-primary/70 group-hover:text-primary font-medium transition-colors duration-300">
-                              +{skill.topics.length - 3} more...
+                              {t('software.more', { count: skill.topics.length - 3 })}
                             </li>
                           )}
                         </ul>
@@ -186,7 +208,7 @@ const SoftwareSkills = () => {
                           },
                         }}
                       >
-                        {skill.available ? 'Learn Now' : 'Get Notified'}
+                        {skill.available ? t('software.learnNow') : t('software.getNotified')}
                       </Button>
                     </CardContent>
                   </Card>

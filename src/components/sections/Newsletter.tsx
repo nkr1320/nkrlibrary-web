@@ -6,8 +6,10 @@ import { MagneticCard } from '@/components/ui/magnetic-card';
 import { ElasticText } from '@/components/ui/elastic-text';
 import { ParticleSystem } from '@/components/ui/particle-system';
 import { useMotionPreferences } from '@/hooks/use-motion-preferences';
+import { useTranslation } from 'react-i18next';
 
 const Newsletter = () => {
+  const { t } = useTranslation();
   const { prefersReducedMotion } = useMotionPreferences();
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle');
@@ -23,19 +25,19 @@ const Newsletter = () => {
     
     if (!email) {
       setStatus('error');
-      setMessage('Please enter your email address.');
+      setMessage(t('newsletter.errorNoEmail'));
       return;
     }
 
     if (!validateEmail(email)) {
       setStatus('error');
-      setMessage('Only .edu or .ac.in email addresses are allowed.');
+      setMessage(t('newsletter.errorDomain'));
       return;
     }
 
     // Simulate success
     setStatus('success');
-    setMessage('Welcome to our learning community! Check your inbox for confirmation.');
+    setMessage(t('newsletter.success'));
     setEmail('');
     
     // Reset after 5 seconds
@@ -121,7 +123,7 @@ const Newsletter = () => {
                   transition={{ delay: 0.3, duration: 0.6 }}
                   className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent"
                 >
-                  <ElasticText delay={0.5}>Join 1,000+ Learners</ElasticText>
+                  <ElasticText delay={0.5}>{t('newsletter.headline')}</ElasticText>
                 </motion.h2>
                 
                 <motion.p 
@@ -131,9 +133,9 @@ const Newsletter = () => {
                   transition={{ delay: 0.4, duration: 0.6 }}
                   className="text-base sm:text-lg text-muted-foreground mb-6 sm:mb-8"
                 >
-                  Get exclusive tutorials, scam alerts, and coding tips delivered to your inbox.
+                  {t('newsletter.subtitle')}
                   <br />
-                  <span className="text-sm">Only .edu and .ac.in email addresses accepted.</span>
+                  <span className="text-sm">{t('newsletter.note')}</span>
                 </motion.p>
 
                 {status !== 'idle' && (
@@ -161,7 +163,7 @@ const Newsletter = () => {
                 >
                   <TextField
                     type="email"
-                    placeholder="student@university.edu"
+                    placeholder={t('newsletter.placeholder')}
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     variant="outlined"
@@ -216,7 +218,7 @@ const Newsletter = () => {
                         transition: 'all 0.3s ease',
                       }}
                     >
-                      Subscribe
+                      {t('newsletter.subscribe')}
                     </Button>
                   </MagneticCard>
                 </motion.form>

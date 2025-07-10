@@ -3,6 +3,7 @@ import { ThemeProvider as MuiThemeProvider, createTheme } from '@mui/material/st
 import { ThemeProvider as NextThemeProvider, useTheme } from 'next-themes';
 import Header from './Header';
 import Footer from './Footer';
+import FloatingChatbot from '../sentrum/FloatingChatbot';
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   const { theme } = useTheme();
@@ -44,10 +45,15 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <MuiThemeProvider theme={muiTheme}>
-      <div className="min-h-screen bg-background text-foreground">
+      <div className="min-h-screen bg-background text-foreground flex flex-col">
         <Header />
-        <main>{children}</main>
+        <main className="flex-1 w-full flex flex-col">
+          <div className="container mx-auto px-2 sm:px-4 md:px-8 flex-1 w-full">
+            {children}
+          </div>
+        </main>
         <Footer />
+        <FloatingChatbot />
       </div>
     </MuiThemeProvider>
   );

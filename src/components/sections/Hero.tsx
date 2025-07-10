@@ -7,8 +7,10 @@ import { MagneticCard } from '@/components/ui/magnetic-card';
 import { ParticleSystem } from '@/components/ui/particle-system';
 import { ElasticText } from '@/components/ui/elastic-text';
 import { useMotionPreferences, getAnimationConfig } from '@/hooks/use-motion-preferences';
+import { useTranslation } from 'react-i18next';
 
 const Hero = () => {
+  const { t } = useTranslation();
   const { prefersReducedMotion } = useMotionPreferences();
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const ref = useRef<HTMLElement>(null);
@@ -63,7 +65,7 @@ const Hero = () => {
   return (
     <section 
       ref={ref}
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-background via-card to-accent/5"
+      className="relative min-h-screen flex items-center justify-center overflow-x-hidden overflow-y-hidden bg-gradient-to-br from-background via-card to-accent/5"
       onMouseMove={handleMouseMove}
       style={{ perspective: '1000px' }}
     >
@@ -154,18 +156,18 @@ const Hero = () => {
 
       <motion.div 
         style={{ y: y1 }}
-        className="relative z-10 max-w-7xl mx-auto px-4 md:px-8 text-center"
+        className="relative z-10 max-w-2xl sm:max-w-4xl md:max-w-5xl lg:max-w-7xl mx-auto px-2 sm:px-4 md:px-8 text-center"
       >
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="space-y-8"
+          className="space-y-6 sm:space-y-8"
         >
           {/* Enhanced Main Headline with 3D effect */}
           <motion.h1
             variants={itemVariants}
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight perspective-1000"
+            className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight perspective-1000"
             style={{
               textShadow: '0 10px 30px rgba(0,0,0,0.1)',
               transformStyle: 'preserve-3d',
@@ -183,7 +185,7 @@ const Hero = () => {
               animate={{ rotateX: 0, opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <ElasticText delay={0.5}>Empower Yourself With</ElasticText>
+              <ElasticText delay={0.5}>{t('hero.headline1')}</ElasticText>
             </motion.span>
             <br />
             <motion.span 
@@ -207,7 +209,7 @@ const Hero = () => {
                 backgroundSize: '200% 200%',
               }}
             >
-              <ElasticText delay={1}>Tech That Matters</ElasticText>
+              <ElasticText delay={1}>{t('hero.headline2')}</ElasticText>
             </motion.span>
           </motion.h1>
 
@@ -216,7 +218,7 @@ const Hero = () => {
             variants={itemVariants}
             className="text-lg sm:text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed px-4"
           >
-            Master software, stay cyber-safe, and explore science with clarity.
+            {t('hero.subtitle')}
           </motion.p>
 
           {/* Enhanced CTA Buttons with magnetic effect */}
@@ -275,9 +277,9 @@ const Hero = () => {
                       transition: 'transform 0.6s ease',
                     },
                   }}
-                  aria-label="Watch tutorials on YouTube"
+                  aria-label={t('hero.ctaYoutubeAria')}
                 >
-                  Watch on YouTube
+                  {t('hero.ctaYoutube')}
                 </Button>
               </motion.div>
             </MagneticCard>
@@ -318,9 +320,9 @@ const Hero = () => {
                       boxShadow: '0 10px 25px rgba(0,0,0,0.1)',
                     },
                   }}
-                  aria-label="Explore available courses"
+                  aria-label={t('hero.ctaCoursesAria')}
                 >
-                  Explore Courses
+                  {t('hero.ctaCourses')}
                 </Button>
               </motion.div>
             </MagneticCard>
@@ -332,9 +334,9 @@ const Hero = () => {
             className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 max-w-2xl mx-auto mt-12 sm:mt-16 px-4"
           >
             {[
-              { number: "10K+", label: "Students Helped", icon: "👨‍🎓" },
-              { number: "50+", label: "Free Websites Built", icon: "🌐" },
-              { number: "100+", label: "Tech Tutorials", icon: "📚" },
+              { number: "10K+", label: t('hero.statStudents'), icon: "👨‍🎓" },
+              { number: "50+", label: t('hero.statWebsites'), icon: "🌐" },
+              { number: "100+", label: t('hero.statTutorials'), icon: "📚" },
             ].map((stat, index) => (
               <MagneticCard key={stat.label} intensity={0.1} scale={1.08}>
                 <motion.div

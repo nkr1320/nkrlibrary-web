@@ -6,8 +6,10 @@ import { MagneticCard } from '@/components/ui/magnetic-card';
 import { ElasticText } from '@/components/ui/elastic-text';
 import { ParticleSystem } from '@/components/ui/particle-system';
 import { useMotionPreferences } from '@/hooks/use-motion-preferences';
+import { useTranslation } from 'react-i18next';
 
 const VisionSection = () => {
+  const { t } = useTranslation();
   const { prefersReducedMotion } = useMotionPreferences();
   
   const containerVariants = {
@@ -34,21 +36,21 @@ const VisionSection = () => {
 
   const visionItems = [
     {
-      title: "Our Vision",
+      title: t('vision.ourVisionTitle'),
       icon: Visibility,
-      content: "We envision a world where software & science solve real problems.",
+      content: t('vision.ourVisionContent'),
       gradient: "from-primary/20 to-accent/20"
     },
     {
-      title: "Our Expertise", 
+      title: t('vision.ourExpertiseTitle'), 
       icon: Psychology,
-      content: "We unite scientists & developers to tackle real-world challenges.",
+      content: t('vision.ourExpertiseContent'),
       gradient: "from-secondary/20 to-primary/20"
     },
     {
-      title: "Our Approach",
+      title: t('vision.ourApproachTitle'),
       icon: Handshake,
-      content: "Every solution is crafted collaboratively, with users at the core.",
+      content: t('vision.ourApproachContent'),
       gradient: "from-accent/20 to-secondary/20"
     }
   ];
@@ -71,10 +73,10 @@ const VisionSection = () => {
           {/* Section Header */}
           <motion.div variants={cardVariants} className="text-center mb-12 sm:mb-16">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 px-4 bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
-              <ElasticText delay={0.3}>Our Foundation</ElasticText>
+              <ElasticText delay={0.3}>{t('vision.header')}</ElasticText>
             </h2>
             <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto px-4">
-              Built on principles that drive meaningful innovation.
+              {t('vision.subtitle')}
             </p>
           </motion.div>
 

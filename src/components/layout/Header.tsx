@@ -19,9 +19,14 @@ const Header = () => {
   const navItems = [
     { label: 'Home', path: '/' },
     { label: 'About', path: '/about' },
+    { label: 'Courses', path: '/courses' },
+    { label: 'Videos', path: '/videos' },
     { label: 'Resume', action: () => openSentrum('resume') },
     { label: 'Notebook', action: () => openSentrum('notebook') },
+    { label: 'Freebies', path: '/freebies' },
+    { label: 'Donate', path: '/donate' },
     { label: 'Contact', path: '/contact' },
+    { label: 'Chatbot', path: '/chatbot' },
   ];
 
   return (

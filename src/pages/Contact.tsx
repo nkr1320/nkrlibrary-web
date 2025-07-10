@@ -5,6 +5,7 @@ import { Send, Email, Phone, LocationOn } from '@mui/icons-material';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
+import { useTranslation } from 'react-i18next';
 
 const contactSchema = z.object({
   fullName: z.string().min(1, 'Full name is required'),
@@ -21,6 +22,7 @@ type ContactFormData = z.infer<typeof contactSchema>;
 const Contact = () => {
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const { t } = useTranslation();
 
   const {
     register,
@@ -151,6 +153,61 @@ const Contact = () => {
                 </Card>
               </motion.div>
             ))}
+            {/* Social Section moved from Social.tsx */}
+            <motion.div
+              variants={itemVariants}
+              whileHover={{ scale: 1.02, x: 4 }}
+              transition={{ duration: 0.2 }}
+            >
+              <Card className="border border-border hover:border-primary/30 transition-colors">
+                <CardContent className="p-6">
+                  <a href="#social-main" className="sr-only focus:not-sr-only absolute left-2 top-2 bg-blue-100 text-blue-900 px-2 py-1 rounded z-50">{t('skipToSocial')}</a>
+                  <div
+                    id="social-main"
+                    className="w-full"
+                    role="region"
+                    aria-label={t('connectWithUs')}
+                  >
+                    <h2 className="text-xl sm:text-2xl font-bold mb-4 text-center">{t('connectWithUs')}</h2>
+                    <div className="flex flex-col md:flex-row gap-4 sm:gap-6 mb-4 sm:mb-6">
+                      <div className="flex-1 min-w-0" role="region" aria-label={t('youtubeChannel')}>
+                        <h3 className="font-semibold mb-2 text-base sm:text-lg">{t('youtubeChannel')}</h3>
+                        <div className="aspect-w-16 aspect-h-9 rounded overflow-hidden bg-black">
+                          <iframe
+                            src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                            title="YouTube video player"
+                            frameBorder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowFullScreen
+                            loading="lazy"
+                            className="w-full h-full"
+                            aria-label={t('youtubeChannel')}
+                          ></iframe>
+                        </div>
+                      </div>
+                      <div className="flex-1 flex flex-col gap-2 sm:gap-3 mt-4 md:mt-0" role="region" aria-label={t('followUs')}>
+                        <h3 className="font-semibold mb-2 text-base sm:text-lg">{t('followUs')}</h3>
+                        <a href="https://www.youtube.com/@yourchannel" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline flex items-center gap-2 text-xs sm:text-sm" aria-label={t('youtube')}>
+                          <span className="i-mdi-youtube w-5 h-5" aria-hidden="true"></span> {t('youtube')}
+                        </a>
+                        <a href="https://twitter.com/yourhandle" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline flex items-center gap-2 text-xs sm:text-sm" aria-label={t('twitter')}>
+                          <span className="i-mdi-twitter w-5 h-5" aria-hidden="true"></span> {t('twitter')}
+                        </a>
+                        <a href="https://facebook.com/yourpage" target="_blank" rel="noopener noreferrer" className="text-blue-700 hover:underline flex items-center gap-2 text-xs sm:text-sm" aria-label={t('facebook')}>
+                          <span className="i-mdi-facebook w-5 h-5" aria-hidden="true"></span> {t('facebook')}
+                        </a>
+                        <a href="https://instagram.com/yourhandle" target="_blank" rel="noopener noreferrer" className="text-pink-500 hover:underline flex items-center gap-2 text-xs sm:text-sm" aria-label={t('instagram')}>
+                          <span className="i-mdi-instagram w-5 h-5" aria-hidden="true"></span> {t('instagram')}
+                        </a>
+                      </div>
+                    </div>
+                    <div className="mt-4 sm:mt-6 text-xs sm:text-sm text-gray-400 text-center" role="status" aria-live="polite">
+                      {t('stayTuned')}
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
           </motion.div>
 
           {/* Contact Form */}

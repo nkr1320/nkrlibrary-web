@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { IconButton, Drawer, List, ListItem, ListItemText, Switch, FormControlLabel } from '@mui/material';
 import { Close as CloseIcon } from '@mui/icons-material';
 import { useTheme } from 'next-themes';
+import { useTranslation } from 'react-i18next';
 
 interface NavItem {
   label: string;
@@ -20,6 +21,10 @@ interface MobileMenuProps {
 const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, navItems }) => {
   const location = useLocation();
   const { theme, setTheme } = useTheme();
+  const { i18n } = useTranslation();
+  const changeLanguage = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    i18n.changeLanguage(e.target.value);
+  };
 
   return (
     <AnimatePresence>
@@ -108,6 +113,15 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, navItems }) =>
                 }
                 label="Dark Mode"
               />
+              <select
+                className="mt-2 rounded border px-2 py-1 text-sm bg-white dark:bg-gray-800 dark:text-gray-100 w-full"
+                value={i18n.language}
+                onChange={changeLanguage}
+                aria-label="Select language"
+              >
+                <option value="en">English</option>
+                <option value="hi">हिन्दी</option>
+              </select>
             </div>
           </motion.div>
         </Drawer>

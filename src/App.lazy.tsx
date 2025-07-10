@@ -38,6 +38,11 @@ const StudentFocused = lazy(() => import("./pages/about/StudentFocused"));
 const ScamAwareness = lazy(() => import("./pages/about/ScamAwareness"));
 const FreeWebsites = lazy(() => import("./pages/about/FreeWebsites"));
 const CommunityDriven = lazy(() => import("./pages/about/CommunityDriven"));
+const Freebies = lazy(() => import("./pages/Freebies"));
+const Donate = lazy(() => import("./pages/Donate"));
+const Social = lazy(() => import("./pages/Social"));
+
+const Chatbot = lazy(() => import("./pages/Chatbot"));
 
 const NotFound = lazy(() => import("./pages/NotFound"));
 
@@ -94,6 +99,15 @@ const App = () => (
                 <Route path="/about/scam-awareness" element={<ScamAwareness />} />
                 <Route path="/about/free-websites" element={<FreeWebsites />} />
                 <Route path="/about/community-driven" element={<CommunityDriven />} />
+                
+                {/* Chatbot route */}
+                <Route path="/chatbot" element={<Chatbot />} />
+                {/* Freebies route */}
+                <Route path="/freebies" element={<Freebies />} />
+                {/* Donate route */}
+                <Route path="/donate" element={<Donate />} />
+                {/* Social route */}
+                <Route path="/social" element={<Social />} />
                 
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />

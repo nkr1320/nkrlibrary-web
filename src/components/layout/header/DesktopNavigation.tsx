@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { IconButton } from '@mui/material';
 import { LightMode, DarkMode } from '@mui/icons-material';
 import { useTheme } from 'next-themes';
+import { useTranslation } from 'react-i18next';
 
 interface NavItem {
   label: string;
@@ -18,9 +19,13 @@ interface DesktopNavigationProps {
 const DesktopNavigation: React.FC<DesktopNavigationProps> = ({ navItems }) => {
   const location = useLocation();
   const { theme, setTheme } = useTheme();
+  const { i18n } = useTranslation();
+  const changeLanguage = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    i18n.changeLanguage(e.target.value);
+  };
 
   return (
-    <div className="flex items-center space-x-4 lg:space-x-6 xl:space-x-8">
+    <div className="flex items-center flex-wrap gap-1 sm:gap-2 px-1 sm:px-0">
       {navItems.map((item) => (
         <motion.div
           key={item.path || item.label}
@@ -30,25 +35,26 @@ const DesktopNavigation: React.FC<DesktopNavigationProps> = ({ navItems }) => {
           {item.path ? (
             <Link
               to={item.path}
-              className={`text-sm font-medium transition-colors hover:text-primary ${
+              className={`text-[11px] sm:text-xs font-medium transition-colors hover:text-primary px-1.5 py-0.5 rounded-md ${
                 location.pathname === item.path
-                  ? 'text-primary'
+                  ? 'text-primary bg-primary/10'
                   : 'text-muted-foreground'
               }`}
+              style={{ minWidth: 0, maxWidth: '100%', whiteSpace: 'nowrap' }}
             >
               {item.label}
             </Link>
           ) : (
             <button
               onClick={item.action}
-              className="text-sm font-medium transition-colors hover:text-primary text-muted-foreground"
+              className="text-[11px] sm:text-xs font-medium transition-colors hover:text-primary text-muted-foreground px-1.5 py-0.5 rounded-md"
+              style={{ minWidth: 0, maxWidth: '100%', whiteSpace: 'nowrap' }}
             >
               {item.label}
             </button>
           )}
         </motion.div>
       ))}
-      
       {/* Dark Mode Toggle */}
       <motion.div
         whileHover={{ scale: 1.1 }}
@@ -62,6 +68,16 @@ const DesktopNavigation: React.FC<DesktopNavigationProps> = ({ navItems }) => {
           {theme === 'dark' ? <LightMode /> : <DarkMode />}
         </IconButton>
       </motion.div>
+      <select
+        className="ml-1 sm:ml-2 rounded border px-1 py-0.5 text-[11px] sm:text-xs bg-white dark:bg-gray-800 dark:text-gray-100"
+        value={i18n.language}
+        onChange={changeLanguage}
+        aria-label="Select language"
+        style={{ minWidth: 0 }}
+      >
+        <option value="en">English</option>
+        <option value="hi">हिन्दी</option>
+      </select>
     </div>
   );
 };

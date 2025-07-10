@@ -7,8 +7,10 @@ import { MagneticCard } from '@/components/ui/magnetic-card';
 import { ElasticText } from '@/components/ui/elastic-text';
 import { ParticleSystem } from '@/components/ui/particle-system';
 import { useMotionPreferences } from '@/hooks/use-motion-preferences';
+import { useTranslation } from 'react-i18next';
 
 const Services = () => {
+  const { t } = useTranslation();
   const { prefersReducedMotion } = useMotionPreferences();
   
   const containerVariants = {
@@ -36,28 +38,43 @@ const Services = () => {
   const services = [
     {
       icon: Web,
-      title: "Custom Student Websites",
-      description: "Professional, responsive websites built specifically for students. Perfect for portfolios, resumes, and academic projects.",
-      features: ["Responsive Design", "SEO Optimized", "Fast Loading", "Mobile Friendly"],
-      price: "Free",
+      title: t('services.customWebsitesTitle'),
+      description: t('services.customWebsitesDesc'),
+      features: [
+        t('services.responsiveDesign'),
+        t('services.seoOptimized'),
+        t('services.fastLoading'),
+        t('services.mobileFriendly'),
+      ],
+      price: t('services.free'),
       highlight: true,
       link: "/contact"
     },
     {
       icon: Security,
-      title: "Scam Awareness Videos",
-      description: "Educational content to help you identify and avoid online scams, phishing attempts, and fraudulent schemes.",
-      features: ["Latest Threats", "Prevention Tips", "Real Examples", "Safety Guides"],
-      price: "Free",
+      title: t('services.scamAwarenessTitle'),
+      description: t('services.scamAwarenessDesc'),
+      features: [
+        t('services.latestThreats'),
+        t('services.preventionTips'),
+        t('services.realExamples'),
+        t('services.safetyGuides'),
+      ],
+      price: t('services.free'),
       highlight: false,
       link: "/tutorials"
     },
     {
       icon: PlayCircle,
-      title: "Tech Tutorials",
-      description: "Step-by-step guides for software installation, troubleshooting, and technology tips for students and beginners.",
-      features: ["Video Tutorials", "Written Guides", "Tool Reviews", "Tips & Tricks"],
-      price: "Free",
+      title: t('services.techTutorialsTitle'),
+      description: t('services.techTutorialsDesc'),
+      features: [
+        t('services.videoTutorials'),
+        t('services.writtenGuides'),
+        t('services.toolReviews'),
+        t('services.tipsTricks'),
+      ],
+      price: t('services.free'),
       highlight: false,
       link: "/tutorials"
     }
@@ -83,13 +100,13 @@ const Services = () => {
             variants={itemVariants}
             className="text-3xl md:text-4xl font-bold mb-6 bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent"
           >
-            <ElasticText delay={0.2}>What We Offer</ElasticText>
+            <ElasticText delay={0.2}>{t('services.header')}</ElasticText>
           </motion.h2>
           <motion.p
             variants={itemVariants}
             className="text-xl text-muted-foreground max-w-3xl mx-auto"
           >
-            Comprehensive tech education and free services designed specifically for students and freshers
+            {t('services.subtitle')}
           </motion.p>
         </motion.div>
 
@@ -143,7 +160,7 @@ const Services = () => {
                         }}
                       >
                         <Chip
-                          label="Most Popular"
+                          label={t('services.mostPopular')}
                           size="small"
                           sx={{
                             background: 'hsl(var(--primary))',
@@ -276,7 +293,7 @@ const Services = () => {
                               transition: 'all 0.3s ease',
                             }}
                           >
-                            {service.title === "Custom Student Websites" ? "Request Yours" : "Learn More"}
+                            {service.title === t('services.customWebsitesTitle') ? t('services.requestYours') : t('services.learnMore')}
                           </Button>
                         </MagneticCard>
                       </div>

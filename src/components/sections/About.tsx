@@ -3,8 +3,10 @@ import { motion } from 'framer-motion';
 import { Avatar, Card, CardContent } from '@mui/material';
 import { School, Security, Code, People } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const About = () => {
+  const { t } = useTranslation();
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -41,26 +43,26 @@ const About = () => {
   const features = [
     {
       icon: School,
-      title: "Student-Focused",
-      description: "Educational content designed specifically for students and freshers entering the tech world.",
+      title: t('about.featureStudentTitle'),
+      description: t('about.featureStudentDesc'),
       link: "/about/student-focused"
     },
     {
       icon: Security,
-      title: "Scam Awareness",
-      description: "Protecting our community from digital threats and fraudulent schemes targeting students.",
+      title: t('about.featureScamTitle'),
+      description: t('about.featureScamDesc'),
       link: "/about/scam-awareness"
     },
     {
       icon: Code,
-      title: "Free Websites",
-      description: "Custom websites for students at no cost, helping build their digital presence.",
+      title: t('about.featureWebsitesTitle'),
+      description: t('about.featureWebsitesDesc'),
       link: "/about/free-websites"
     },
     {
       icon: People,
-      title: "Community Driven",
-      description: "Building a supportive community of learners, creators, and tech enthusiasts.",
+      title: t('about.featureCommunityTitle'),
+      description: t('about.featureCommunityDesc'),
       link: "/about/community-driven"
     }
   ];
@@ -132,23 +134,19 @@ const About = () => {
                 variants={itemVariants}
                 className="text-3xl md:text-4xl font-bold mb-6"
               >
-                Who is behind NKR Library?
+                {t('about.heading')}
               </motion.h2>
               <motion.p
                 variants={itemVariants}
                 className="text-lg text-muted-foreground leading-relaxed"
               >
-                I'm a tech creator passionate about helping students and freshers become digitally confident. 
-                Through NKR Library, I share knowledge about software installation, digital security, and provide 
-                free custom websites to students who need them most.
+                {t('about.para1')}
               </motion.p>
               <motion.p
                 variants={itemVariants}
                 className="text-lg text-muted-foreground leading-relaxed mt-4"
               >
-                My mission is simple: make technology accessible, understandable, and safe for everyone. 
-                From tutorial videos to scam awareness content, everything is designed to empower learners 
-                in their digital journey.
+                {t('about.para2')}
               </motion.p>
             </div>
 

@@ -40,7 +40,6 @@ const FreeWebsites = lazy(() => import("./pages/about/FreeWebsites"));
 const CommunityDriven = lazy(() => import("./pages/about/CommunityDriven"));
 const Freebies = lazy(() => import("./pages/Freebies"));
 const Donate = lazy(() => import("./pages/Donate"));
-const Social = lazy(() => import("./pages/Social"));
 
 const Chatbot = lazy(() => import("./pages/Chatbot"));
 
@@ -106,8 +105,6 @@ const App = () => (
                 <Route path="/freebies" element={<Freebies />} />
                 {/* Donate route */}
                 <Route path="/donate" element={<Donate />} />
-                {/* Social route */}
-                <Route path="/social" element={<Social />} />
                 
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />

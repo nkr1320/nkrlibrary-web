@@ -35,17 +35,25 @@ const DesktopNavigation: React.FC<DesktopNavigationProps> = ({ navItems }) => {
           transition={{ duration: 0.2 }}
         >
           {item.label === "Blog" ? (
-            <div className="relative">
+            <div className="relative group" onMouseLeave={() => setBlogOpen(false)}>
               <button
-                className={`text-[11px] sm:text-xs font-medium transition-colors hover:text-primary px-1.5 py-0.5 rounded-md ${blogOpen ? "text-primary bg-primary/10" : "text-muted-foreground"}`}
+                className={`text-[11px] sm:text-xs font-medium transition-colors hover:text-primary px-1.5 py-0.5 rounded-md ${blogOpen || location.pathname.startsWith("/blog") ? "text-primary bg-primary/10" : "text-muted-foreground"}`}
                 onClick={() => setBlogOpen((open) => !open)}
+                onMouseEnter={() => setBlogOpen(true)}
                 aria-haspopup="true"
                 aria-expanded={blogOpen}
               >
                 Blog
               </button>
               {blogOpen && (
-                <div className="absolute left-0 mt-2 w-40 bg-white dark:bg-gray-900 border border-border rounded shadow-lg z-50">
+                <div className="absolute left-0 mt-2 w-44 bg-white dark:bg-gray-900 border border-border rounded shadow-lg z-50">
+                  <Link
+                    to="/blogs"
+                    className={`block px-4 py-2 text-sm hover:bg-primary/10 ${location.pathname === "/blogs" ? "text-primary font-semibold" : "text-muted-foreground"}`}
+                    onClick={() => setBlogOpen(false)}
+                  >
+                    All Blogs
+                  </Link>
                   {[...Array(10)].map((_, i) => (
                     <Link
                       key={`blog${i + 1}`}

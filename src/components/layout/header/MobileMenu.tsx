@@ -77,7 +77,19 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
                         <span className="ml-2">{blogOpen ? "▲" : "▼"}</span>
                       </button>
                       {blogOpen && (
-                        <ul className="ml-4 mt-1 bg-white dark:bg-gray-900 border border-border rounded shadow-lg z-50">
+                        <ul className="ml-4 mt-1 bg-white dark:bg-gray-900 border border-border rounded shadow-lg z-50 max-h-60 overflow-y-auto">
+                          <li>
+                            <Link
+                              to="/blogs"
+                              onClick={() => {
+                                setBlogOpen(false);
+                                onClose();
+                              }}
+                              className={`block px-4 py-2 text-sm hover:bg-primary/10 ${location.pathname === "/blogs" ? "text-primary font-semibold" : "text-muted-foreground"}`}
+                            >
+                              All Blogs
+                            </Link>
+                          </li>
                           {[...Array(10)].map((_, i) => (
                             <li key={`blog${i + 1}`}>
                               <Link

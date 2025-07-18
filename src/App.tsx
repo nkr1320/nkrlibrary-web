@@ -30,6 +30,7 @@ const Blog7 = lazy(() => import("./pages/Blog7"));
 const Blog8 = lazy(() => import("./pages/Blog8"));
 const Blog9 = lazy(() => import("./pages/Blog9"));
 const Blog10 = lazy(() => import("./pages/Blog10"));
+const Blogs = lazy(() => import("./pages/Blogs"));
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -77,6 +78,7 @@ const App = () => (
                     <Route path="/blog8" element={<Blog8 />} />
                     <Route path="/blog9" element={<Blog9 />} />
                     <Route path="/blog10" element={<Blog10 />} />
+                    <Route path="/blogs" element={<Blogs />} />
                     {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                     <Route path="*" element={<NotFound />} />
                   </Routes>

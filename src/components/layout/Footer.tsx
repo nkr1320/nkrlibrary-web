@@ -13,16 +13,7 @@ const Footer = () => {
     { label: "Contact", path: "/contact" },
     { label: "Privacy Policy", path: "/privacy" },
     { label: "Terms of Service", path: "/terms" },
-    { label: "Blog 1", path: "/blog1" },
-    { label: "Blog 2", path: "/blog2" },
-    { label: "Blog 3", path: "/blog3" },
-    { label: "Blog 4", path: "/blog4" },
-    { label: "Blog 5", path: "/blog5" },
-    { label: "Blog 6", path: "/blog6" },
-    { label: "Blog 7", path: "/blog7" },
-    { label: "Blog 8", path: "/blog8" },
-    { label: "Blog 9", path: "/blog9" },
-    { label: "Blog 10", path: "/blog10" },
+    { label: "Blog", path: "/blogs" },
   ];
 
   const socialLinks = [

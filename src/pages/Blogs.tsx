@@ -6,52 +6,62 @@ const blogs = [
   {
     path: "/blog1",
     title: "The Power of Learning Online",
-    description: "Explore how online learning is transforming education and empowering students worldwide.",
+    description:
+      "Explore how online learning is transforming education and empowering students worldwide.",
   },
   {
     path: "/blog2",
     title: "Mastering Software & Development Tools",
-    description: "Learn how to master Git, React, NodeJS, and more with our expert video tutorials.",
+    description:
+      "Learn how to master Git, React, NodeJS, and more with our expert video tutorials.",
   },
   {
     path: "/blog3",
     title: "Protect Yourself from Cyber Scams",
-    description: "Stay safe online by learning to recognize and avoid common cyber scams and threats.",
+    description:
+      "Stay safe online by learning to recognize and avoid common cyber scams and threats.",
   },
   {
     path: "/blog4",
     title: "Medical Coding: A Beginner's Guide",
-    description: "An introduction to medical coding, its importance, and how to get started in the field.",
+    description:
+      "An introduction to medical coding, its importance, and how to get started in the field.",
   },
   {
     path: "/blog5",
     title: "Science & Technology: The Future is Now",
-    description: "Discover the latest trends and breakthroughs in science and technology.",
+    description:
+      "Discover the latest trends and breakthroughs in science and technology.",
   },
   {
     path: "/blog6",
     title: "Building a Career in the Digital Age",
-    description: "Tips and resources for launching and growing your career in today’s digital world.",
+    description:
+      "Tips and resources for launching and growing your career in today’s digital world.",
   },
   {
     path: "/blog7",
     title: "Getting Started with Git",
-    description: "A step-by-step guide to installing and using Git for version control.",
+    description:
+      "A step-by-step guide to installing and using Git for version control.",
   },
   {
     path: "/blog8",
     title: "ReactJS: From Zero to Hero",
-    description: "Learn the basics of ReactJS and how to build modern web applications.",
+    description:
+      "Learn the basics of ReactJS and how to build modern web applications.",
   },
   {
     path: "/blog9",
     title: "Upwork & Freelancing: Your First Steps",
-    description: "How to set up your Upwork account and start your freelancing journey.",
+    description:
+      "How to set up your Upwork account and start your freelancing journey.",
   },
   {
     path: "/blog10",
     title: "AI & The Future of Work",
-    description: "Explore how artificial intelligence is changing the workplace and what it means for you.",
+    description:
+      "Explore how artificial intelligence is changing the workplace and what it means for you.",
   },
 ];
 
@@ -84,4 +94,4 @@ const Blogs: React.FC = () => (
   </main>
 );
 
-export default Blogs; 
+export default Blogs;

@@ -35,7 +35,10 @@ const DesktopNavigation: React.FC<DesktopNavigationProps> = ({ navItems }) => {
           transition={{ duration: 0.2 }}
         >
           {item.label === "Blog" ? (
-            <div className="relative group" onMouseLeave={() => setBlogOpen(false)}>
+            <div
+              className="relative group"
+              onMouseLeave={() => setBlogOpen(false)}
+            >
               <button
                 className={`text-[11px] sm:text-xs font-medium transition-colors hover:text-primary px-1.5 py-0.5 rounded-md ${blogOpen || location.pathname.startsWith("/blog") ? "text-primary bg-primary/10" : "text-muted-foreground"}`}
                 onClick={() => setBlogOpen((open) => !open)}

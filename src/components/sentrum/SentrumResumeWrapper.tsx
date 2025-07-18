@@ -2,7 +2,8 @@ import React, { useContext, useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { RefreshCw, AlertCircle, Loader2, Info } from "lucide-react";
 import SentrumResume from "./SentrumResume";
-import { ResumeContext, ResumeProvider } from "@/contexts/ResumeContext";
+import { ResumeContextObject } from "@/contexts/ResumeContextObject";
+import { ResumeProvider } from "@/contexts/ResumeContext";
 
 const SentrumResumeWrapper: React.FC = () => {
   const [isRetrying, setIsRetrying] = useState(false);
@@ -10,7 +11,7 @@ const SentrumResumeWrapper: React.FC = () => {
   const [useLocalProvider, setUseLocalProvider] = useState(false);
 
   // Check if we're within the ResumeProvider context
-  const context = useContext(ResumeContext);
+  const context = useContext(ResumeContextObject);
 
   useEffect(() => {
     setMounted(true);

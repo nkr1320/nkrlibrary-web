@@ -2,7 +2,7 @@ import { Helmet } from 'react-helmet-async';
 
 interface StructuredDataProps {
   type: 'website' | 'course' | 'video' | 'article';
-  data: any;
+  data: Record<string, unknown>;
 }
 
 export const StructuredData: React.FC<StructuredDataProps> = ({ type, data }) => {

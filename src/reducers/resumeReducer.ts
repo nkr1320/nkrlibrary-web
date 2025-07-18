@@ -196,7 +196,7 @@ export function resumeReducer(state: ResumeState, action: ResumeAction): ResumeS
         },
       };
 
-    case 'SAVE_VERSION':
+    case 'SAVE_VERSION': {
       const newVersion = {
         id: Date.now().toString(),
         name: action.payload.name,
@@ -210,8 +210,9 @@ export function resumeReducer(state: ResumeState, action: ResumeAction): ResumeS
         versions: [...state.versions, newVersion],
         activeVersionId: newVersion.id,
       };
+    }
 
-    case 'LOAD_VERSION':
+    case 'LOAD_VERSION': {
       const version = state.versions.find(v => v.id === action.payload);
       if (!version) return state;
       return {
@@ -219,6 +220,7 @@ export function resumeReducer(state: ResumeState, action: ResumeAction): ResumeS
         resumeData: { ...version.data },
         activeVersionId: action.payload,
       };
+    }
 
     case 'DELETE_VERSION':
       return {

@@ -181,7 +181,7 @@ const ATSAnalyzer: React.FC = () => {
         <div className="mb-6">
           <h3 className="font-semibold mb-2">Section Analysis</h3>
           <ul className="space-y-2">
-            {Object.entries(analysisResults.sections).map(([section, data]: any) => (
+            {Object.entries(analysisResults.sections).map(([section, data]: [string, { score: number; issues: string[] }]) => (
               <li key={section} className="flex items-center gap-3">
                 <span className="font-medium capitalize w-32">{section}</span>
                 <span className="rounded px-2 py-1 text-xs font-semibold" style={{backgroundColor: getScoreColor(data.score) + '20', color: getScoreColor(data.score)}}>

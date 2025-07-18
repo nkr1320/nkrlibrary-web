@@ -6,6 +6,7 @@ import {
   initialState,
 } from "@/types/resume";
 import { resumeReducer } from "@/reducers/resumeReducer";
+import { ResumeContextObject } from "./ResumeContextObject";
 
 interface ResumeContextType {
   state: ResumeState;
@@ -41,10 +42,6 @@ interface ResumeContextType {
   deleteVersion: (id: string) => void;
   resetResume: () => void;
 }
-
-export const ResumeContext = createContext<ResumeContextType | undefined>(
-  undefined,
-);
 
 export const ResumeProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
@@ -180,16 +177,16 @@ export const ResumeProvider: React.FC<{ children: React.ReactNode }> = ({
   };
 
   return (
-    <ResumeContext.Provider value={contextValue}>
+    <ResumeContextObject.Provider value={contextValue}>
       {children}
-    </ResumeContext.Provider>
+    </ResumeContextObject.Provider>
   );
 };
 
 export const useResume = () => {
   // Removed console logs for production cleanliness. If debugging is needed, wrap logs in a development check:
   // if (process.env.NODE_ENV === 'development') { console.log('...'); }
-  const context = useContext(ResumeContext);
+  const context = useContext(ResumeContextObject);
 
   if (context === undefined) {
     console.error("useResume: Context is undefined! Provider not found.");

@@ -7,6 +7,7 @@ import React, {
 } from "react";
 import { getCriticalVideos, type Video } from "@/lib/video-data-chunks";
 // REMOVE: import { useNavigate } from "react-router-dom";
+import { SentrumContextObject } from "./SentrumContextObject";
 
 export interface ChatMessage {
   id: string;
@@ -17,7 +18,7 @@ export interface ChatMessage {
   metadata?: {
     action?: "navigate" | "search" | "summarize";
     target?: string;
-    results?: any;
+    results?: unknown;
   };
 }
 

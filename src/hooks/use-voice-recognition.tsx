@@ -32,7 +32,7 @@ interface SpeechRecognition extends EventTarget {
   start(): void;
   stop(): void;
   onresult: (event: SpeechRecognitionEvent) => void;
-  onerror: (event: any) => void;
+  onerror: (event: Event) => void;
   onend: () => void;
 }
 
@@ -76,7 +76,7 @@ export const useVoiceRecognition = (
         }
       };
 
-      recognition.onerror = (event) => {
+      recognition.onerror = (event: Event) => {
         setError(event.error);
         setIsListening(false);
       };

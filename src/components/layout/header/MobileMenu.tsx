@@ -1,10 +1,9 @@
-import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
-import { IconButton, Drawer, List, ListItem, ListItemText, Switch, FormControlLabel } from '@mui/material';
-import { Close as CloseIcon } from '@mui/icons-material';
-import { useTheme } from 'next-themes';
-import { useTranslation } from 'react-i18next';
+import React from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
+import { useTheme } from "next-themes";
+import { useTranslation } from "react-i18next";
+import { X } from "lucide-react";
 
 interface NavItem {
   label: string;
@@ -18,8 +17,13 @@ interface MobileMenuProps {
   navItems: NavItem[];
 }
 
-const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, navItems }) => {
+const MobileMenu: React.FC<MobileMenuProps> = ({
+  isOpen,
+  onClose,
+  navItems,
+}) => {
   const location = useLocation();
+  const navigate = useNavigate();
   const { theme, setTheme } = useTheme();
   const { i18n } = useTranslation();
   const changeLanguage = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -29,90 +33,81 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, navItems }) =>
   return (
     <AnimatePresence>
       {isOpen && (
-        <Drawer
-          anchor="right"
-          open={isOpen}
-          onClose={onClose}
-          PaperProps={{
-            sx: {
-              width: '280px',
-              background: 'rgba(255, 255, 255, 0.1)',
-              backdropFilter: 'blur(40px)',
-              border: '1px solid rgba(255, 255, 255, 0.2)',
-            },
-          }}
+        <div
+          className="fixed inset-0 z-50 bg-black bg-opacity-50"
+          onClick={onClose}
         >
           <motion.div
             initial={{ x: 280 }}
             animate={{ x: 0 }}
             exit={{ x: 280 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="h-full"
+            className="fixed right-0 top-0 h-full w-full bg-white dark:bg-gray-900"
+            onClick={(e) => e.stopPropagation()}
           >
             <div className="flex justify-between items-center p-4 border-b border-border">
               <span className="text-lg font-semibold">NKR LIBRARY</span>
-              <IconButton
+              <button
                 onClick={onClose}
-                size="small"
+                className="text-gray-500 hover:text-gray-700 dark:hover:text-gray-300"
               >
-                <CloseIcon />
-              </IconButton>
+                <X className="h-6 w-6" />
+              </button>
             </div>
-            
-            <List>
+
+            <ul className="py-4">
               {navItems.map((item, index) => (
-                <motion.div
+                <motion.li
                   key={item.path || item.label}
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.1 }}
                 >
                   {item.path ? (
-                    <ListItem
-                      component={Link}
+                    <Link
                       to={item.path}
-                      onClick={onClose}
-                      sx={{
-                        color: location.pathname === item.path ? 'hsl(var(--primary))' : 'hsl(var(--foreground))',
-                        cursor: 'pointer',
-                        '&:hover': {
-                          backgroundColor: 'hsl(var(--accent))',
-                        },
+                      onClick={e => {
+                        if (location.pathname === item.path) {
+                          window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+                          e.preventDefault();
+                          onClose();
+                        } else {
+                          onClose();
+                        }
                       }}
+                      className="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
                     >
-                      <ListItemText primary={item.label} />
-                    </ListItem>
+                      {item.label}
+                    </Link>
                   ) : (
-                    <ListItem
+                    <button
                       onClick={() => {
                         item.action?.();
                         onClose();
                       }}
-                      sx={{
-                        color: 'hsl(var(--foreground))',
-                        cursor: 'pointer',
-                        '&:hover': {
-                          backgroundColor: 'hsl(var(--accent))',
-                        },
-                      }}
+                      className="block w-full text-left px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
                     >
-                      <ListItemText primary={item.label} />
-                    </ListItem>
+                      {item.label}
+                    </button>
                   )}
-                </motion.div>
+                </motion.li>
               ))}
-            </List>
+            </ul>
 
             <div className="absolute bottom-4 left-4">
-              <FormControlLabel
-                control={
-                  <Switch
-                    checked={theme === 'dark'}
-                    onChange={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-                  />
-                }
-                label="Dark Mode"
-              />
+              <label className="flex items-center space-x-2">
+                <input
+                  type="checkbox"
+                  checked={theme === "dark"}
+                  onChange={() =>
+                    setTheme(theme === "dark" ? "light" : "dark")
+                  }
+                  className="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary"
+                />
+                <span className="text-sm text-gray-700 dark:text-gray-300">
+                  Dark Mode
+                </span>
+              </label>
               <select
                 className="mt-2 rounded border px-2 py-1 text-sm bg-white dark:bg-gray-800 dark:text-gray-100 w-full"
                 value={i18n.language}
@@ -124,7 +119,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, navItems }) =>
               </select>
             </div>
           </motion.div>
-        </Drawer>
+        </div>
       )}
     </AnimatePresence>
   );

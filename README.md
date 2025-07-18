@@ -71,3 +71,38 @@ Yes, you can!
 To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
 
 Read more here: [Setting up a custom domain](https://docs.NKR.dev/tips-tricks/custom-domain#step-by-step-guide)
+
+## Available Scripts
+
+In the project directory, you can run:
+
+- `npm run dev` — Start the development server with hot reload
+- `npm run build` — Build the app for production
+- `npm run preview` — Preview the production build locally
+- `npm run lint` — Run ESLint to check for code quality issues
+- `npm run format` — Run Prettier to auto-format all code in `src/`
+
+## Code Formatting
+
+This project uses [Prettier](https://prettier.io/) for code formatting. To format all code, run:
+
+```sh
+npm run format
+```
+
+## Continuous Integration (CI)
+
+A GitHub Actions workflow is set up in `.github/workflows/ci.yml` to automatically lint, format-check, and build the project on every push or pull request to `main`.
+
+## Deployment
+
+You can deploy this project to [Vercel](https://vercel.com/) or any static hosting provider. For Vercel:
+
+1. Push your code to GitHub.
+2. Import your repo in Vercel and follow the prompts.
+3. Set the build command to `npm run build` and the output directory to `dist`.
+4. Configure your custom domain in Vercel settings if desired.
+
+---
+
+For any questions, see the [NKR documentation](https://docs.NKR.dev/) or open an issue in this repo.

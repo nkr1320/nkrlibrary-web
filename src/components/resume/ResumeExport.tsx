@@ -1,7 +1,7 @@
-import React from 'react';
-import { Paper, Typography, Button, Box } from '@mui/material';
-import { Download, Share, QrCode, Description } from '@mui/icons-material';
-import { useResume } from '@/contexts/ResumeContext';
+import React from "react";
+import { Button } from "@/components/ui/button";
+import { Download, Share, QrCode, FileText } from "lucide-react";
+import { useResume } from "@/contexts/ResumeContext";
 
 const ResumeExport: React.FC = () => {
   const { state } = useResume();
@@ -9,7 +9,7 @@ const ResumeExport: React.FC = () => {
 
   const generateProfessionalResume = () => {
     // Create a new window to display the professional resume
-    const newWindow = window.open('', '_blank');
+    const newWindow = window.open("", "_blank");
     if (newWindow) {
       newWindow.document.write(`
         <!DOCTYPE html>
@@ -62,24 +62,26 @@ const ResumeExport: React.FC = () => {
                     <h3>CONTACT</h3>
                     <div class="contact-item">
                       <span>📧</span>
-                      <span>${resumeData.personalInfo.email || 'email@example.com'}</span>
+                      <span>${resumeData.personalInfo.email || "email@example.com"}</span>
                     </div>
                     <div class="contact-item">
                       <span>📱</span>
-                      <span>${resumeData.personalInfo.phone || '+1 (555) 123-4567'}</span>
+                      <span>${resumeData.personalInfo.phone || "+1 (555) 123-4567"}</span>
                     </div>
                     <div class="contact-item">
                       <span>📍</span>
-                      <span>${resumeData.personalInfo.address || 'City, State'}</span>
+                      <span>${resumeData.personalInfo.address || "City, State"}</span>
                     </div>
                   </div>
                   
                   <div class="section">
                     <h3>SKILLS</h3>
-                    ${resumeData.skills.technical.slice(0, 8).map((skill, index) => {
-                      const levels = [90, 85, 80, 75, 95, 70, 88, 82];
-                      const level = levels[index % levels.length] || 80;
-                      return `
+                    ${resumeData.skills.technical
+                      .slice(0, 8)
+                      .map((skill, index) => {
+                        const levels = [90, 85, 80, 75, 95, 70, 88, 82];
+                        const level = levels[index % levels.length] || 80;
+                        return `
                         <div class="skill-item">
                           <div style="display: flex; justify-content: space-between; font-size: 0.875rem;">
                             <span>${skill}</span>
@@ -90,7 +92,8 @@ const ResumeExport: React.FC = () => {
                           </div>
                         </div>
                       `;
-                    }).join('')}
+                      })
+                      .join("")}
                   </div>
                   
                   <div class="section">
@@ -114,21 +117,25 @@ const ResumeExport: React.FC = () => {
                 
                 <div class="content">
                   <div style="border-bottom: 1px solid #E5E7EB; padding-bottom: 1.5rem; margin-bottom: 2rem;">
-                    <h1 class="main-title">${resumeData.personalInfo.fullName || 'John Doe'}</h1>
-                    <p class="job-title">${resumeData.experience[0]?.position || 'Professional Title'}</p>
+                    <h1 class="main-title">${resumeData.personalInfo.fullName || "John Doe"}</h1>
+                    <p class="job-title">${resumeData.experience[0]?.position || "Professional Title"}</p>
                   </div>
                   
                   <div class="content-section">
                     <h2>OBJECTIVE</h2>
                     <p style="color: #374151; line-height: 1.6;">
-                      ${resumeData.personalInfo.summary || 'Dedicated professional with extensive experience in delivering high-quality solutions and driving organizational success through innovative approaches and collaborative teamwork.'}
+                      ${resumeData.personalInfo.summary || "Dedicated professional with extensive experience in delivering high-quality solutions and driving organizational success through innovative approaches and collaborative teamwork."}
                     </p>
                   </div>
                   
-                  ${resumeData.experience.length > 0 ? `
+                  ${
+                    resumeData.experience.length > 0
+                      ? `
                     <div class="content-section">
                       <h2>EXPERIENCE</h2>
-                      ${resumeData.experience.map(exp => `
+                      ${resumeData.experience
+                        .map(
+                          (exp) => `
                         <div class="timeline-item">
                           <div class="timeline-dot"></div>
                           <h3 style="font-size: 1.125rem; font-weight: bold; color: #1F2937; margin-bottom: 0.5rem;">${exp.position}</h3>
@@ -138,14 +145,22 @@ const ResumeExport: React.FC = () => {
                           </div>
                           <p style="color: #374151; line-height: 1.6;">${exp.description}</p>
                         </div>
-                      `).join('')}
+                      `,
+                        )
+                        .join("")}
                     </div>
-                  ` : ''}
+                  `
+                      : ""
+                  }
                   
-                  ${resumeData.education.length > 0 ? `
+                  ${
+                    resumeData.education.length > 0
+                      ? `
                     <div class="content-section">
                       <h2>EDUCATION</h2>
-                      ${resumeData.education.map(edu => `
+                      ${resumeData.education
+                        .map(
+                          (edu) => `
                         <div style="margin-bottom: 1rem;">
                           <h3 style="font-size: 1.125rem; font-weight: bold; color: #1F2937; margin-bottom: 0.5rem;">${edu.degree}</h3>
                           <div style="display: flex; gap: 1rem; color: #2563EB; font-weight: 500;">
@@ -153,22 +168,34 @@ const ResumeExport: React.FC = () => {
                             <span>📅 ${edu.year}</span>
                           </div>
                         </div>
-                      `).join('')}
+                      `,
+                        )
+                        .join("")}
                     </div>
-                  ` : ''}
+                  `
+                      : ""
+                  }
                   
-                  ${resumeData.projects.length > 0 ? `
+                  ${
+                    resumeData.projects.length > 0
+                      ? `
                     <div class="content-section">
                       <h2>PROJECTS</h2>
-                      ${resumeData.projects.map(project => `
+                      ${resumeData.projects
+                        .map(
+                          (project) => `
                         <div style="margin-bottom: 1rem;">
                           <h3 style="font-size: 1.125rem; font-weight: bold; color: #1F2937; margin-bottom: 0.5rem;">${project.name}</h3>
                           <p style="color: #374151; margin-bottom: 0.5rem;">${project.description}</p>
                           <p style="color: #2563EB; font-weight: 500;">Technologies: ${project.technologies}</p>
                         </div>
-                      `).join('')}
+                      `,
+                        )
+                        .join("")}
                     </div>
-                  ` : ''}
+                  `
+                      : ""
+                  }
                 </div>
               </div>
             </div>
@@ -206,68 +233,100 @@ const ResumeExport: React.FC = () => {
             </div>
           </div>
           
-          ${resumeData.personalInfo.summary ? `
+          ${
+            resumeData.personalInfo.summary
+              ? `
             <div class="section">
               <h2>Professional Summary</h2>
               <p>${resumeData.personalInfo.summary}</p>
             </div>
-          ` : ''}
+          `
+              : ""
+          }
           
-          ${resumeData.experience.length > 0 ? `
+          ${
+            resumeData.experience.length > 0
+              ? `
             <div class="section">
               <h2>Experience</h2>
-              ${resumeData.experience.map(exp => `
+              ${resumeData.experience
+                .map(
+                  (exp) => `
                 <div class="experience-item">
                   <h3>${exp.position} at ${exp.company}</h3>
                   <p><strong>${exp.duration}</strong></p>
                   <p>${exp.description}</p>
                 </div>
-              `).join('')}
+              `,
+                )
+                .join("")}
             </div>
-          ` : ''}
+          `
+              : ""
+          }
           
-          ${resumeData.education.length > 0 ? `
+          ${
+            resumeData.education.length > 0
+              ? `
             <div class="section">
               <h2>Education</h2>
-              ${resumeData.education.map(edu => `
+              ${resumeData.education
+                .map(
+                  (edu) => `
                 <div class="education-item">
                   <h3>${edu.degree}</h3>
                   <p>${edu.institution} - ${edu.year}</p>
                 </div>
-              `).join('')}
+              `,
+                )
+                .join("")}
             </div>
-          ` : ''}
+          `
+              : ""
+          }
           
-          ${resumeData.skills.technical.length > 0 ? `
+          ${
+            resumeData.skills.technical.length > 0
+              ? `
             <div class="section">
               <h2>Skills</h2>
               <div class="skills">
-                ${resumeData.skills.technical.map(skill => `<span class="skill">${skill}</span>`).join('')}
+                ${resumeData.skills.technical.map((skill) => `<span class="skill">${skill}</span>`).join("")}
               </div>
             </div>
-          ` : ''}
+          `
+              : ""
+          }
           
-          ${resumeData.projects.length > 0 ? `
+          ${
+            resumeData.projects.length > 0
+              ? `
             <div class="section">
               <h2>Projects</h2>
-              ${resumeData.projects.map(project => `
+              ${resumeData.projects
+                .map(
+                  (project) => `
                 <div class="project-item">
                   <h3>${project.name}</h3>
                   <p>${project.description}</p>
                   <p><strong>Technologies:</strong> ${project.technologies}</p>
                 </div>
-              `).join('')}
+              `,
+                )
+                .join("")}
             </div>
-          ` : ''}
+          `
+              : ""
+          }
         </body>
       </html>
     `;
 
-    const blob = new Blob([resumeHTML], { type: 'text/html' });
+    const blob = new Blob([resumeHTML], { type: "text/html" });
     const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
+    const a = document.createElement("a");
     a.href = url;
-    a.download = `${resumeData.personalInfo.fullName || 'Resume'}.html`;
+    a.download = `${resumeData.personalInfo.fullName || "Resume"}.html`;
     a.click();
     URL.revokeObjectURL(url);
   };
@@ -278,71 +337,71 @@ const ResumeExport: React.FC = () => {
   };
 
   return (
-    <Paper className="glass-card p-4">
-      <Typography variant="h6" className="font-semibold mb-4">
+    <div className="glass-card p-4">
+      <h6 className="font-semibold mb-4">
         Export & Share
-      </Typography>
-      
-      <Box className="flex flex-col gap-2">
+      </h6>
+
+      <div className="flex flex-col gap-2">
         <Button
           onClick={handleDownloadPDF}
           startIcon={<Download />}
           variant="contained"
           sx={{
-            backgroundColor: 'hsl(var(--primary))',
-            color: 'hsl(var(--primary-foreground))',
+            backgroundColor: "hsl(var(--primary))",
+            color: "hsl(var(--primary-foreground))",
           }}
         >
           Download PDF
         </Button>
-        
+
         <Button
           onClick={generateProfessionalResume}
-          startIcon={<Description />}
+          startIcon={<FileText />}
           variant="outlined"
           sx={{
-            borderColor: 'hsl(var(--border))',
-            color: 'hsl(var(--foreground))',
+            borderColor: "hsl(var(--border))",
+            color: "hsl(var(--foreground))",
           }}
         >
           Professional Export
         </Button>
-        
+
         <Button
           onClick={generateBasicResume}
           startIcon={<Download />}
           variant="outlined"
           sx={{
-            borderColor: 'hsl(var(--border))',
-            color: 'hsl(var(--foreground))',
+            borderColor: "hsl(var(--border))",
+            color: "hsl(var(--foreground))",
           }}
         >
           Basic HTML Export
         </Button>
-        
+
         <Button
           startIcon={<QrCode />}
           variant="outlined"
           sx={{
-            borderColor: 'hsl(var(--border))',
-            color: 'hsl(var(--foreground))',
+            borderColor: "hsl(var(--border))",
+            color: "hsl(var(--foreground))",
           }}
         >
           Generate QR Code
         </Button>
-        
+
         <Button
           startIcon={<Share />}
           variant="outlined"
           sx={{
-            borderColor: 'hsl(var(--border))',
-            color: 'hsl(var(--foreground))',
+            borderColor: "hsl(var(--border))",
+            color: "hsl(var(--foreground))",
           }}
         >
           Share Link
         </Button>
-      </Box>
-    </Paper>
+      </div>
+    </div>
   );
 };
 

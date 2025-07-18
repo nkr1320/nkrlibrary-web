@@ -1,26 +1,31 @@
-import React, { useContext, useState, useEffect } from 'react';
-import { Button } from '@/components/ui/button';
-import { RefreshCw, AlertCircle, Loader2, Info } from 'lucide-react';
-import SentrumResume from './SentrumResume';
-import { ResumeContext, ResumeProvider } from '@/contexts/ResumeContext';
+import React, { useContext, useState, useEffect } from "react";
+import { Button } from "@/components/ui/button";
+import { RefreshCw, AlertCircle, Loader2, Info } from "lucide-react";
+import SentrumResume from "./SentrumResume";
+import { ResumeContext, ResumeProvider } from "@/contexts/ResumeContext";
 
 const SentrumResumeWrapper: React.FC = () => {
   const [isRetrying, setIsRetrying] = useState(false);
   const [mounted, setMounted] = useState(false);
   const [useLocalProvider, setUseLocalProvider] = useState(false);
-  
+
   // Check if we're within the ResumeProvider context
   const context = useContext(ResumeContext);
-  
+
   useEffect(() => {
     setMounted(true);
-    console.log('SentrumResumeWrapper: Component mounted');
-    console.log('SentrumResumeWrapper: Context available:', !!context);
-    console.log('SentrumResumeWrapper: Context value:', context);
-    
+    if (import.meta.env.MODE === 'development') {
+      console.log("SentrumResumeWrapper: Component mounted");
+      console.log("SentrumResumeWrapper: Context available:", !!context);
+      console.log("SentrumResumeWrapper: Context value:", context);
+    }
     // If context is not available after mounting, use local provider
     if (!context) {
-      console.log('SentrumResumeWrapper: No context found, will use local provider');
+      if (import.meta.env.MODE === 'development') {
+        console.log(
+          "SentrumResumeWrapper: No context found, will use local provider",
+        );
+      }
       setUseLocalProvider(true);
     }
   }, [context]);
@@ -39,8 +44,12 @@ const SentrumResumeWrapper: React.FC = () => {
     return (
       <div className="flex flex-col h-full">
         <div className="p-4 border-b border-border">
-          <h3 className="text-lg font-semibold text-foreground">AI Resume Builder</h3>
-          <p className="text-sm text-muted-foreground">Loading resume builder...</p>
+          <h3 className="text-lg font-semibold text-foreground">
+            AI Resume Builder
+          </h3>
+          <p className="text-sm text-muted-foreground">
+            Loading resume builder...
+          </p>
         </div>
         <div className="flex-1 flex items-center justify-center">
           <div className="flex items-center gap-2 text-muted-foreground">
@@ -57,7 +66,9 @@ const SentrumResumeWrapper: React.FC = () => {
     return (
       <div className="flex flex-col h-full">
         <div className="p-4 border-b border-border">
-          <h3 className="text-lg font-semibold text-foreground">AI Resume Builder</h3>
+          <h3 className="text-lg font-semibold text-foreground">
+            AI Resume Builder
+          </h3>
           <p className="text-sm text-muted-foreground">
             Initializing resume context...
           </p>
@@ -68,12 +79,15 @@ const SentrumResumeWrapper: React.FC = () => {
               <Info className="h-12 w-12 text-primary" />
             </div>
             <div className="space-y-2">
-              <h4 className="font-medium text-foreground">Context Initialization</h4>
+              <h4 className="font-medium text-foreground">
+                Context Initialization
+              </h4>
               <p className="text-sm text-muted-foreground">
-                The resume builder is setting up a local context for this session.
+                The resume builder is setting up a local context for this
+                session.
               </p>
             </div>
-            <Button 
+            <Button
               onClick={() => setUseLocalProvider(true)}
               variant="default"
               className="w-full"
@@ -89,11 +103,13 @@ const SentrumResumeWrapper: React.FC = () => {
       </div>
     );
   }
-  
+
   // Context is available or we're using local provider
-  console.log('SentrumResumeWrapper: Rendering SentrumResume');
-  console.log('SentrumResumeWrapper: Using local provider:', useLocalProvider);
-  
+  if (import.meta.env.MODE === 'development') {
+    console.log("SentrumResumeWrapper: Rendering SentrumResume");
+    console.log("SentrumResumeWrapper: Using local provider:", useLocalProvider);
+  }
+
   if (useLocalProvider) {
     // Wrap in local ResumeProvider for this session
     return (
@@ -102,7 +118,7 @@ const SentrumResumeWrapper: React.FC = () => {
       </ResumeProvider>
     );
   }
-  
+
   return <SentrumResume />;
 };
 

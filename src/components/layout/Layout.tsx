@@ -1,53 +1,25 @@
-import React, { useMemo } from 'react';
-import { ThemeProvider as MuiThemeProvider, createTheme } from '@mui/material/styles';
-import { ThemeProvider as NextThemeProvider, useTheme } from 'next-themes';
-import Header from './Header';
-import Footer from './Footer';
-import FloatingChatbot from '../sentrum/FloatingChatbot';
+import React, { useMemo } from "react";
+import { ThemeProvider as NextThemeProvider, useTheme } from "next-themes";
+import Header from "./Header";
+import Footer from "./Footer";
+import FloatingChatbot from "../sentrum/FloatingChatbot";
+import { Helmet } from "react-helmet-async";
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
-  const { theme } = useTheme();
-
-  // Create Material UI theme that integrates with our CSS custom properties
-  const muiTheme = useMemo(() => createTheme({
-    palette: {
-      mode: theme === 'dark' ? 'dark' : 'light',
-      primary: {
-        main: 'hsl(217, 91%, 60%)',
-      },
-      background: {
-        default: theme === 'dark' ? 'hsl(222.2, 84%, 4.9%)' : 'hsl(0, 0%, 100%)',
-        paper: theme === 'dark' ? 'hsl(222.2, 84%, 4.9%)' : 'hsl(0, 0%, 100%)',
-      },
-      text: {
-        primary: theme === 'dark' ? 'hsl(210, 40%, 98%)' : 'hsl(222.2, 47.4%, 11.2%)',
-        secondary: theme === 'dark' ? 'hsl(215, 20.2%, 65.1%)' : 'hsl(215.4, 16.3%, 46.9%)',
-      },
-    },
-    components: {
-      // Ensure Material UI components don't interfere with SENTRUM FAB
-      MuiModal: {
-        styleOverrides: {
-          root: {
-            zIndex: 1300, // Lower than SENTRUM FAB's 9999
-          },
-        },
-      },
-      MuiDrawer: {
-        styleOverrides: {
-          root: {
-            zIndex: 1200, // Lower than SENTRUM FAB's 9999
-          },
-        },
-      },
-    },
-  }), [theme]);
-
   return (
-    <MuiThemeProvider theme={muiTheme}>
+    <>
+      {/* Plausible Analytics for privacy-friendly site analytics. Replace domain with your own if needed. */}
+      <Helmet>
+        <script
+          async
+          defer
+          data-domain="nkrlibrary.com"
+          src="https://plausible.io/js/plausible.js"
+        ></script>
+      </Helmet>
       <div className="min-h-screen bg-background text-foreground flex flex-col">
         <Header />
-        <main className="flex-1 w-full flex flex-col">
+        <main id="main-content" className="flex-1 w-full flex flex-col" style={{ scrollMarginTop: '72px' }}>
           <div className="container mx-auto px-2 sm:px-4 md:px-8 flex-1 w-full">
             {children}
           </div>
@@ -55,7 +27,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
         <Footer />
         <FloatingChatbot />
       </div>
-    </MuiThemeProvider>
+    </>
   );
 };
 

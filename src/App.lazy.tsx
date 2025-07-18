@@ -1,10 +1,10 @@
-import { lazy, Suspense } from 'react';
+import { lazy, Suspense } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { HelmetProvider } from 'react-helmet-async';
+import { HelmetProvider } from "react-helmet-async";
 import Layout from "./components/layout/Layout";
 import { SentrumProvider } from "./contexts/SentrumContext";
 import SentrumModal from "./components/sentrum/SentrumModal";
@@ -69,49 +69,91 @@ const App = () => (
           <Toaster />
           <Sonner />
           <BrowserRouter>
-          <Layout>
-            <Suspense fallback={<PageLoader />}>
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/about" element={<About />} />
-                <Route path="/courses" element={<Courses />} />
-                <Route path="/videos" element={<Videos />} />
-                <Route path="/contact" element={<Contact />} />
-                <Route path="/cyberscams" element={<CyberScams />} />
-                <Route path="/cyberscams/data-leaks" element={<DataLeaks />} />
-                <Route path="/cyberscams/honey-trap" element={<HoneyTrap />} />
-                <Route path="/cyberscams/phishing" element={<Phishing />} />
-                <Route path="/cyberscams/cyber-attacks" element={<CyberAttacks />} />
-                <Route path="/cyberscams/sextortion" element={<Sextortion />} />
-                <Route path="/cyberscams/stranger-calls" element={<StrangerCalls />} />
-                <Route path="/cyberscams/gb-whatsapp" element={<GBWhatsApp />} />
-                <Route path="/cyberscams/cyberbullying" element={<Cyberbullying />} />
-                
-                {/* Software routes */}
-                <Route path="/software/computer-basics" element={<ComputerBasics />} />
-                <Route path="/software/installations" element={<Installations />} />
-                <Route path="/software/courses" element={<SoftwareCourses />} />
-                <Route path="/software/photoshop" element={<Photoshop />} />
-                
-                {/* About routes */}
-                <Route path="/about/student-focused" element={<StudentFocused />} />
-                <Route path="/about/scam-awareness" element={<ScamAwareness />} />
-                <Route path="/about/free-websites" element={<FreeWebsites />} />
-                <Route path="/about/community-driven" element={<CommunityDriven />} />
-                
-                {/* Chatbot route */}
-                <Route path="/chatbot" element={<Chatbot />} />
-                {/* Freebies route */}
-                <Route path="/freebies" element={<Freebies />} />
-                {/* Donate route */}
-                <Route path="/donate" element={<Donate />} />
-                
-                {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-                <Route path="*" element={<NotFound />} />
-              </Routes>
-            </Suspense>
-            <SentrumModal />
-          </Layout>
+            <Layout>
+              <Suspense fallback={<PageLoader />}>
+                <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/about" element={<About />} />
+                  <Route path="/courses" element={<Courses />} />
+                  <Route path="/videos" element={<Videos />} />
+                  <Route path="/contact" element={<Contact />} />
+                  <Route path="/cyberscams" element={<CyberScams />} />
+                  <Route
+                    path="/cyberscams/data-leaks"
+                    element={<DataLeaks />}
+                  />
+                  <Route
+                    path="/cyberscams/honey-trap"
+                    element={<HoneyTrap />}
+                  />
+                  <Route path="/cyberscams/phishing" element={<Phishing />} />
+                  <Route
+                    path="/cyberscams/cyber-attacks"
+                    element={<CyberAttacks />}
+                  />
+                  <Route
+                    path="/cyberscams/sextortion"
+                    element={<Sextortion />}
+                  />
+                  <Route
+                    path="/cyberscams/stranger-calls"
+                    element={<StrangerCalls />}
+                  />
+                  <Route
+                    path="/cyberscams/gb-whatsapp"
+                    element={<GBWhatsApp />}
+                  />
+                  <Route
+                    path="/cyberscams/cyberbullying"
+                    element={<Cyberbullying />}
+                  />
+
+                  {/* Software routes */}
+                  <Route
+                    path="/software/computer-basics"
+                    element={<ComputerBasics />}
+                  />
+                  <Route
+                    path="/software/installations"
+                    element={<Installations />}
+                  />
+                  <Route
+                    path="/software/courses"
+                    element={<SoftwareCourses />}
+                  />
+                  <Route path="/software/photoshop" element={<Photoshop />} />
+
+                  {/* About routes */}
+                  <Route
+                    path="/about/student-focused"
+                    element={<StudentFocused />}
+                  />
+                  <Route
+                    path="/about/scam-awareness"
+                    element={<ScamAwareness />}
+                  />
+                  <Route
+                    path="/about/free-websites"
+                    element={<FreeWebsites />}
+                  />
+                  <Route
+                    path="/about/community-driven"
+                    element={<CommunityDriven />}
+                  />
+
+                  {/* Chatbot route */}
+                  <Route path="/chatbot" element={<Chatbot />} />
+                  {/* Freebies route */}
+                  <Route path="/freebies" element={<Freebies />} />
+                  {/* Donate route */}
+                  <Route path="/donate" element={<Donate />} />
+
+                  {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+                  <Route path="*" element={<NotFound />} />
+                </Routes>
+              </Suspense>
+              <SentrumModal />
+            </Layout>
           </BrowserRouter>
         </SentrumProvider>
       </HelmetProvider>

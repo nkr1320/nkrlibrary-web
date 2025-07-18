@@ -1,23 +1,38 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
-import { IconButton } from '@mui/material';
-import { YouTube, Facebook, Instagram, LinkedIn } from '@mui/icons-material';
+import React from "react";
+import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
+import { Youtube, Facebook, Instagram, Linkedin } from "lucide-react";
 
 const Footer = () => {
   const quickLinks = [
-    { label: 'Home', path: '/' },
-    { label: 'About', path: '/about' },
-    { label: 'Services', path: '/services' },
-    { label: 'Tutorials', path: '/tutorials' },
-    { label: 'Contact', path: '/contact' },
+    { label: "Home", path: "/" },
+    { label: "About", path: "/about" },
+    { label: "Services", path: "/services" },
+    { label: "Tutorials", path: "/tutorials" },
+    { label: "Contact", path: "/contact" },
   ];
 
   const socialLinks = [
-    { icon: YouTube, href: 'https://www.youtube.com/@nkrlibrary/playlists', label: 'YouTube' },
-    { icon: Facebook, href: 'https://www.facebook.com/nkrlibrary/', label: 'Facebook' },
-    { icon: Instagram, href: 'https://www.instagram.com/nkrlibrary/', label: 'Instagram' },
-    { icon: LinkedIn, href: 'https://www.linkedin.com/in/naveenkumar-reddy-70b1a314b', label: 'LinkedIn' },
+    {
+      icon: Youtube,
+      href: "https://www.youtube.com/@nkrlibrary/playlists",
+      label: "YouTube",
+    },
+    {
+      icon: Facebook,
+      href: "https://www.facebook.com/nkrlibrary/",
+      label: "Facebook",
+    },
+    {
+      icon: Instagram,
+      href: "https://www.instagram.com/nkrlibrary/",
+      label: "Instagram",
+    },
+    {
+      icon: Linkedin,
+      href: "https://www.linkedin.com/in/naveenkumar-reddy-70b1a314b",
+      label: "LinkedIn",
+    },
   ];
 
   return (
@@ -35,11 +50,14 @@ const Footer = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            <Link to="/" className="text-xl sm:text-2xl font-bold text-primary no-underline">
+            <Link
+              to="/"
+              className="text-xl sm:text-2xl font-bold text-primary no-underline"
+            >
               NKR Library
             </Link>
             <p className="text-muted-foreground mt-4 leading-relaxed text-sm sm:text-base">
-              Tech tutorials, scam awareness, and free websites for students. 
+              Tech tutorials, scam awareness, and free websites for students.
               Building digital confidence one learner at a time.
             </p>
           </motion.div>
@@ -50,11 +68,16 @@ const Footer = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <h3 className="text-base sm:text-lg font-semibold mb-4 sm:mb-6">Quick Links</h3>
+            <h3 className="text-base sm:text-lg font-semibold mb-4 sm:mb-6">
+              Quick Links
+            </h3>
             <ul className="space-y-3">
               {quickLinks.map((link) => (
                 <li key={link.path}>
-                  <motion.div whileHover={{ x: 4 }} transition={{ duration: 0.2 }}>
+                  <motion.div
+                    whileHover={{ x: 4 }}
+                    transition={{ duration: 0.2 }}
+                  >
                     <Link
                       to={link.path}
                       className="text-muted-foreground hover:text-primary transition-colors"
@@ -73,7 +96,9 @@ const Footer = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            <h3 className="text-base sm:text-lg font-semibold mb-4 sm:mb-6">Connect With Us</h3>
+            <h3 className="text-base sm:text-lg font-semibold mb-4 sm:mb-6">
+              Connect With Us
+            </h3>
             <div className="flex flex-wrap gap-2">
               {socialLinks.map((social) => (
                 <motion.div
@@ -81,20 +106,20 @@ const Footer = () => {
                   whileHover={{ scale: 1.1, y: -2 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  <IconButton
+                  <a
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-muted-foreground hover:text-primary"
-                    size="small"
                   >
-                    <social.icon />
-                  </IconButton>
+                    <social.icon className="h-6 w-6" />
+                  </a>
                 </motion.div>
               ))}
             </div>
             <p className="text-xs sm:text-sm text-muted-foreground mt-4 sm:mt-6 leading-relaxed">
-              Subscribe to our YouTube channel for the latest tech tutorials and scam awareness content.
+              Subscribe to our YouTube channel for the latest tech tutorials and
+              scam awareness content.
             </p>
           </motion.div>
         </div>
@@ -110,10 +135,16 @@ const Footer = () => {
             © 2025 NKR Library. Built by NKR from nkrlibrary
           </p>
           <div className="flex flex-wrap justify-center gap-4 sm:gap-6 text-xs sm:text-sm">
-            <Link to="/privacy" className="text-muted-foreground hover:text-primary transition-colors">
+            <Link
+              to="/privacy"
+              className="text-muted-foreground hover:text-primary transition-colors"
+            >
               Privacy Policy
             </Link>
-            <Link to="/terms" className="text-muted-foreground hover:text-primary transition-colors">
+            <Link
+              to="/terms"
+              className="text-muted-foreground hover:text-primary transition-colors"
+            >
               Terms of Service
             </Link>
           </div>

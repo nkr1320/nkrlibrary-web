@@ -1,10 +1,13 @@
 import { useState } from "react";
 import { Dialog } from "@/components/ui/dialog";
-import { XMarkIcon, ChatBubbleLeftRightIcon } from "@heroicons/react/24/outline";
+import {
+  XMarkIcon,
+  ChatBubbleLeftRightIcon,
+} from "@heroicons/react/24/outline";
 import Chatbot from "@/pages/Chatbot";
 
 // Set to 'drawer' for a right-side drawer, 'modal' for centered modal
-const CHATBOT_STYLE: 'modal' | 'drawer' = 'drawer';
+const CHATBOT_STYLE: "modal" | "drawer" = "drawer";
 
 export default function FloatingChatbot() {
   const [open, setOpen] = useState(false);
@@ -21,7 +24,7 @@ export default function FloatingChatbot() {
       </button>
 
       {/* Modal or Drawer */}
-      {CHATBOT_STYLE === 'modal' ? (
+      {CHATBOT_STYLE === "modal" ? (
         <Dialog open={open} onOpenChange={setOpen}>
           <div className="fixed inset-0 bg-black/40 z-50 flex items-center justify-center">
             <div className="relative bg-white dark:bg-gray-900 rounded-lg shadow-lg w-full max-w-xs sm:max-w-md mx-auto">
@@ -39,9 +42,13 @@ export default function FloatingChatbot() {
           </div>
         </Dialog>
       ) : null}
-      {CHATBOT_STYLE === 'drawer' && open ? (
+      {CHATBOT_STYLE === "drawer" && open ? (
         <div className="fixed inset-0 z-50">
-          <div className="absolute inset-0 bg-black/40" onClick={() => setOpen(false)} aria-label="Close chatbot overlay" />
+          <div
+            className="absolute inset-0 bg-black/40"
+            onClick={() => setOpen(false)}
+            aria-label="Close chatbot overlay"
+          />
           <div className="absolute right-0 top-0 h-full w-full max-w-xs sm:max-w-md bg-white dark:bg-gray-900 shadow-lg flex flex-col">
             <button
               className="absolute top-2 right-2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200"
@@ -58,4 +65,4 @@ export default function FloatingChatbot() {
       ) : null}
     </>
   );
-} 
+}

@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import { useIsMobile } from '@/hooks/use-mobile';
-import { SearchBar } from '@/components/search/SearchBar';
-import { useSentrum } from '@/contexts/SentrumContext';
-import HeaderLogo from './header/HeaderLogo';
-import DesktopNavigation from './header/DesktopNavigation';
-import SentrumActions from './header/SentrumActions';
-import MobileActions from './header/MobileActions';
-import MobileMenu from './header/MobileMenu';
-import { useHeaderAnimation } from './header/useHeaderAnimation';
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+import { useIsMobile } from "@/hooks/use-mobile";
+import { SearchBar } from "@/components/search/SearchBar";
+import { useSentrum } from "@/contexts/SentrumContext";
+import HeaderLogo from "./header/HeaderLogo";
+import DesktopNavigation from "./header/DesktopNavigation";
+import SentrumActions from "./header/SentrumActions";
+import MobileActions from "./header/MobileActions";
+import MobileMenu from "./header/MobileMenu";
+import { useHeaderAnimation } from "./header/useHeaderAnimation";
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -17,16 +17,16 @@ const Header = () => {
   const { isScrolled, headerVariants } = useHeaderAnimation();
 
   const navItems = [
-    { label: 'Home', path: '/' },
-    { label: 'About', path: '/about' },
-    { label: 'Courses', path: '/courses' },
-    { label: 'Videos', path: '/videos' },
-    { label: 'Resume', action: () => openSentrum('resume') },
-    { label: 'Notebook', action: () => openSentrum('notebook') },
-    { label: 'Freebies', path: '/freebies' },
-    { label: 'Donate', path: '/donate' },
-    { label: 'Contact', path: '/contact' },
-    { label: 'Chatbot', path: '/chatbot' },
+    { label: "Home", path: "/" },
+    { label: "About", path: "/about" },
+    { label: "Courses", path: "/courses" },
+    { label: "Videos", path: "/videos" },
+    { label: "Resume", action: () => openSentrum("resume") },
+    { label: "Notebook", action: () => openSentrum("notebook") },
+    { label: "Freebies", path: "/freebies" },
+    { label: "Donate", path: "/donate" },
+    { label: "Contact", path: "/contact" },
+    { label: "Chatbot", path: "/chatbot" },
   ];
 
   return (
@@ -46,7 +46,7 @@ const Header = () => {
             {/* Search Bar - Desktop */}
             {!isMobile && (
               <div className="flex-1 max-w-md ml-12 mr-8">
-                <SearchBar 
+                <SearchBar
                   className="w-full"
                   placeholder="Search videos..."
                   variant="header"
@@ -61,13 +61,15 @@ const Header = () => {
             {!isMobile && <DesktopNavigation navItems={navItems} />}
 
             {/* Mobile Actions */}
-            {isMobile && <MobileActions onMenuOpen={() => setMobileMenuOpen(true)} />}
+            {isMobile && (
+              <MobileActions onMenuOpen={() => setMobileMenuOpen(true)} />
+            )}
           </div>
         </div>
       </motion.div>
 
       {/* Mobile Menu */}
-      <MobileMenu 
+      <MobileMenu
         isOpen={mobileMenuOpen}
         onClose={() => setMobileMenuOpen(false)}
         navItems={navItems}

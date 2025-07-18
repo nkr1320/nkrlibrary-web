@@ -1,5 +1,5 @@
-import { useState, useMemo, useCallback, useEffect } from 'react';
-import { getCriticalVideos, type Video } from '@/lib/video-data-chunks';
+import { useState, useMemo, useCallback, useEffect, useRef } from "react";
+import { getCriticalVideos, type Video } from "@/lib/video-data-chunks";
 
 export interface SearchResult {
   video: Video;
@@ -12,8 +12,8 @@ const searchCache = new Map<string, SearchResult[]>();
 const CACHE_SIZE = 50;
 
 export const useDebouncedSearch = () => {
-  const [query, setQuery] = useState('');
-  const [debouncedQuery, setDebouncedQuery] = useState('');
+  const [query, setQuery] = useState("");
+  const [debouncedQuery, setDebouncedQuery] = useState("");
   const [recentSearches, setRecentSearches] = useState<string[]>([]);
   const [isSearching, setIsSearching] = useState(false);
 
@@ -41,34 +41,43 @@ export const useDebouncedSearch = () => {
 
     const normalizedQuery = debouncedQuery.toLowerCase().trim();
     const queryTerms = normalizedQuery.split(/\s+/);
-    
+
     const results: SearchResult[] = [];
 
-    getCriticalVideos().forEach(video => {
+    getCriticalVideos().forEach((video) => {
       let relevanceScore = 0;
       const matchedTerms: string[] = [];
-      
+
       // Search in title (highest weight)
-      const titleScore = calculateMatchScore(video.title.toLowerCase(), queryTerms);
+      const titleScore = calculateMatchScore(
+        video.title.toLowerCase(),
+        queryTerms,
+      );
       if (titleScore > 0) {
         relevanceScore += titleScore * 3;
-        matchedTerms.push('title');
+        matchedTerms.push("title");
       }
 
       // Search in description (medium weight)
       if (video.description) {
-        const descriptionScore = calculateMatchScore(video.description.toLowerCase(), queryTerms);
+        const descriptionScore = calculateMatchScore(
+          video.description.toLowerCase(),
+          queryTerms,
+        );
         if (descriptionScore > 0) {
           relevanceScore += descriptionScore * 2;
-          matchedTerms.push('description');
+          matchedTerms.push("description");
         }
       }
 
       // Search in category (medium weight)
-      const categoryScore = calculateMatchScore(video.category.toLowerCase(), queryTerms);
+      const categoryScore = calculateMatchScore(
+        video.category.toLowerCase(),
+        queryTerms,
+      );
       if (categoryScore > 0) {
         relevanceScore += categoryScore * 2;
-        matchedTerms.push('category');
+        matchedTerms.push("category");
       }
 
       // Search in keywords (low weight)
@@ -76,7 +85,7 @@ export const useDebouncedSearch = () => {
         const keywordScore = calculateKeywordMatch(video.keywords, queryTerms);
         if (keywordScore > 0) {
           relevanceScore += keywordScore;
-          matchedTerms.push('keywords');
+          matchedTerms.push("keywords");
         }
       }
 
@@ -84,14 +93,16 @@ export const useDebouncedSearch = () => {
         results.push({
           video,
           relevanceScore,
-          matchedTerms
+          matchedTerms,
         });
       }
     });
 
     // Sort by relevance score (descending)
-    const sortedResults = results.sort((a, b) => b.relevanceScore - a.relevanceScore);
-    
+    const sortedResults = results.sort(
+      (a, b) => b.relevanceScore - a.relevanceScore,
+    );
+
     // Cache results (manage cache size)
     if (searchCache.size >= CACHE_SIZE) {
       const firstKey = searchCache.keys().next().value;
@@ -103,30 +114,33 @@ export const useDebouncedSearch = () => {
   }, [debouncedQuery]);
 
   // Memoized suggestions
-  const getSuggestions = useCallback((searchQuery: string): string[] => {
-    if (!searchQuery.trim()) {
-      return [...recentSearches].slice(0, 8);
-    }
-
-    const normalizedQuery = searchQuery.toLowerCase();
-    const suggestions = new Set<string>();
-
-    // Add matching video titles (truncated)
-    getCriticalVideos().forEach(video => {
-      if (video.title.toLowerCase().includes(normalizedQuery)) {
-        suggestions.add(video.title);
+  const getSuggestions = useCallback(
+    (searchQuery: string): string[] => {
+      if (!searchQuery.trim()) {
+        return [...recentSearches].slice(0, 8);
       }
-    });
 
-    return Array.from(suggestions).slice(0, 8);
-  }, [recentSearches]);
+      const normalizedQuery = searchQuery.toLowerCase();
+      const suggestions = new Set<string>();
+
+      // Add matching video titles (truncated)
+      getCriticalVideos().forEach((video) => {
+        if (video.title.toLowerCase().includes(normalizedQuery)) {
+          suggestions.add(video.title);
+        }
+      });
+
+      return Array.from(suggestions).slice(0, 8);
+    },
+    [recentSearches],
+  );
 
   // Add to recent searches
   const addToRecentSearches = useCallback((searchTerm: string) => {
     if (!searchTerm.trim()) return;
-    
-    setRecentSearches(prev => {
-      const filtered = prev.filter(term => term !== searchTerm);
+
+    setRecentSearches((prev) => {
+      const filtered = prev.filter((term) => term !== searchTerm);
       return [searchTerm, ...filtered].slice(0, 5);
     });
   }, []);
@@ -151,18 +165,18 @@ export const useDebouncedSearch = () => {
     getSuggestions,
     recentSearches,
     addToRecentSearches,
-    clearRecentSearches
+    clearRecentSearches,
   };
 };
 
 // Helper function to calculate match score
 function calculateMatchScore(text: string, queryTerms: string[]): number {
   let score = 0;
-  
-  queryTerms.forEach(term => {
+
+  queryTerms.forEach((term) => {
     if (text.includes(term)) {
       // Exact word match gets higher score
-      const wordBoundaryRegex = new RegExp(`\\b${term}\\b`, 'i');
+      const wordBoundaryRegex = new RegExp(`\\b${term}\\b`, "i");
       if (wordBoundaryRegex.test(text)) {
         score += 2;
       } else {
@@ -170,21 +184,24 @@ function calculateMatchScore(text: string, queryTerms: string[]): number {
       }
     }
   });
-  
+
   return score;
 }
 
 // Helper function to calculate keyword match score
-function calculateKeywordMatch(keywords: string[], queryTerms: string[]): number {
+function calculateKeywordMatch(
+  keywords: string[],
+  queryTerms: string[],
+): number {
   let score = 0;
-  
-  keywords.forEach(keyword => {
-    queryTerms.forEach(term => {
+
+  keywords.forEach((keyword) => {
+    queryTerms.forEach((term) => {
       if (keyword.toLowerCase().includes(term)) {
         score += 1;
       }
     });
   });
-  
+
   return score;
 }

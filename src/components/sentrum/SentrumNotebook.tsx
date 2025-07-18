@@ -1,72 +1,91 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Plus, Search, Tag, Calendar, Trash2, Download, BookOpen } from 'lucide-react';
-import { useSentrum } from '@/contexts/SentrumContext';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { ScrollArea } from '@/components/ui/scroll-area';
-import { Badge } from '@/components/ui/badge';
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  Plus,
+  Search,
+  Tag,
+  Calendar,
+  Trash2,
+  Download,
+  BookOpen,
+} from "lucide-react";
+import { useSentrum } from "@/contexts/SentrumContext";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { Badge } from "@/components/ui/badge";
 
 const SentrumNotebook: React.FC = () => {
   const { state, addNote, getSummary } = useSentrum();
-  const [newNote, setNewNote] = useState('');
-  const [newTags, setNewTags] = useState('');
-  const [searchQuery, setSearchQuery] = useState('');
+  const [newNote, setNewNote] = useState("");
+  const [newTags, setNewTags] = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
   const [showAddNote, setShowAddNote] = useState(false);
 
   const handleAddNote = () => {
     if (newNote.trim()) {
-      const tags = newTags.split(',').map(tag => tag.trim()).filter(Boolean);
+      const tags = newTags
+        .split(",")
+        .map((tag) => tag.trim())
+        .filter(Boolean);
       addNote(newNote.trim(), tags);
-      setNewNote('');
-      setNewTags('');
+      setNewNote("");
+      setNewTags("");
       setShowAddNote(false);
     }
   };
 
-  const filteredNotes = state.learningNotes.filter(note => {
-    const matchesSearch = note.content.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                         note.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()));
+  const filteredNotes = state.learningNotes.filter((note) => {
+    const matchesSearch =
+      note.content.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      note.tags.some((tag) =>
+        tag.toLowerCase().includes(searchQuery.toLowerCase()),
+      );
     const matchesTag = !selectedTag || note.tags.includes(selectedTag);
     return matchesSearch && matchesTag;
   });
 
-  const allTags = Array.from(new Set(state.learningNotes.flatMap(note => note.tags)));
+  const allTags = Array.from(
+    new Set(state.learningNotes.flatMap((note) => note.tags)),
+  );
 
   const exportNotes = () => {
-    const notesText = state.learningNotes.map(note => {
-      return `${note.timestamp.toLocaleDateString()} - ${note.content}\nTags: ${note.tags.join(', ')}\n\n`;
-    }).join('');
-    
-    const blob = new Blob([notesText], { type: 'text/plain' });
+    const notesText = state.learningNotes
+      .map((note) => {
+        return `${note.timestamp.toLocaleDateString()} - ${note.content}\nTags: ${note.tags.join(", ")}\n\n`;
+      })
+      .join("");
+
+    const blob = new Blob([notesText], { type: "text/plain" });
     const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
+    const a = document.createElement("a");
     a.href = url;
-    a.download = 'learning-notes.txt';
+    a.download = "learning-notes.txt";
     a.click();
     URL.revokeObjectURL(url);
   };
 
   const generateLearningReport = () => {
     const summary = getSummary();
-    const notesByTag = allTags.map(tag => ({
+    const notesByTag = allTags.map((tag) => ({
       tag,
-      notes: state.learningNotes.filter(note => note.tags.includes(tag)),
+      notes: state.learningNotes.filter((note) => note.tags.includes(tag)),
     }));
-    
-    const report = `# Learning Report\n\n${summary}\n\n## Notes by Topic\n\n${
-      notesByTag.map(({ tag, notes }) => 
-        `### ${tag}\n${notes.map(note => `- ${note.content}`).join('\n')}\n`
-      ).join('\n')
-    }`;
-    
-    const blob = new Blob([report], { type: 'text/markdown' });
+
+    const report = `# Learning Report\n\n${summary}\n\n## Notes by Topic\n\n${notesByTag
+      .map(
+        ({ tag, notes }) =>
+          `### ${tag}\n${notes.map((note) => `- ${note.content}`).join("\n")}\n`,
+      )
+      .join("\n")}`;
+
+    const blob = new Blob([report], { type: "text/markdown" });
     const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
+    const a = document.createElement("a");
     a.href = url;
-    a.download = 'learning-report.md';
+    a.download = "learning-report.md";
     a.click();
     URL.revokeObjectURL(url);
   };
@@ -81,7 +100,11 @@ const SentrumNotebook: React.FC = () => {
             Learning Notebook
           </h3>
           <div className="flex items-center gap-2">
-            <Button onClick={generateLearningReport} variant="outline" size="sm">
+            <Button
+              onClick={generateLearningReport}
+              variant="outline"
+              size="sm"
+            >
               <Download className="h-4 w-4" />
             </Button>
             <Button onClick={() => setShowAddNote(true)} size="sm">
@@ -89,7 +112,7 @@ const SentrumNotebook: React.FC = () => {
             </Button>
           </div>
         </div>
-        
+
         {/* Search */}
         <div className="relative">
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
@@ -100,7 +123,7 @@ const SentrumNotebook: React.FC = () => {
             className="pl-10"
           />
         </div>
-        
+
         {/* Tags filter */}
         {allTags.length > 0 && (
           <div className="flex flex-wrap gap-2 mt-3">
@@ -111,7 +134,7 @@ const SentrumNotebook: React.FC = () => {
             >
               All
             </Button>
-            {allTags.map(tag => (
+            {allTags.map((tag) => (
               <Button
                 key={tag}
                 onClick={() => setSelectedTag(selectedTag === tag ? null : tag)}
@@ -132,7 +155,7 @@ const SentrumNotebook: React.FC = () => {
           {showAddNote && (
             <motion.div
               initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
+              animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               className="mb-4 p-4 border border-border rounded-lg bg-muted/30"
             >
@@ -152,9 +175,9 @@ const SentrumNotebook: React.FC = () => {
                   <Button onClick={handleAddNote} size="sm">
                     Add Note
                   </Button>
-                  <Button 
-                    onClick={() => setShowAddNote(false)} 
-                    variant="outline" 
+                  <Button
+                    onClick={() => setShowAddNote(false)}
+                    variant="outline"
                     size="sm"
                   >
                     Cancel
@@ -176,7 +199,8 @@ const SentrumNotebook: React.FC = () => {
                 Start Your Learning Journey
               </h4>
               <p className="text-muted-foreground mb-6 max-w-sm mx-auto">
-                Take notes as you explore NKR Library content. Track your progress and build your knowledge base.
+                Take notes as you explore NKR Library content. Track your
+                progress and build your knowledge base.
               </p>
               <Button onClick={() => setShowAddNote(true)}>
                 <Plus className="h-4 w-4 mr-2" />
@@ -187,6 +211,7 @@ const SentrumNotebook: React.FC = () => {
 
           {/* Notes */}
           <div className="space-y-3">
+            {/* Each note uses note.id as a unique, stable key */}
             {filteredNotes.map((note) => (
               <motion.div
                 key={note.id}
@@ -198,22 +223,24 @@ const SentrumNotebook: React.FC = () => {
                 <div className="flex items-start justify-between mb-2">
                   <div className="flex items-center gap-2 text-sm text-muted-foreground">
                     <Calendar className="h-4 w-4" />
-                    {note.timestamp.toLocaleDateString()} at {note.timestamp.toLocaleTimeString([], { 
-                      hour: '2-digit', 
-                      minute: '2-digit' 
+                    {note.timestamp.toLocaleDateString()} at{" "}
+                    {note.timestamp.toLocaleTimeString([], {
+                      hour: "2-digit",
+                      minute: "2-digit",
                     })}
                   </div>
                   <Button variant="ghost" size="sm">
                     <Trash2 className="h-4 w-4" />
                   </Button>
                 </div>
-                
+
                 <p className="text-foreground mb-3 leading-relaxed">
                   {note.content}
                 </p>
-                
+
                 {note.tags.length > 0 && (
                   <div className="flex flex-wrap gap-1">
+                    {/* Each tag uses tag value as key, which is safe for static, unique tags */}
                     {note.tags.map((tag) => (
                       <Badge key={tag} variant="secondary" className="text-xs">
                         <Tag className="h-3 w-3 mr-1" />

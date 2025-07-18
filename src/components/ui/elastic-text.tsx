@@ -1,6 +1,9 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { useMotionPreferences, getSpringConfig } from '@/hooks/use-motion-preferences';
+import React from "react";
+import { motion } from "framer-motion";
+import {
+  useMotionPreferences,
+  getSpringConfig,
+} from "@/hooks/use-motion-preferences";
 
 interface ElasticTextProps {
   children: string;
@@ -11,17 +14,17 @@ interface ElasticTextProps {
 
 export const ElasticText: React.FC<ElasticTextProps> = ({
   children,
-  className = '',
+  className = "",
   delay = 0,
   staggerDelay = 0.03,
 }) => {
   const { prefersReducedMotion } = useMotionPreferences();
-  
+
   if (prefersReducedMotion) {
     return <span className={className}>{children}</span>;
   }
 
-  const letters = children.split('');
+  const letters = children.split("");
 
   return (
     <span className={className}>
@@ -47,7 +50,7 @@ export const ElasticText: React.FC<ElasticTextProps> = ({
           }}
           className="inline-block"
         >
-          {letter === ' ' ? '\u00A0' : letter}
+          {letter === " " ? "\u00A0" : letter}
         </motion.span>
       ))}
     </span>

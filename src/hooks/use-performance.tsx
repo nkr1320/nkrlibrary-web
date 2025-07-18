@@ -1,8 +1,9 @@
-import { useCallback, useEffect, useMemo, useRef } from 'react';
+import { useCallback, useEffect, useMemo, useRef } from "react";
+import { ReportHandler } from "web-vitals";
 
 // Intersection Observer hook for lazy loading
 export const useIntersectionObserver = (
-  options: IntersectionObserverInit = {}
+  options: IntersectionObserverInit = {},
 ) => {
   const elementRef = useRef<HTMLElement>(null);
   const isVisible = useRef(false);
@@ -10,13 +11,16 @@ export const useIntersectionObserver = (
   const observe = useCallback(() => {
     if (!elementRef.current) return;
 
-    const observer = new IntersectionObserver(([entry]) => {
-      isVisible.current = entry.isIntersecting;
-    }, {
-      threshold: 0.1,
-      rootMargin: '50px',
-      ...options,
-    });
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        isVisible.current = entry.isIntersecting;
+      },
+      {
+        threshold: 0.1,
+        rootMargin: "50px",
+        ...options,
+      },
+    );
 
     observer.observe(elementRef.current);
     return () => observer.disconnect();
@@ -58,29 +62,41 @@ export const useDebounce = <T,>(value: T, delay: number): T => {
 export const useSearchFilter = <T,>(
   items: T[],
   searchTerm: string,
-  searchKeys: (keyof T)[]
+  searchKeys: (keyof T)[],
 ) => {
   return useMemo(() => {
     if (!searchTerm.trim()) return items;
 
     const lowercaseSearchTerm = searchTerm.toLowerCase();
-    return items.filter(item =>
-      searchKeys.some(key => {
+    return items.filter((item) =>
+      searchKeys.some((key) => {
         const value = item[key];
-        return typeof value === 'string' && 
-               value.toLowerCase().includes(lowercaseSearchTerm);
-      })
+        return (
+          typeof value === "string" &&
+          value.toLowerCase().includes(lowercaseSearchTerm)
+        );
+      }),
     );
   }, [items, searchTerm, searchKeys]);
 };
 
-// Performance monitoring
+// Enhanced performance monitoring using web-vitals
 export const usePerformanceMonitor = () => {
   useEffect(() => {
-    // Monitor Core Web Vitals
-    if ('web-vital' in window) {
-      // This would be implemented with a library like web-vitals
-      console.log('Performance monitoring active');
-    }
+    // Only run in production
+    if (process.env.NODE_ENV !== "production") return;
+    // Dynamically import web-vitals to avoid unnecessary bundle size in dev
+    import("web-vitals").then(({ getCLS, getFID, getLCP, getFCP, getTTFB }) => {
+      // Handler to log or send metrics
+      const sendToAnalytics: ReportHandler = (metric) => {
+        // For real analytics, replace this with a POST to your endpoint or analytics tool
+        console.log("[Web Vitals]", metric.name, metric.value, metric);
+      };
+      getCLS(sendToAnalytics);
+      getFID(sendToAnalytics);
+      getLCP(sendToAnalytics);
+      getFCP(sendToAnalytics);
+      getTTFB(sendToAnalytics);
+    });
   }, []);
 };

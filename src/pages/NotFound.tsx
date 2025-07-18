@@ -1,8 +1,8 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Button } from '@mui/material';
-import { Home as HomeIcon, ArrowBack } from '@mui/icons-material';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { motion } from "framer-motion";
+import { Button } from "@/components/ui/button";
+import { Home, ArrowLeft } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const NotFound = () => {
   return (
@@ -40,8 +40,8 @@ const NotFound = () => {
             transition={{ delay: 0.6, duration: 0.6 }}
             className="text-xl text-muted-foreground leading-relaxed"
           >
-            Just kidding! The page you're looking for doesn't exist. 
-            But hey, while you're here, want to learn how to spot fake job links?
+            Just kidding! The page you're looking for doesn't exist. But hey,
+            while you're here, want to learn how to spot fake job links?
           </motion.p>
 
           {/* Action Buttons */}
@@ -56,27 +56,15 @@ const NotFound = () => {
               whileTap={{ scale: 0.95 }}
             >
               <Button
-                component={Link}
-                to="/"
-                variant="contained"
-                size="large"
-                startIcon={<HomeIcon />}
-                sx={{
-                  background: 'hsl(var(--primary))',
-                  color: 'hsl(var(--primary-foreground))',
-                  px: 4,
-                  py: 1.5,
-                  borderRadius: 2,
-                  textTransform: 'none',
-                  fontSize: '1.1rem',
-                  fontWeight: 600,
-                  '&:hover': {
-                    background: 'hsl(var(--primary))',
-                    filter: 'brightness(0.9)',
-                  },
-                }}
+                asChild
+                variant="default"
+                size="lg"
+                className="gap-2 px-6 py-2.5 rounded-md text-lg font-semibold bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
               >
-                Back to Home
+                <Link to="/" className="flex items-center gap-2">
+                  <Home className="w-5 h-5" />
+                  Back to Home
+                </Link>
               </Button>
             </motion.div>
 
@@ -85,27 +73,15 @@ const NotFound = () => {
               whileTap={{ scale: 0.95 }}
             >
               <Button
-                component={Link}
-                to="/tutorials"
-                variant="outlined"
-                size="large"
-                startIcon={<ArrowBack />}
-                sx={{
-                  borderColor: 'hsl(var(--primary))',
-                  color: 'hsl(var(--primary))',
-                  px: 4,
-                  py: 1.5,
-                  borderRadius: 2,
-                  textTransform: 'none',
-                  fontSize: '1.1rem',
-                  fontWeight: 600,
-                  '&:hover': {
-                    borderColor: 'hsl(var(--primary))',
-                    background: 'hsl(var(--primary) / 0.1)',
-                  },
-                }}
+                asChild
+                variant="outline"
+                size="lg"
+                className="gap-2 px-6 py-2.5 rounded-md text-lg font-semibold border-primary text-primary hover:bg-primary/10 transition-colors"
               >
-                Learn About Scams
+                <Link to="/tutorials" className="flex items-center gap-2">
+                  <ArrowLeft className="w-5 h-5" />
+                  Learn About Scams
+                </Link>
               </Button>
             </motion.div>
           </motion.div>

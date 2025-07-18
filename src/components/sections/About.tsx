@@ -1,9 +1,9 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Avatar, Card, CardContent } from '@mui/material';
-import { School, Security, Code, People } from '@mui/icons-material';
-import { Link } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
+import React from "react";
+import { motion } from "framer-motion";
+import { Card, CardContent } from "@/components/ui/card";
+import { GraduationCap, Shield, Code, Users } from "lucide-react";
+import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const About = () => {
   const { t } = useTranslation();
@@ -42,29 +42,28 @@ const About = () => {
 
   const features = [
     {
-      icon: School,
-      title: t('about.featureStudentTitle'),
-      description: t('about.featureStudentDesc'),
-      link: "/about/student-focused"
+      icon: GraduationCap,
+      title: t("about.featureStudentTitle"),
+      description: t("about.featureStudentDesc"),
+      link: "/about/student-focused",
     },
     {
-      icon: Security,
-      title: t('about.featureScamTitle'),
-      description: t('about.featureScamDesc'),
-      link: "/about/scam-awareness"
+      icon: Shield,
+      title: t("about.featureScamTitle"),
+      description: t("about.featureScamDesc"),
+      link: "/about/scam-awareness",
     },
     {
       icon: Code,
-      title: t('about.featureWebsitesTitle'),
-      description: t('about.featureWebsitesDesc'),
-      link: "/about/free-websites"
+      title: t("about.featureWebsitesTitle"),
+      description: t("about.featureWebsitesDesc"),
+      link: "/about/free-websites",
     },
     {
-      icon: People,
-      title: t('about.featureCommunityTitle'),
-      description: t('about.featureCommunityDesc'),
-      link: "/about/community-driven"
-    }
+      icon: Users,
+      title: t("about.featureCommunityTitle"),
+      description: t("about.featureCommunityDesc"),
+    },
   ];
 
   return (
@@ -78,29 +77,18 @@ const About = () => {
           className="grid lg:grid-cols-2 gap-16 items-center"
         >
           {/* Image Section */}
-          <motion.div
-            variants={imageVariants}
-            className="relative"
-          >
+          <motion.div variants={imageVariants} className="relative">
             <div className="relative">
               <motion.div
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.3 }}
               >
-                <Avatar
-                  sx={{
-                    width: 400,
-                    height: 400,
-                    fontSize: '8rem',
-                    background: 'linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%)',
-                    color: 'hsl(var(--primary-foreground))',
-                  }}
-                  className="mx-auto"
-                >
+                {/* Avatar replacement */}
+                <div className="mx-auto w-[400px] h-[400px] flex items-center justify-center rounded-full text-[8rem] bg-gradient-to-br from-primary to-accent text-primary-foreground font-bold select-none">
                   NKR
-                </Avatar>
+                </div>
               </motion.div>
-              
+
               {/* Decorative Elements */}
               <motion.div
                 animate={{
@@ -134,19 +122,19 @@ const About = () => {
                 variants={itemVariants}
                 className="text-3xl md:text-4xl font-bold mb-6"
               >
-                {t('about.heading')}
+                {t("about.heading")}
               </motion.h2>
               <motion.p
                 variants={itemVariants}
                 className="text-lg text-muted-foreground leading-relaxed"
               >
-                {t('about.para1')}
+                {t("about.para1")}
               </motion.p>
               <motion.p
                 variants={itemVariants}
                 className="text-lg text-muted-foreground leading-relaxed mt-4"
               >
-                {t('about.para2')}
+                {t("about.para2")}
               </motion.p>
             </div>
 

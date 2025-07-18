@@ -1,6 +1,6 @@
-import React, { useMemo } from 'react';
-import { motion } from 'framer-motion';
-import { useMotionPreferences } from '@/hooks/use-motion-preferences';
+import React, { useMemo } from "react";
+import { motion } from "framer-motion";
+import { useMotionPreferences } from "@/hooks/use-motion-preferences";
 
 interface ParticleSystemProps {
   count?: number;
@@ -12,8 +12,8 @@ interface ParticleSystemProps {
 
 export const ParticleSystem: React.FC<ParticleSystemProps> = ({
   count = 12,
-  className = '',
-  colors = ['bg-primary/20', 'bg-accent/20', 'bg-secondary/20'],
+  className = "",
+  colors = ["bg-primary/20", "bg-accent/20", "bg-secondary/20"],
   size = 3,
   speed = 8,
 }) => {
@@ -36,7 +36,9 @@ export const ParticleSystem: React.FC<ParticleSystemProps> = ({
   }
 
   return (
-    <div className={`absolute inset-0 pointer-events-none overflow-hidden ${className}`}>
+    <div
+      className={`absolute inset-0 pointer-events-none overflow-hidden ${className}`}
+    >
       {particles.map((particle) => (
         <motion.div
           key={particle.id}

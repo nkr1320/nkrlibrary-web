@@ -1,9 +1,15 @@
-import React, { useState, useMemo, useCallback, useRef, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import VideoCard from './video-card';
-import { MagneticCard } from './magnetic-card';
-import { useMotionPreferences } from '@/hooks/use-motion-preferences';
-import type { Video } from '@/lib/video-data';
+import React, {
+  useState,
+  useMemo,
+  useCallback,
+  useRef,
+  useEffect,
+} from "react";
+import { motion } from "framer-motion";
+import VideoCard from "./video-card";
+import { MagneticCard } from "./magnetic-card";
+import { useMotionPreferences } from "@/hooks/use-motion-preferences";
+import type { Video } from "@/lib/video-data";
 
 interface VirtualizedVideoGridProps {
   videos: Video[];
@@ -14,7 +20,7 @@ interface VirtualizedVideoGridProps {
 
 export const VirtualizedVideoGrid: React.FC<VirtualizedVideoGridProps> = ({
   videos,
-  className = '',
+  className = "",
   itemsPerPage = 20,
   showLoadMore = true,
 }) => {
@@ -29,7 +35,7 @@ export const VirtualizedVideoGrid: React.FC<VirtualizedVideoGridProps> = ({
   const hasMore = videos.length > visibleCount;
 
   const loadMore = useCallback(() => {
-    setVisibleCount(prev => Math.min(prev + itemsPerPage, videos.length));
+    setVisibleCount((prev) => Math.min(prev + itemsPerPage, videos.length));
   }, [itemsPerPage, videos.length]);
 
   const containerVariants = {
@@ -62,24 +68,25 @@ export const VirtualizedVideoGrid: React.FC<VirtualizedVideoGridProps> = ({
         animate="visible"
         className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6"
       >
+        {/* Each video uses video.id as a unique, stable key */}
         {visibleVideos.map((video, index) => (
           <motion.div
             key={video.id}
             variants={itemVariants}
             className="relative"
-            style={{ 
+            style={{
               zIndex: 1,
-              willChange: 'transform',
+              willChange: "transform",
             }}
-            whileHover={{ 
+            whileHover={{
               zIndex: 10,
               scale: prefersReducedMotion ? 1 : 1.02,
             }}
-            transition={{ 
+            transition={{
               type: "spring",
               stiffness: 400,
               damping: 25,
-              duration: 0.2
+              duration: 0.2,
             }}
           >
             <MagneticCard intensity={0.1} scale={1.01}>

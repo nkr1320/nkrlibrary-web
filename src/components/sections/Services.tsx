@@ -1,18 +1,19 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Card, CardContent, Button, Chip } from '@mui/material';
-import { Web, Security, PlayCircle, ArrowForward } from '@mui/icons-material';
-import { Link } from 'react-router-dom';
-import { MagneticCard } from '@/components/ui/magnetic-card';
-import { ElasticText } from '@/components/ui/elastic-text';
-import { ParticleSystem } from '@/components/ui/particle-system';
-import { useMotionPreferences } from '@/hooks/use-motion-preferences';
-import { useTranslation } from 'react-i18next';
+import React from "react";
+import { motion } from "framer-motion";
+import { Card, CardContent } from "@/components/ui/card";
+import { Globe, Shield, Play, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
+import { MagneticCard } from "@/components/ui/magnetic-card";
+import { ElasticText } from "@/components/ui/elastic-text";
+import { ParticleSystem } from "@/components/ui/particle-system";
+import { useMotionPreferences } from "@/hooks/use-motion-preferences";
+import { useTranslation } from "react-i18next";
+import { Button } from "@/components/ui/button";
 
 const Services = () => {
   const { t } = useTranslation();
   const { prefersReducedMotion } = useMotionPreferences();
-  
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -37,54 +38,54 @@ const Services = () => {
 
   const services = [
     {
-      icon: Web,
-      title: t('services.customWebsitesTitle'),
-      description: t('services.customWebsitesDesc'),
+      icon: Globe,
+      title: t("services.customWebsitesTitle"),
+      description: t("services.customWebsitesDesc"),
       features: [
-        t('services.responsiveDesign'),
-        t('services.seoOptimized'),
-        t('services.fastLoading'),
-        t('services.mobileFriendly'),
+        t("services.responsiveDesign"),
+        t("services.seoOptimized"),
+        t("services.fastLoading"),
+        t("services.mobileFriendly"),
       ],
-      price: t('services.free'),
+      price: t("services.free"),
       highlight: true,
-      link: "/contact"
+      link: "/contact",
     },
     {
-      icon: Security,
-      title: t('services.scamAwarenessTitle'),
-      description: t('services.scamAwarenessDesc'),
+      icon: Shield,
+      title: t("services.scamAwarenessTitle"),
+      description: t("services.scamAwarenessDesc"),
       features: [
-        t('services.latestThreats'),
-        t('services.preventionTips'),
-        t('services.realExamples'),
-        t('services.safetyGuides'),
+        t("services.latestThreats"),
+        t("services.preventionTips"),
+        t("services.realExamples"),
+        t("services.safetyGuides"),
       ],
-      price: t('services.free'),
+      price: t("services.free"),
       highlight: false,
-      link: "/tutorials"
+      link: "/tutorials",
     },
     {
-      icon: PlayCircle,
-      title: t('services.techTutorialsTitle'),
-      description: t('services.techTutorialsDesc'),
+      icon: Play,
+      title: t("services.techTutorialsTitle"),
+      description: t("services.techTutorialsDesc"),
       features: [
-        t('services.videoTutorials'),
-        t('services.writtenGuides'),
-        t('services.toolReviews'),
-        t('services.tipsTricks'),
+        t("services.videoTutorials"),
+        t("services.writtenGuides"),
+        t("services.toolReviews"),
+        t("services.tipsTricks"),
       ],
-      price: t('services.free'),
+      price: t("services.free"),
       highlight: false,
-      link: "/tutorials"
-    }
+      link: "/tutorials",
+    },
   ];
 
   return (
     <section className="py-24 px-4 md:px-8 bg-muted/30 relative overflow-hidden">
-      <ParticleSystem 
-        count={18} 
-        colors={['bg-primary/8', 'bg-accent/8', 'bg-secondary/8']}
+      <ParticleSystem
+        count={18}
+        colors={["bg-primary/8", "bg-accent/8", "bg-secondary/8"]}
         size={4}
         speed={15}
       />
@@ -100,13 +101,13 @@ const Services = () => {
             variants={itemVariants}
             className="text-3xl md:text-4xl font-bold mb-6 bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent"
           >
-            <ElasticText delay={0.2}>{t('services.header')}</ElasticText>
+            <ElasticText delay={0.2}>{t("services.header")}</ElasticText>
           </motion.h2>
           <motion.p
             variants={itemVariants}
             className="text-xl text-muted-foreground max-w-3xl mx-auto"
           >
-            {t('services.subtitle')}
+            {t("services.subtitle")}
           </motion.p>
         </motion.div>
 
@@ -115,78 +116,69 @@ const Services = () => {
           className="grid md:grid-cols-3 gap-8"
         >
           {services.map((service, index) => (
-            <motion.div
-              key={service.title}
-              variants={itemVariants}
-            >
-              <MagneticCard 
+            <motion.div key={service.title} variants={itemVariants}>
+              <MagneticCard
                 intensity={0.3}
                 scale={service.highlight ? 1.08 : 1.05}
                 className="h-full"
               >
                 <motion.div
-                  whileHover={{ 
+                  whileHover={{
                     rotateY: prefersReducedMotion ? 0 : 8,
                     z: service.highlight ? 100 : 50,
                   }}
-                  style={{ 
-                    transformStyle: 'preserve-3d',
-                    perspective: 1200
+                  style={{
+                    transformStyle: "preserve-3d",
+                    perspective: 1200,
                   }}
-                  transition={{ 
+                  transition={{
                     type: "spring",
                     stiffness: 300,
-                    damping: 20
+                    damping: 20,
                   }}
                 >
-                  <Card 
+                  <Card
                     className={`h-full relative overflow-hidden ${
-                      service.highlight 
-                        ? 'border-2 border-primary shadow-2xl' 
-                        : 'border border-border hover:border-primary/30'
+                      service.highlight
+                        ? "border-2 border-primary shadow-2xl"
+                        : "border border-border hover:border-primary/30"
                     } transition-all duration-500 backdrop-blur-sm`}
                   >
                     {service.highlight && (
-                      <motion.div 
+                      <motion.div
                         className="absolute top-0 right-0"
-                        animate={{ 
+                        animate={{
                           scale: [1, 1.1, 1],
-                          rotate: [0, 5, -5, 0]
+                          rotate: [0, 5, -5, 0],
                         }}
-                        transition={{ 
+                        transition={{
                           duration: 3,
                           repeat: Infinity,
-                          ease: "easeInOut"
+                          ease: "easeInOut",
                         }}
                       >
-                        <Chip
-                          label={t('services.mostPopular')}
-                          size="small"
-                          sx={{
-                            background: 'hsl(var(--primary))',
-                            color: 'hsl(var(--primary-foreground))',
-                            borderRadius: '0 0 0 12px',
-                          }}
-                        />
+                        <span className="inline-block px-2 py-0.5 rounded-full bg-muted text-xs font-medium border">
+                          {t("services.mostPopular")}
+                        </span>
                       </motion.div>
                     )}
-                    
+
                     <CardContent className="p-8">
                       <div className="text-center mb-6">
                         <motion.div
-                          whileHover={{ 
-                            scale: 1.2, 
+                          whileHover={{
+                            scale: 1.2,
                             rotate: prefersReducedMotion ? 0 : 360,
-                            y: -10 
+                            y: -10,
                           }}
                           transition={{ duration: 0.6 }}
                           className="inline-flex p-4 bg-primary/10 rounded-full mb-4 relative"
                         >
-                          <service.icon 
-                            sx={{ 
-                              fontSize: '3rem',
-                              color: 'hsl(var(--primary))'
-                            }} 
+                          <service.icon
+                            sx={{
+                              fontSize: "3rem",
+                              color: "hsl(var(--primary))",
+                            }}
                           />
                           <motion.div
                             className="absolute inset-0 bg-primary/20 rounded-full"
@@ -197,12 +189,14 @@ const Services = () => {
                             transition={{
                               duration: 2,
                               repeat: Infinity,
-                              ease: "easeInOut"
+                              ease: "easeInOut",
                             }}
                           />
                         </motion.div>
                         <h3 className="text-xl font-bold mb-3">
-                          <ElasticText delay={0.1 * index}>{service.title}</ElasticText>
+                          <ElasticText delay={0.1 * index}>
+                            {service.title}
+                          </ElasticText>
                         </h3>
                         <p className="text-muted-foreground leading-relaxed">
                           {service.description}
@@ -210,45 +204,37 @@ const Services = () => {
                       </div>
 
                       <div className="space-y-4 mb-6">
-                        <motion.div 
+                        <motion.div
                           className="flex flex-wrap gap-2"
                           initial={{ opacity: 0 }}
                           animate={{ opacity: 1 }}
-                          transition={{ delay: 0.2 + index * 0.1, staggerChildren: 0.1 }}
+                          transition={{
+                            delay: 0.2 + index * 0.1,
+                            staggerChildren: 0.1,
+                          }}
                         >
                           {service.features.map((feature, featureIndex) => (
                             <motion.div
                               key={feature}
                               initial={{ scale: 0, opacity: 0 }}
                               animate={{ scale: 1, opacity: 1 }}
-                              transition={{ 
+                              transition={{
                                 delay: 0.3 + index * 0.1 + featureIndex * 0.05,
                                 type: "spring",
                                 stiffness: 300,
-                                damping: 20
+                                damping: 20,
                               }}
                             >
-                              <Chip
-                                label={feature}
-                                variant="outlined"
-                                size="small"
-                                sx={{
-                                  borderColor: 'hsl(var(--border))',
-                                  color: 'hsl(var(--muted-foreground))',
-                                  '&:hover': {
-                                    borderColor: 'hsl(var(--primary))',
-                                    backgroundColor: 'hsl(var(--primary) / 0.1)',
-                                  },
-                                  transition: 'all 0.3s ease',
-                                }}
-                              />
+                              <span className="inline-block px-2 py-0.5 rounded-full bg-muted text-xs font-medium border">
+                                {feature}
+                              </span>
                             </motion.div>
                           ))}
                         </motion.div>
                       </div>
 
                       <div className="text-center">
-                        <motion.div 
+                        <motion.div
                           className="text-2xl font-bold text-primary mb-4"
                           animate={{
                             scale: [1, 1.05, 1],
@@ -256,44 +242,49 @@ const Services = () => {
                           transition={{
                             duration: 2,
                             repeat: Infinity,
-                            ease: "easeInOut"
+                            ease: "easeInOut",
                           }}
                         >
                           {service.price}
                         </motion.div>
                         <MagneticCard intensity={0.15} scale={1.03}>
                           <Button
-                            component={Link}
-                            to={service.link}
-                            variant={service.highlight ? "contained" : "outlined"}
+                            asChild
+                            variant={
+                              service.highlight ? "contained" : "outlined"
+                            }
                             fullWidth
-                            endIcon={<ArrowForward />}
+                            endIcon={<ArrowRight />}
                             sx={{
                               py: 1.5,
                               borderRadius: 2,
-                              textTransform: 'none',
+                              textTransform: "none",
                               fontWeight: 600,
-                              ...(service.highlight ? {
-                                background: 'hsl(var(--primary))',
-                                color: 'hsl(var(--primary-foreground))',
-                                '&:hover': {
-                                  background: 'hsl(var(--primary))',
-                                  filter: 'brightness(0.9)',
-                                  transform: 'translateY(-2px)',
-                                },
-                              } : {
-                                borderColor: 'hsl(var(--primary))',
-                                color: 'hsl(var(--primary))',
-                                '&:hover': {
-                                  borderColor: 'hsl(var(--primary))',
-                                  background: 'hsl(var(--primary) / 0.1)',
-                                  transform: 'translateY(-2px)',
-                                },
-                              }),
-                              transition: 'all 0.3s ease',
+                              ...(service.highlight
+                                ? {
+                                    background: "hsl(var(--primary))",
+                                    color: "hsl(var(--primary-foreground))",
+                                    "&:hover": {
+                                      background: "hsl(var(--primary))",
+                                      filter: "brightness(0.9)",
+                                      transform: "translateY(-2px)",
+                                    },
+                                  }
+                                : {
+                                    borderColor: "hsl(var(--primary))",
+                                    color: "hsl(var(--primary))",
+                                    "&:hover": {
+                                      borderColor: "hsl(var(--primary))",
+                                      background: "hsl(var(--primary) / 0.1)",
+                                      transform: "translateY(-2px)",
+                                    },
+                                  }),
+                              transition: "all 0.3s ease",
                             }}
                           >
-                            {service.title === t('services.customWebsitesTitle') ? t('services.requestYours') : t('services.learnMore')}
+                            {service.title === t("services.customWebsitesTitle")
+                              ? t("services.requestYours")
+                              : t("services.learnMore")}
                           </Button>
                         </MagneticCard>
                       </div>

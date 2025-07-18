@@ -6,7 +6,7 @@ import React, {
   ReactNode,
 } from "react";
 import { getCriticalVideos, type Video } from "@/lib/video-data-chunks";
-import { useNavigate } from "react-router-dom";
+// REMOVE: import { useNavigate } from "react-router-dom";
 
 export interface ChatMessage {
   id: string;
@@ -75,7 +75,7 @@ interface SentrumProviderProps {
 export const SentrumProvider: React.FC<SentrumProviderProps> = ({
   children,
 }) => {
-  const navigate = useNavigate();
+  // REMOVE: const navigate = useNavigate();
   const [state, setState] = useState<SentrumState>({
     isOpen: false,
     currentView: "chat",
@@ -123,10 +123,10 @@ export const SentrumProvider: React.FC<SentrumProviderProps> = ({
       })
       .sort((a, b) => b.relevance - a.relevance);
     return results;
-  }, [navigate]);
+  }, []);
 
   const navigateToPage = useCallback((path: string) => {
-    navigate(path);
+    window.location.href = path;
     setState((prev) => ({
       ...prev,
       currentContext: {
@@ -135,7 +135,7 @@ export const SentrumProvider: React.FC<SentrumProviderProps> = ({
         visitedPages: [...prev.currentContext.visitedPages, path],
       },
     }));
-  }, [navigate]);
+  }, []);
 
   // Enhanced content database for comprehensive responses
   const getTopicContent = useCallback((topic: string) => {

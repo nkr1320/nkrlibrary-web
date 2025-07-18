@@ -34,7 +34,10 @@ const ProjectsSection: React.FC = () => {
     <div className="space-y-6">
       {/* Existing Projects */}
       {state.resumeData.projects.map((project) => (
-        <div key={project.id} className="p-4 glass-card rounded-lg border border-border">
+        <div
+          key={project.id}
+          className="p-4 glass-card rounded-lg border border-border"
+        >
           <div className="flex justify-between items-start mb-4">
             <h3 className="font-semibold">Project Entry</h3>
             <Button
@@ -50,39 +53,59 @@ const ProjectsSection: React.FC = () => {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium mb-1">Project Name</label>
+              <label className="block text-sm font-medium mb-1">
+                Project Name
+              </label>
               <input
                 type="text"
                 className="w-full border rounded px-3 py-2 focus:outline-none focus:ring focus:border-primary"
                 value={project.name}
-                onChange={(e) => handleUpdateProject(project.id, "name", e.target.value)}
+                onChange={(e) =>
+                  handleUpdateProject(project.id, "name", e.target.value)
+                }
               />
             </div>
             <div>
-              <label className="block text-sm font-medium mb-1">Duration (Optional)</label>
+              <label className="block text-sm font-medium mb-1">
+                Duration (Optional)
+              </label>
               <input
                 type="text"
                 className="w-full border rounded px-3 py-2 focus:outline-none focus:ring focus:border-primary"
                 value={project.duration || ""}
-                onChange={(e) => handleUpdateProject(project.id, "duration", e.target.value)}
+                onChange={(e) =>
+                  handleUpdateProject(project.id, "duration", e.target.value)
+                }
               />
             </div>
             <div className="sm:col-span-2">
-              <label className="block text-sm font-medium mb-1">Description</label>
+              <label className="block text-sm font-medium mb-1">
+                Description
+              </label>
               <textarea
                 className="w-full border rounded px-3 py-2 focus:outline-none focus:ring focus:border-primary"
                 rows={3}
                 value={project.description}
-                onChange={(e) => handleUpdateProject(project.id, "description", e.target.value)}
+                onChange={(e) =>
+                  handleUpdateProject(project.id, "description", e.target.value)
+                }
               />
             </div>
             <div className="sm:col-span-2">
-              <label className="block text-sm font-medium mb-1">Technologies (comma separated)</label>
+              <label className="block text-sm font-medium mb-1">
+                Technologies (comma separated)
+              </label>
               <input
                 type="text"
                 className="w-full border rounded px-3 py-2 focus:outline-none focus:ring focus:border-primary"
                 value={project.technologies || ""}
-                onChange={(e) => handleUpdateProject(project.id, "technologies", e.target.value)}
+                onChange={(e) =>
+                  handleUpdateProject(
+                    project.id,
+                    "technologies",
+                    e.target.value,
+                  )
+                }
               />
             </div>
           </div>
@@ -95,7 +118,9 @@ const ProjectsSection: React.FC = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
           <div>
-            <label className="block text-sm font-medium mb-1">Project Name</label>
+            <label className="block text-sm font-medium mb-1">
+              Project Name
+            </label>
             <input
               type="text"
               className="w-full border rounded px-3 py-2 focus:outline-none focus:ring focus:border-primary"
@@ -107,7 +132,9 @@ const ProjectsSection: React.FC = () => {
             />
           </div>
           <div>
-            <label className="block text-sm font-medium mb-1">Duration (Optional)</label>
+            <label className="block text-sm font-medium mb-1">
+              Duration (Optional)
+            </label>
             <input
               type="text"
               className="w-full border rounded px-3 py-2 focus:outline-none focus:ring focus:border-primary"
@@ -119,7 +146,9 @@ const ProjectsSection: React.FC = () => {
             />
           </div>
           <div className="sm:col-span-2">
-            <label className="block text-sm font-medium mb-1">Technologies Used</label>
+            <label className="block text-sm font-medium mb-1">
+              Technologies Used
+            </label>
             <input
               type="text"
               className="w-full border rounded px-3 py-2 focus:outline-none focus:ring focus:border-primary"
@@ -131,7 +160,9 @@ const ProjectsSection: React.FC = () => {
             />
           </div>
           <div className="sm:col-span-2">
-            <label className="block text-sm font-medium mb-1">Project Link (Optional)</label>
+            <label className="block text-sm font-medium mb-1">
+              Project Link (Optional)
+            </label>
             <input
               type="text"
               className="w-full border rounded px-3 py-2 focus:outline-none focus:ring focus:border-primary"
@@ -143,7 +174,9 @@ const ProjectsSection: React.FC = () => {
             />
           </div>
           <div className="sm:col-span-2">
-            <label className="block text-sm font-medium mb-1">Project Description</label>
+            <label className="block text-sm font-medium mb-1">
+              Project Description
+            </label>
             <textarea
               className="w-full border rounded px-3 py-2 focus:outline-none focus:ring focus:border-primary"
               rows={3}

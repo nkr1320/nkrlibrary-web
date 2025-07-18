@@ -63,7 +63,9 @@ const VideoCard: React.FC<VideoCardProps> = ({
             ) : (
               <div className="flex flex-col items-center justify-center text-muted-foreground">
                 <Play className="text-4xl mb-2" />
-                <span className="text-xs text-muted-foreground">Video Preview</span>
+                <span className="text-xs text-muted-foreground">
+                  Video Preview
+                </span>
               </div>
             )}
 

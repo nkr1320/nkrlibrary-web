@@ -35,7 +35,10 @@ const ExperienceSection: React.FC = () => {
     <div className="space-y-6">
       {/* Existing Experience Items */}
       {state.resumeData.experience.map((exp) => (
-        <div key={exp.id} className="p-4 glass-card rounded-lg border border-border">
+        <div
+          key={exp.id}
+          className="p-4 glass-card rounded-lg border border-border"
+        >
           <div className="flex justify-between items-start mb-4">
             <h3 className="font-semibold">Experience Entry</h3>
             <Button
@@ -56,7 +59,9 @@ const ExperienceSection: React.FC = () => {
                 type="text"
                 className="w-full border rounded px-3 py-2 focus:outline-none focus:ring focus:border-primary"
                 value={exp.company}
-                onChange={(e) => handleUpdateExperience(exp.id, "company", e.target.value)}
+                onChange={(e) =>
+                  handleUpdateExperience(exp.id, "company", e.target.value)
+                }
               />
             </div>
             <div>
@@ -65,16 +70,22 @@ const ExperienceSection: React.FC = () => {
                 type="text"
                 className="w-full border rounded px-3 py-2 focus:outline-none focus:ring focus:border-primary"
                 value={exp.position}
-                onChange={(e) => handleUpdateExperience(exp.id, "position", e.target.value)}
+                onChange={(e) =>
+                  handleUpdateExperience(exp.id, "position", e.target.value)
+                }
               />
             </div>
             <div>
-              <label className="block text-sm font-medium mb-1">Duration (e.g., Jan 2020 - Present)</label>
+              <label className="block text-sm font-medium mb-1">
+                Duration (e.g., Jan 2020 - Present)
+              </label>
               <input
                 type="text"
                 className="w-full border rounded px-3 py-2 focus:outline-none focus:ring focus:border-primary"
                 value={exp.duration}
-                onChange={(e) => handleUpdateExperience(exp.id, "duration", e.target.value)}
+                onChange={(e) =>
+                  handleUpdateExperience(exp.id, "duration", e.target.value)
+                }
               />
             </div>
             <div>
@@ -83,16 +94,22 @@ const ExperienceSection: React.FC = () => {
                 type="text"
                 className="w-full border rounded px-3 py-2 focus:outline-none focus:ring focus:border-primary"
                 value={exp.location}
-                onChange={(e) => handleUpdateExperience(exp.id, "location", e.target.value)}
+                onChange={(e) =>
+                  handleUpdateExperience(exp.id, "location", e.target.value)
+                }
               />
             </div>
             <div className="sm:col-span-2">
-              <label className="block text-sm font-medium mb-1">Description</label>
+              <label className="block text-sm font-medium mb-1">
+                Description
+              </label>
               <textarea
                 className="w-full border rounded px-3 py-2 focus:outline-none focus:ring focus:border-primary"
                 rows={3}
                 value={exp.description}
-                onChange={(e) => handleUpdateExperience(exp.id, "description", e.target.value)}
+                onChange={(e) =>
+                  handleUpdateExperience(exp.id, "description", e.target.value)
+                }
               />
             </div>
           </div>
@@ -150,7 +167,9 @@ const ExperienceSection: React.FC = () => {
             />
           </div>
           <div className="sm:col-span-2">
-            <label className="block text-sm font-medium mb-1">Description</label>
+            <label className="block text-sm font-medium mb-1">
+              Description
+            </label>
             <textarea
               className="w-full border rounded px-3 py-2 focus:outline-none focus:ring focus:border-primary"
               rows={3}

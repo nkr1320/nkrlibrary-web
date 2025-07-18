@@ -79,16 +79,16 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
                       {blogOpen && (
                         <ul className="ml-4 mt-1 bg-white dark:bg-gray-900 border border-border rounded shadow-lg z-50">
                           {[...Array(10)].map((_, i) => (
-                            <li key={`blog${i+1}`}>
+                            <li key={`blog${i + 1}`}>
                               <Link
-                                to={`/blog${i+1}`}
+                                to={`/blog${i + 1}`}
                                 onClick={() => {
                                   setBlogOpen(false);
                                   onClose();
                                 }}
-                                className={`block px-4 py-2 text-sm hover:bg-primary/10 ${location.pathname === `/blog${i+1}` ? "text-primary font-semibold" : "text-muted-foreground"}`}
+                                className={`block px-4 py-2 text-sm hover:bg-primary/10 ${location.pathname === `/blog${i + 1}` ? "text-primary font-semibold" : "text-muted-foreground"}`}
                               >
-                                Blog {i+1}
+                                Blog {i + 1}
                               </Link>
                             </li>
                           ))}
@@ -98,9 +98,13 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
                   ) : item.path ? (
                     <Link
                       to={item.path}
-                      onClick={e => {
+                      onClick={(e) => {
                         if (location.pathname === item.path) {
-                          window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+                          window.scrollTo({
+                            top: 0,
+                            left: 0,
+                            behavior: "smooth",
+                          });
                           e.preventDefault();
                           onClose();
                         } else {
@@ -131,9 +135,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
                 <input
                   type="checkbox"
                   checked={theme === "dark"}
-                  onChange={() =>
-                    setTheme(theme === "dark" ? "light" : "dark")
-                  }
+                  onChange={() => setTheme(theme === "dark" ? "light" : "dark")}
                   className="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary"
                 />
                 <span className="text-sm text-gray-700 dark:text-gray-300">

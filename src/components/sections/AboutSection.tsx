@@ -225,9 +225,7 @@ const AboutSection = () => {
                 transition={{ duration: 0.6, delay: 0.2 }}
                 viewport={{ once: true }}
               >
-                <p
-                  className="text-lg sm:text-xl text-muted-foreground leading-relaxed font-medium"
-                >
+                <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed font-medium">
                   {t("aboutSection.intro")}
                 </p>
               </motion.div>
@@ -424,9 +422,7 @@ const AboutSection = () => {
                               delay: index * 0.1 + 0.2,
                             }}
                           >
-                            <h5
-                              className="font-bold text-foreground"
-                            >
+                            <h5 className="font-bold text-foreground">
                               {feature.title}
                             </h5>
                           </motion.div>
@@ -440,9 +436,7 @@ const AboutSection = () => {
                             delay: index * 0.1 + 0.3,
                           }}
                         >
-                          <p
-                            className="text-muted-foreground leading-relaxed"
-                          >
+                          <p className="text-muted-foreground leading-relaxed">
                             {feature.description}
                           </p>
                         </motion.div>
@@ -492,9 +486,7 @@ const AboutSection = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6 }}
                   >
-                    <h5
-                      className="font-bold mb-6 text-foreground"
-                    >
+                    <h5 className="font-bold mb-6 text-foreground">
                       {t("aboutSection.impactTitle")}
                     </h5>
                   </motion.div>
@@ -534,9 +526,7 @@ const AboutSection = () => {
                             textShadow: "0 0 20px hsl(var(--primary) / 0.5)",
                           }}
                         >
-                          <h4
-                            className="text-4xl font-bold text-primary relative z-10"
-                          >
+                          <h4 className="text-4xl font-bold text-primary relative z-10">
                             <CountingNumber
                               target={stat.value}
                               suffix={stat.suffix}
@@ -566,9 +556,7 @@ const AboutSection = () => {
                             delay: index * 0.2 + 0.3,
                           }}
                         >
-                          <p
-                            className="text-muted-foreground font-medium"
-                          >
+                          <p className="text-muted-foreground font-medium">
                             {stat.label}
                           </p>
                         </motion.div>

@@ -1,7 +1,13 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { HelmetProvider, Helmet } from "react-helmet-async";
-import { KeyRound, ArrowLeft, CheckCircle, AlertTriangle, Shield } from "lucide-react";
+import {
+  KeyRound,
+  ArrowLeft,
+  CheckCircle,
+  AlertTriangle,
+  Shield,
+} from "lucide-react";
 import { Link } from "react-router-dom";
 import { MagneticCard } from "@/components/ui/magnetic-card";
 import { ElasticText } from "@/components/ui/elastic-text";

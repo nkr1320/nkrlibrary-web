@@ -1,10 +1,10 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { User } from 'lucide-react';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { Label } from '@/components/ui/label';
-import { useResume } from '@/contexts/ResumeContext';
+import React from "react";
+import { motion } from "framer-motion";
+import { User } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
+import { useResume } from "@/contexts/ResumeContext";
 
 const ResumePersonalInfo: React.FC = () => {
   const { state, updatePersonalInfo } = useResume();
@@ -20,7 +20,7 @@ const ResumePersonalInfo: React.FC = () => {
         <User className="h-4 w-4" />
         Personal Information
       </h4>
-      
+
       <div className="grid grid-cols-1 gap-3">
         <div>
           <Label htmlFor="name">Full Name</Label>
@@ -31,7 +31,7 @@ const ResumePersonalInfo: React.FC = () => {
             placeholder="John Doe"
           />
         </div>
-        
+
         <div>
           <Label htmlFor="email">Email</Label>
           <Input
@@ -42,7 +42,7 @@ const ResumePersonalInfo: React.FC = () => {
             placeholder="john@example.com"
           />
         </div>
-        
+
         <div>
           <Label htmlFor="phone">Phone</Label>
           <Input
@@ -52,7 +52,7 @@ const ResumePersonalInfo: React.FC = () => {
             placeholder="+1 (555) 123-4567"
           />
         </div>
-        
+
         <div>
           <Label htmlFor="location">Location</Label>
           <Input
@@ -62,7 +62,7 @@ const ResumePersonalInfo: React.FC = () => {
             placeholder="City, State"
           />
         </div>
-        
+
         <div>
           <Label htmlFor="summary">Professional Summary</Label>
           <Textarea

@@ -1,9 +1,9 @@
-import React from 'react';
-import { useSentrum } from '@/contexts/SentrumContext';
-import SentrumChatHeader from './SentrumChatHeader';
-import SentrumChatMessages from './SentrumChatMessages';
-import SentrumChatInput from './SentrumChatInput';
-import SentrumChatWelcome from './SentrumChatWelcome';
+import React from "react";
+import { useSentrum } from "@/contexts/SentrumContext";
+import SentrumChatHeader from "./SentrumChatHeader";
+import SentrumChatMessages from "./SentrumChatMessages";
+import SentrumChatInput from "./SentrumChatInput";
+import SentrumChatWelcome from "./SentrumChatWelcome";
 
 const SentrumChat: React.FC = () => {
   const { state, sendMessage, clearHistory, getSummary } = useSentrum();
@@ -23,31 +23,31 @@ const SentrumChat: React.FC = () => {
 
   const quickActions = [
     "Help me navigate",
-    "Find React tutorials", 
+    "Find React tutorials",
     "Show my progress",
     "Explain cybersecurity",
   ];
 
   return (
     <div className="flex flex-col h-full bg-background">
-      <SentrumChatHeader 
+      <SentrumChatHeader
         onDownload={handleDownload}
         onClearHistory={clearHistory}
       />
 
       {state.messages.length === 0 ? (
-        <SentrumChatWelcome 
+        <SentrumChatWelcome
           quickActions={quickActions}
           onQuickAction={handleQuickAction}
         />
       ) : (
-        <SentrumChatMessages 
+        <SentrumChatMessages
           messages={state.messages}
           isTyping={state.isTyping}
         />
       )}
 
-      <SentrumChatInput 
+      <SentrumChatInput
         onSendMessage={handleSendMessage}
         onQuickAction={handleQuickAction}
         isTyping={state.isTyping}

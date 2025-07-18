@@ -7,9 +7,14 @@ const Blog2: React.FC = () => (
       title="Blog 2: Mastering Software & Development Tools | NKR Library"
       description="Learn how to master Git, React, NodeJS, Bootstrap, and more with our expert video tutorials and tips for tech success."
     />
-    <h1 className="text-3xl font-bold mb-4">Blog 2: Mastering Software & Development Tools</h1>
+    <h1 className="text-3xl font-bold mb-4">
+      Blog 2: Mastering Software & Development Tools
+    </h1>
     <p className="mb-4">
-      In today’s digital world, mastering software and development tools is essential for students, professionals, and anyone looking to build a tech career. With the right resources and guidance, you can quickly become proficient in the tools that power modern technology.
+      In today’s digital world, mastering software and development tools is
+      essential for students, professionals, and anyone looking to build a tech
+      career. With the right resources and guidance, you can quickly become
+      proficient in the tools that power modern technology.
     </p>
     <div className="my-6">
       <iframe
@@ -37,18 +42,30 @@ const Blog2: React.FC = () => (
     <ul className="list-disc ml-6 mb-4">
       <li>Practice with real-world projects to reinforce your learning.</li>
       <li>Stay updated with the latest software releases and features.</li>
-      <li>Join online communities and forums to ask questions and share knowledge.</li>
+      <li>
+        Join online communities and forums to ask questions and share knowledge.
+      </li>
       <li>Watch step-by-step video tutorials for hands-on guidance.</li>
     </ul>
     <p className="mb-4">
-      By dedicating time to learn and experiment with these tools, you’ll gain the confidence and skills needed to succeed in the tech industry. Explore our video tutorials for more in-depth guidance!
+      By dedicating time to learn and experiment with these tools, you’ll gain
+      the confidence and skills needed to succeed in the tech industry. Explore
+      our video tutorials for more in-depth guidance!
     </p>
     <h3 className="text-lg font-semibold mt-8 mb-2">Related Blogs</h3>
     <ul className="list-disc ml-6 mb-4">
-      <li><a href="/blog3" className="text-blue-600 underline">Protect Yourself from Cyber Scams</a></li>
-      <li><a href="/blog7" className="text-blue-600 underline">Getting Started with Git</a></li>
+      <li>
+        <a href="/blog3" className="text-blue-600 underline">
+          Protect Yourself from Cyber Scams
+        </a>
+      </li>
+      <li>
+        <a href="/blog7" className="text-blue-600 underline">
+          Getting Started with Git
+        </a>
+      </li>
     </ul>
   </main>
 );
 
-export default Blog2; 
+export default Blog2;

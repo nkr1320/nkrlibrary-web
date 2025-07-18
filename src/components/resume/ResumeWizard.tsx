@@ -46,8 +46,8 @@ const ResumeWizard: React.FC = () => {
             <button
               key={step.label}
               onClick={() => setStep(index)}
-              className={`flex-1 py-2 rounded transition-colors text-xs sm:text-sm font-semibold ${currentStep === index ? 'bg-primary text-primary-foreground shadow' : 'bg-muted text-muted-foreground hover:bg-accent'}`}
-              aria-current={currentStep === index ? 'step' : undefined}
+              className={`flex-1 py-2 rounded transition-colors text-xs sm:text-sm font-semibold ${currentStep === index ? "bg-primary text-primary-foreground shadow" : "bg-muted text-muted-foreground hover:bg-accent"}`}
+              aria-current={currentStep === index ? "step" : undefined}
             >
               <span className="hidden sm:inline">{step.label}</span>
               <span className="sm:hidden">{index + 1}</span>
@@ -65,7 +65,9 @@ const ResumeWizard: React.FC = () => {
           exit={{ opacity: 0, x: -20 }}
           transition={{ duration: 0.3 }}
         >
-          <h3 className="mb-4 font-semibold text-lg">{steps[currentStep]?.label}</h3>
+          <h3 className="mb-4 font-semibold text-lg">
+            {steps[currentStep]?.label}
+          </h3>
           {CurrentStepComponent && <CurrentStepComponent />}
         </motion.div>
       </div>

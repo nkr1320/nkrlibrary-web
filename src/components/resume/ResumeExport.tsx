@@ -338,9 +338,7 @@ const ResumeExport: React.FC = () => {
 
   return (
     <div className="glass-card p-4">
-      <h6 className="font-semibold mb-4">
-        Export & Share
-      </h6>
+      <h6 className="font-semibold mb-4">Export & Share</h6>
 
       <div className="flex flex-col gap-2">
         <Button

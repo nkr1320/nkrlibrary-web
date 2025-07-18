@@ -1,18 +1,20 @@
-import { ResumeData } from '@/types/resume';
+import { ResumeData } from "@/types/resume";
 
 export function calculateATSScore(data: ResumeData): number {
   let score = 0;
   const maxScore = 100;
 
   // Personal info completeness (20 points)
-  const personalFields = Object.values(data.personalInfo).filter(field => field.trim() !== '');
+  const personalFields = Object.values(data.personalInfo).filter(
+    (field) => field.trim() !== "",
+  );
   score += (personalFields.length / 8) * 20;
 
   // Experience section (25 points)
   if (data.experience.length > 0) {
     score += 15;
-    const completeExp = data.experience.filter(exp => 
-      exp.company && exp.position && exp.duration && exp.description
+    const completeExp = data.experience.filter(
+      (exp) => exp.company && exp.position && exp.duration && exp.description,
     );
     score += (completeExp.length / data.experience.length) * 10;
   }
@@ -20,8 +22,8 @@ export function calculateATSScore(data: ResumeData): number {
   // Education section (15 points)
   if (data.education.length > 0) {
     score += 10;
-    const completeEdu = data.education.filter(edu => 
-      edu.institution && edu.degree && edu.year
+    const completeEdu = data.education.filter(
+      (edu) => edu.institution && edu.degree && edu.year,
     );
     score += (completeEdu.length / data.education.length) * 5;
   }
@@ -47,7 +49,9 @@ export function calculateATSScore(data: ResumeData): number {
 
 export function calculateCompletion(data: ResumeData): number {
   const sections = [
-    data.personalInfo.fullName && data.personalInfo.email && data.personalInfo.phone,
+    data.personalInfo.fullName &&
+      data.personalInfo.email &&
+      data.personalInfo.phone,
     data.personalInfo.summary && data.personalInfo.summary.length > 20,
     data.experience.length > 0,
     data.education.length > 0,

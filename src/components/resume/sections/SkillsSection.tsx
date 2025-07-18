@@ -89,7 +89,9 @@ const SkillsSection: React.FC = () => {
             </span>
           ))}
           {state.resumeData.skills.technical.length === 0 && (
-            <span className="text-muted-foreground py-2">No technical skills added yet</span>
+            <span className="text-muted-foreground py-2">
+              No technical skills added yet
+            </span>
           )}
         </div>
         <div className="flex gap-2">
@@ -132,7 +134,9 @@ const SkillsSection: React.FC = () => {
             </span>
           ))}
           {state.resumeData.skills.soft.length === 0 && (
-            <span className="text-muted-foreground py-2">No soft skills added yet</span>
+            <span className="text-muted-foreground py-2">
+              No soft skills added yet
+            </span>
           )}
         </div>
         <div className="flex gap-2">
@@ -163,7 +167,10 @@ const SkillsSection: React.FC = () => {
               key={lang.language}
               className="inline-flex items-center bg-accent text-foreground rounded-full px-3 py-1 text-sm font-medium border border-border"
             >
-              {lang.language} <span className="ml-2 text-xs text-muted-foreground">({lang.proficiency})</span>
+              {lang.language}{" "}
+              <span className="ml-2 text-xs text-muted-foreground">
+                ({lang.proficiency})
+              </span>
               <button
                 type="button"
                 onClick={() => handleRemoveLanguage(lang.language)}
@@ -175,7 +182,9 @@ const SkillsSection: React.FC = () => {
             </span>
           ))}
           {state.resumeData.skills.languages.length === 0 && (
-            <span className="text-muted-foreground py-2">No languages added yet</span>
+            <span className="text-muted-foreground py-2">
+              No languages added yet
+            </span>
           )}
         </div>
         <div className="flex gap-2 flex-wrap items-end">
@@ -186,15 +195,24 @@ const SkillsSection: React.FC = () => {
               className="w-full border rounded px-3 py-2 focus:outline-none focus:ring focus:border-primary"
               placeholder="e.g., English, Hindi"
               value={newLanguage.language}
-              onChange={(e) => setNewLanguage({ ...newLanguage, language: e.target.value })}
+              onChange={(e) =>
+                setNewLanguage({ ...newLanguage, language: e.target.value })
+              }
             />
           </div>
           <div className="flex-1 min-w-[120px]">
-            <label className="block text-sm font-medium mb-1">Proficiency</label>
+            <label className="block text-sm font-medium mb-1">
+              Proficiency
+            </label>
             <select
               className="w-full border rounded px-3 py-2 focus:outline-none focus:ring focus:border-primary"
               value={newLanguage.proficiency}
-              onChange={(e) => setNewLanguage({ ...newLanguage, proficiency: e.target.value as typeof newLanguage.proficiency })}
+              onChange={(e) =>
+                setNewLanguage({
+                  ...newLanguage,
+                  proficiency: e.target.value as typeof newLanguage.proficiency,
+                })
+              }
             >
               <option value="Beginner">Beginner</option>
               <option value="Intermediate">Intermediate</option>

@@ -1,8 +1,8 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Shield, AlertTriangle, Users, Target } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { motion } from "framer-motion";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Shield, AlertTriangle, Users, Target } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const ScamAwareness = () => {
   const containerVariants = {
@@ -36,9 +36,16 @@ const ScamAwareness = () => {
         {/* Breadcrumb */}
         <motion.nav variants={itemVariants} className="mb-6">
           <div className="flex items-center space-x-2 text-sm text-muted-foreground">
-            <Link to="/" className="hover:text-foreground transition-colors">Home</Link>
+            <Link to="/" className="hover:text-foreground transition-colors">
+              Home
+            </Link>
             <span>/</span>
-            <Link to="/about" className="hover:text-foreground transition-colors">About</Link>
+            <Link
+              to="/about"
+              className="hover:text-foreground transition-colors"
+            >
+              About
+            </Link>
             <span>/</span>
             <span className="text-foreground">Scam Awareness</span>
           </div>
@@ -53,13 +60,16 @@ const ScamAwareness = () => {
             Digital Safety Mission
           </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Protecting communities through education, awareness, and proactive cybersecurity training. 
-            Together, we build a safer digital world.
+            Protecting communities through education, awareness, and proactive
+            cybersecurity training. Together, we build a safer digital world.
           </p>
         </motion.div>
 
         {/* Mission Components */}
-        <motion.div variants={itemVariants} className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+        <motion.div
+          variants={itemVariants}
+          className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12"
+        >
           <Card>
             <CardHeader>
               <AlertTriangle className="w-8 h-8 text-primary mb-2" />
@@ -67,8 +77,8 @@ const ScamAwareness = () => {
             </CardHeader>
             <CardContent>
               <p className="text-muted-foreground">
-                Identify and alert communities about emerging cyber threats, scams, 
-                and digital risks before they become widespread problems.
+                Identify and alert communities about emerging cyber threats,
+                scams, and digital risks before they become widespread problems.
               </p>
             </CardContent>
           </Card>
@@ -80,7 +90,7 @@ const ScamAwareness = () => {
             </CardHeader>
             <CardContent>
               <p className="text-muted-foreground">
-                Comprehensive educational programs that teach digital literacy, 
+                Comprehensive educational programs that teach digital literacy,
                 online safety practices, and scam recognition techniques.
               </p>
             </CardContent>
@@ -93,8 +103,8 @@ const ScamAwareness = () => {
             </CardHeader>
             <CardContent>
               <p className="text-muted-foreground">
-                Special focus on protecting vulnerable populations including students, 
-                elderly, and those new to digital technology.
+                Special focus on protecting vulnerable populations including
+                students, elderly, and those new to digital technology.
               </p>
             </CardContent>
           </Card>
@@ -106,8 +116,8 @@ const ScamAwareness = () => {
             </CardHeader>
             <CardContent>
               <p className="text-muted-foreground">
-                Proactive approach to cybersecurity through education and awareness 
-                rather than reactive damage control.
+                Proactive approach to cybersecurity through education and
+                awareness rather than reactive damage control.
               </p>
             </CardContent>
           </Card>

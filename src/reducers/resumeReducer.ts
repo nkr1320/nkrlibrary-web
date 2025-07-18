@@ -1,9 +1,12 @@
-import { ResumeState, ResumeAction, initialResumeData } from '@/types/resume';
-import { calculateATSScore, calculateCompletion } from '@/lib/resume-utils';
+import { ResumeState, ResumeAction, initialResumeData } from "@/types/resume";
+import { calculateATSScore, calculateCompletion } from "@/lib/resume-utils";
 
-export function resumeReducer(state: ResumeState, action: ResumeAction): ResumeState {
+export function resumeReducer(
+  state: ResumeState,
+  action: ResumeAction,
+): ResumeState {
   switch (action.type) {
-    case 'UPDATE_PERSONAL_INFO':
+    case "UPDATE_PERSONAL_INFO":
       return {
         ...state,
         resumeData: {
@@ -12,7 +15,7 @@ export function resumeReducer(state: ResumeState, action: ResumeAction): ResumeS
         },
       };
 
-    case 'ADD_EXPERIENCE':
+    case "ADD_EXPERIENCE":
       return {
         ...state,
         resumeData: {
@@ -21,27 +24,31 @@ export function resumeReducer(state: ResumeState, action: ResumeAction): ResumeS
         },
       };
 
-    case 'UPDATE_EXPERIENCE':
+    case "UPDATE_EXPERIENCE":
       return {
         ...state,
         resumeData: {
           ...state.resumeData,
-          experience: state.resumeData.experience.map(exp =>
-            exp.id === action.payload.id ? { ...exp, ...action.payload.data } : exp
+          experience: state.resumeData.experience.map((exp) =>
+            exp.id === action.payload.id
+              ? { ...exp, ...action.payload.data }
+              : exp,
           ),
         },
       };
 
-    case 'REMOVE_EXPERIENCE':
+    case "REMOVE_EXPERIENCE":
       return {
         ...state,
         resumeData: {
           ...state.resumeData,
-          experience: state.resumeData.experience.filter(exp => exp.id !== action.payload),
+          experience: state.resumeData.experience.filter(
+            (exp) => exp.id !== action.payload,
+          ),
         },
       };
 
-    case 'ADD_EDUCATION':
+    case "ADD_EDUCATION":
       return {
         ...state,
         resumeData: {
@@ -50,27 +57,31 @@ export function resumeReducer(state: ResumeState, action: ResumeAction): ResumeS
         },
       };
 
-    case 'UPDATE_EDUCATION':
+    case "UPDATE_EDUCATION":
       return {
         ...state,
         resumeData: {
           ...state.resumeData,
-          education: state.resumeData.education.map(edu =>
-            edu.id === action.payload.id ? { ...edu, ...action.payload.data } : edu
+          education: state.resumeData.education.map((edu) =>
+            edu.id === action.payload.id
+              ? { ...edu, ...action.payload.data }
+              : edu,
           ),
         },
       };
 
-    case 'REMOVE_EDUCATION':
+    case "REMOVE_EDUCATION":
       return {
         ...state,
         resumeData: {
           ...state.resumeData,
-          education: state.resumeData.education.filter(edu => edu.id !== action.payload),
+          education: state.resumeData.education.filter(
+            (edu) => edu.id !== action.payload,
+          ),
         },
       };
 
-    case 'ADD_PROJECT':
+    case "ADD_PROJECT":
       return {
         ...state,
         resumeData: {
@@ -79,27 +90,31 @@ export function resumeReducer(state: ResumeState, action: ResumeAction): ResumeS
         },
       };
 
-    case 'UPDATE_PROJECT':
+    case "UPDATE_PROJECT":
       return {
         ...state,
         resumeData: {
           ...state.resumeData,
-          projects: state.resumeData.projects.map(project =>
-            project.id === action.payload.id ? { ...project, ...action.payload.data } : project
+          projects: state.resumeData.projects.map((project) =>
+            project.id === action.payload.id
+              ? { ...project, ...action.payload.data }
+              : project,
           ),
         },
       };
 
-    case 'REMOVE_PROJECT':
+    case "REMOVE_PROJECT":
       return {
         ...state,
         resumeData: {
           ...state.resumeData,
-          projects: state.resumeData.projects.filter(project => project.id !== action.payload),
+          projects: state.resumeData.projects.filter(
+            (project) => project.id !== action.payload,
+          ),
         },
       };
 
-    case 'ADD_CERTIFICATION':
+    case "ADD_CERTIFICATION":
       return {
         ...state,
         resumeData: {
@@ -108,27 +123,31 @@ export function resumeReducer(state: ResumeState, action: ResumeAction): ResumeS
         },
       };
 
-    case 'UPDATE_CERTIFICATION':
+    case "UPDATE_CERTIFICATION":
       return {
         ...state,
         resumeData: {
           ...state.resumeData,
-          certifications: state.resumeData.certifications.map(cert =>
-            cert.id === action.payload.id ? { ...cert, ...action.payload.data } : cert
+          certifications: state.resumeData.certifications.map((cert) =>
+            cert.id === action.payload.id
+              ? { ...cert, ...action.payload.data }
+              : cert,
           ),
         },
       };
 
-    case 'REMOVE_CERTIFICATION':
+    case "REMOVE_CERTIFICATION":
       return {
         ...state,
         resumeData: {
           ...state.resumeData,
-          certifications: state.resumeData.certifications.filter(cert => cert.id !== action.payload),
+          certifications: state.resumeData.certifications.filter(
+            (cert) => cert.id !== action.payload,
+          ),
         },
       };
 
-    case 'UPDATE_SKILLS':
+    case "UPDATE_SKILLS":
       return {
         ...state,
         resumeData: {
@@ -137,7 +156,7 @@ export function resumeReducer(state: ResumeState, action: ResumeAction): ResumeS
         },
       };
 
-    case 'ADD_CUSTOM_SECTION':
+    case "ADD_CUSTOM_SECTION":
       return {
         ...state,
         resumeData: {
@@ -146,39 +165,43 @@ export function resumeReducer(state: ResumeState, action: ResumeAction): ResumeS
         },
       };
 
-    case 'UPDATE_CUSTOM_SECTION':
+    case "UPDATE_CUSTOM_SECTION":
       return {
         ...state,
         resumeData: {
           ...state.resumeData,
-          customSections: state.resumeData.customSections.map(section =>
-            section.id === action.payload.id ? { ...section, ...action.payload.data } : section
+          customSections: state.resumeData.customSections.map((section) =>
+            section.id === action.payload.id
+              ? { ...section, ...action.payload.data }
+              : section,
           ),
         },
       };
 
-    case 'REMOVE_CUSTOM_SECTION':
+    case "REMOVE_CUSTOM_SECTION":
       return {
         ...state,
         resumeData: {
           ...state.resumeData,
-          customSections: state.resumeData.customSections.filter(section => section.id !== action.payload),
+          customSections: state.resumeData.customSections.filter(
+            (section) => section.id !== action.payload,
+          ),
         },
       };
 
-    case 'SET_TEMPLATE':
+    case "SET_TEMPLATE":
       return {
         ...state,
         resumeData: { ...state.resumeData, template: action.payload },
       };
 
-    case 'SET_STEP':
+    case "SET_STEP":
       return { ...state, currentStep: action.payload };
 
-    case 'SET_LOADING':
+    case "SET_LOADING":
       return { ...state, isLoading: action.payload };
 
-    case 'CALCULATE_ATS_SCORE':
+    case "CALCULATE_ATS_SCORE":
       return {
         ...state,
         resumeData: {
@@ -187,7 +210,7 @@ export function resumeReducer(state: ResumeState, action: ResumeAction): ResumeS
         },
       };
 
-    case 'CALCULATE_COMPLETION':
+    case "CALCULATE_COMPLETION":
       return {
         ...state,
         resumeData: {
@@ -196,7 +219,7 @@ export function resumeReducer(state: ResumeState, action: ResumeAction): ResumeS
         },
       };
 
-    case 'SAVE_VERSION': {
+    case "SAVE_VERSION": {
       const newVersion = {
         id: Date.now().toString(),
         name: action.payload.name,
@@ -212,8 +235,8 @@ export function resumeReducer(state: ResumeState, action: ResumeAction): ResumeS
       };
     }
 
-    case 'LOAD_VERSION': {
-      const version = state.versions.find(v => v.id === action.payload);
+    case "LOAD_VERSION": {
+      const version = state.versions.find((v) => v.id === action.payload);
       if (!version) return state;
       return {
         ...state,
@@ -222,14 +245,17 @@ export function resumeReducer(state: ResumeState, action: ResumeAction): ResumeS
       };
     }
 
-    case 'DELETE_VERSION':
+    case "DELETE_VERSION":
       return {
         ...state,
-        versions: state.versions.filter(v => v.id !== action.payload),
-        activeVersionId: state.activeVersionId === action.payload ? null : state.activeVersionId,
+        versions: state.versions.filter((v) => v.id !== action.payload),
+        activeVersionId:
+          state.activeVersionId === action.payload
+            ? null
+            : state.activeVersionId,
       };
 
-    case 'RESET_RESUME':
+    case "RESET_RESUME":
       return {
         ...state,
         resumeData: { ...initialResumeData },
@@ -237,7 +263,7 @@ export function resumeReducer(state: ResumeState, action: ResumeAction): ResumeS
         activeVersionId: null,
       };
 
-    case 'LOAD_FROM_STORAGE':
+    case "LOAD_FROM_STORAGE":
       return action.payload;
 
     default:

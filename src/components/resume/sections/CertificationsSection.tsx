@@ -46,9 +46,7 @@ const CertificationsSection: React.FC = () => {
           <div className="flex justify-between items-start mb-4">
             <div className="flex items-center gap-2">
               <BadgeCheck sx={{ color: "hsl(var(--primary))" }} />
-              <h6 className="font-semibold">
-                Certification Entry
-              </h6>
+              <h6 className="font-semibold">Certification Entry</h6>
             </div>
             <button
               onClick={() => removeCertification(cert.id)}
@@ -125,9 +123,7 @@ const CertificationsSection: React.FC = () => {
 
       {/* Add New Certification Form */}
       <div className="p-4 glass-card border-dashed border-2 border-muted">
-        <h6 className="mb-4 font-semibold">
-          Add New Certification
-        </h6>
+        <h6 className="mb-4 font-semibold">Add New Certification</h6>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
           <input

@@ -1,10 +1,10 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
-import { Camera, Palette, Layers, Wand2, Image, Monitor } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { motion } from "framer-motion";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Camera, Palette, Layers, Wand2, Image, Monitor } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Photoshop = () => {
   const containerVariants = {
@@ -32,47 +32,80 @@ const Photoshop = () => {
       title: "Logo Design Mastery",
       icon: Palette,
       description: "Create professional logos from concept to final design",
-      skills: ["Brand identity", "Vector graphics", "Typography", "Color theory", "Client presentation"],
+      skills: [
+        "Brand identity",
+        "Vector graphics",
+        "Typography",
+        "Color theory",
+        "Client presentation",
+      ],
       difficulty: "Intermediate",
       projects: 8,
-      available: false
+      available: false,
     },
     {
       title: "Photo Editing Essentials",
       icon: Camera,
       description: "Master photo retouching and enhancement techniques",
-      skills: ["Color correction", "Skin retouching", "Background removal", "Lighting adjustment", "Artistic effects"],
+      skills: [
+        "Color correction",
+        "Skin retouching",
+        "Background removal",
+        "Lighting adjustment",
+        "Artistic effects",
+      ],
       difficulty: "Beginner",
       projects: 12,
-      available: false
+      available: false,
     },
     {
       title: "UI Design Fundamentals",
       icon: Monitor,
       description: "Design modern user interfaces and web layouts",
-      skills: ["Interface design", "Mobile layouts", "Responsive design", "Design systems", "Prototyping"],
+      skills: [
+        "Interface design",
+        "Mobile layouts",
+        "Responsive design",
+        "Design systems",
+        "Prototyping",
+      ],
       difficulty: "Intermediate",
       projects: 10,
-      available: false
-    }
+      available: false,
+    },
   ];
 
   const techniques = [
     {
       title: "Advanced Selection Techniques",
       icon: Wand2,
-      topics: ["Magic Wand mastery", "Pen tool precision", "Color range selection", "Refine edge techniques"]
+      topics: [
+        "Magic Wand mastery",
+        "Pen tool precision",
+        "Color range selection",
+        "Refine edge techniques",
+      ],
     },
     {
       title: "Layer Management",
       icon: Layers,
-      topics: ["Blend modes", "Layer masks", "Adjustment layers", "Smart objects"]
+      topics: [
+        "Blend modes",
+        "Layer masks",
+        "Adjustment layers",
+        "Smart objects",
+      ],
     },
     {
       title: "Professional Retouching",
       icon: Image,
-      topics: ["Frequency separation", "Dodge and burn", "Content-aware fill", "Healing techniques"]
-    }
+      topics: [
+        "Frequency separation",
+        "Dodge and burn",
+        "Content-aware fill",
+        "Healing techniques",
+      ],
+    },
   ];
 
   const upcomingFeatures = [
@@ -83,7 +116,7 @@ const Photoshop = () => {
     "Print design and preparation",
     "Creative effects and compositing",
     "Industry-standard workflow practices",
-    "Portfolio development guidance"
+    "Portfolio development guidance",
   ];
 
   return (
@@ -97,9 +130,16 @@ const Photoshop = () => {
         {/* Breadcrumb */}
         <motion.nav variants={itemVariants} className="mb-6">
           <div className="flex items-center space-x-2 text-sm text-muted-foreground">
-            <Link to="/" className="hover:text-foreground transition-colors">Home</Link>
+            <Link to="/" className="hover:text-foreground transition-colors">
+              Home
+            </Link>
             <span>/</span>
-            <Link to="/#software" className="hover:text-foreground transition-colors">Software</Link>
+            <Link
+              to="/#software"
+              className="hover:text-foreground transition-colors"
+            >
+              Software
+            </Link>
             <span>/</span>
             <span className="text-foreground">Photoshop</span>
           </div>
@@ -114,17 +154,23 @@ const Photoshop = () => {
             Photoshop Mastery
           </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed mb-6">
-            Master Adobe Photoshop with comprehensive tutorials covering logo design, photo editing, 
-            and UI design. From beginner basics to professional techniques.
+            Master Adobe Photoshop with comprehensive tutorials covering logo
+            design, photo editing, and UI design. From beginner basics to
+            professional techniques.
           </p>
-          <Badge variant="outline" className="bg-blue-50 text-blue-700 border-blue-200 dark:bg-blue-950/30 dark:text-blue-300 dark:border-blue-800 px-4 py-2">
+          <Badge
+            variant="outline"
+            className="bg-blue-50 text-blue-700 border-blue-200 dark:bg-blue-950/30 dark:text-blue-300 dark:border-blue-800 px-4 py-2"
+          >
             🎯 In Development - Expected Q2 2024
           </Badge>
         </motion.div>
 
         {/* Planned Courses */}
         <motion.div variants={itemVariants} className="mb-12">
-          <h2 className="text-2xl font-bold mb-8 text-center">Planned Course Modules</h2>
+          <h2 className="text-2xl font-bold mb-8 text-center">
+            Planned Course Modules
+          </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {courses.map((course, index) => (
               <motion.div
@@ -140,28 +186,44 @@ const Photoshop = () => {
                         <div className="p-2 bg-gradient-to-br from-purple-100 to-pink-100 dark:from-purple-900/30 dark:to-pink-900/30 rounded-lg">
                           <course.icon className="w-5 h-5 text-purple-600 dark:text-purple-400" />
                         </div>
-                        <CardTitle className="text-lg">{course.title}</CardTitle>
+                        <CardTitle className="text-lg">
+                          {course.title}
+                        </CardTitle>
                       </div>
                       <Badge variant="outline" className="text-xs">
                         {course.projects} Projects
                       </Badge>
                     </div>
-                    <p className="text-muted-foreground">{course.description}</p>
+                    <p className="text-muted-foreground">
+                      {course.description}
+                    </p>
                   </CardHeader>
                   <CardContent>
                     <div className="space-y-4">
                       <div className="flex items-center justify-between">
                         <span className="text-sm font-medium">Difficulty:</span>
-                        <Badge variant={course.difficulty === 'Beginner' ? 'default' : 'secondary'}>
+                        <Badge
+                          variant={
+                            course.difficulty === "Beginner"
+                              ? "default"
+                              : "secondary"
+                          }
+                        >
                           {course.difficulty}
                         </Badge>
                       </div>
-                      
+
                       <div>
-                        <h4 className="font-semibold text-sm mb-2">Skills you'll learn:</h4>
+                        <h4 className="font-semibold text-sm mb-2">
+                          Skills you'll learn:
+                        </h4>
                         <div className="flex flex-wrap gap-1">
                           {course.skills.map((skill) => (
-                            <Badge key={skill} variant="outline" className="text-xs">
+                            <Badge
+                              key={skill}
+                              variant="outline"
+                              className="text-xs"
+                            >
                               {skill}
                             </Badge>
                           ))}
@@ -183,9 +245,12 @@ const Photoshop = () => {
         <motion.div variants={itemVariants} className="mb-12">
           <Card>
             <CardHeader>
-              <CardTitle className="text-2xl">Techniques You'll Master</CardTitle>
+              <CardTitle className="text-2xl">
+                Techniques You'll Master
+              </CardTitle>
               <p className="text-muted-foreground">
-                Professional Photoshop techniques taught through hands-on projects
+                Professional Photoshop techniques taught through hands-on
+                projects
               </p>
             </CardHeader>
             <CardContent>
@@ -198,7 +263,10 @@ const Photoshop = () => {
                     <h4 className="font-semibold mb-3">{technique.title}</h4>
                     <ul className="space-y-2 text-sm text-muted-foreground">
                       {technique.topics.map((topic, topicIndex) => (
-                        <li key={topicIndex} className="flex items-center justify-center space-x-2">
+                        <li
+                          key={topicIndex}
+                          className="flex items-center justify-center space-x-2"
+                        >
                           <span className="w-1.5 h-1.5 bg-purple-500 rounded-full"></span>
                           <span>{topic}</span>
                         </li>
@@ -223,7 +291,10 @@ const Photoshop = () => {
             <CardContent>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {upcomingFeatures.map((feature, index) => (
-                  <div key={index} className="flex items-center space-x-3 p-3 bg-background/50 rounded-lg">
+                  <div
+                    key={index}
+                    className="flex items-center space-x-3 p-3 bg-background/50 rounded-lg"
+                  >
                     <div className="flex items-center justify-center w-6 h-6 bg-purple-500 text-white rounded-full text-xs font-bold">
                       {index + 1}
                     </div>
@@ -241,8 +312,9 @@ const Photoshop = () => {
             <CardContent className="p-8">
               <h3 className="text-2xl font-bold mb-4">Be the First to Know</h3>
               <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-                Our Photoshop course is currently in development. Sign up to get notified when it launches, 
-                and receive early access to exclusive tutorials and resources.
+                Our Photoshop course is currently in development. Sign up to get
+                notified when it launches, and receive early access to exclusive
+                tutorials and resources.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button size="lg" className="px-8">

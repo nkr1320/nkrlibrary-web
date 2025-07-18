@@ -7,9 +7,13 @@ const Blog5: React.FC = () => (
       title="Blog 5: Science & Tech Innovations | NKR Library"
       description="Explore the latest in science and technology, from Chandrayaan 3 to AI and AR. Watch our video guides and stay curious!"
     />
-    <h1 className="text-3xl font-bold mb-4">Blog 5: Science & Tech Innovations</h1>
+    <h1 className="text-3xl font-bold mb-4">
+      Blog 5: Science & Tech Innovations
+    </h1>
     <p className="mb-4">
-      Science and technology are rapidly changing our world. From space missions to artificial intelligence, staying informed about the latest innovations is key to understanding the future.
+      Science and technology are rapidly changing our world. From space missions
+      to artificial intelligence, staying informed about the latest innovations
+      is key to understanding the future.
     </p>
     <div className="my-6">
       <iframe
@@ -38,14 +42,23 @@ const Blog5: React.FC = () => (
       <li>Our video guides make complex topics easy to grasp.</li>
     </ul>
     <p className="mb-4">
-      Explore our science and tech videos to stay ahead of the curve and fuel your curiosity!
+      Explore our science and tech videos to stay ahead of the curve and fuel
+      your curiosity!
     </p>
     <h3 className="text-lg font-semibold mt-8 mb-2">Related Blogs</h3>
     <ul className="list-disc ml-6 mb-4">
-      <li><a href="/blog4" className="text-blue-600 underline">Medical Coding – A Career Path in Healthcare</a></li>
-      <li><a href="/blog10" className="text-blue-600 underline">The Future of AI and Technology</a></li>
+      <li>
+        <a href="/blog4" className="text-blue-600 underline">
+          Medical Coding – A Career Path in Healthcare
+        </a>
+      </li>
+      <li>
+        <a href="/blog10" className="text-blue-600 underline">
+          The Future of AI and Technology
+        </a>
+      </li>
     </ul>
   </main>
 );
 
-export default Blog5; 
+export default Blog5;

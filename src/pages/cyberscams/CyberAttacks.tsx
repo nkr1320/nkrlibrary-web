@@ -1,7 +1,16 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { HelmetProvider, Helmet } from "react-helmet-async";
-import { Shield, AlertTriangle, Bug, Smartphone, Mail, KeyRound, FileWarning, Frown } from "lucide-react";
+import {
+  Shield,
+  AlertTriangle,
+  Bug,
+  Smartphone,
+  Mail,
+  KeyRound,
+  FileWarning,
+  Frown,
+} from "lucide-react";
 import { Link } from "react-router-dom";
 import { MagneticCard } from "@/components/ui/magnetic-card";
 import { ElasticText } from "@/components/ui/elastic-text";

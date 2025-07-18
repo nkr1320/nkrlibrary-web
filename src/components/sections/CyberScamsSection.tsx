@@ -1,7 +1,16 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
-import { Shield, AlertTriangle, Smartphone, Mail, KeyRound, Bug, FileWarning, Frown } from "lucide-react";
+import {
+  Shield,
+  AlertTriangle,
+  Smartphone,
+  Mail,
+  KeyRound,
+  Bug,
+  FileWarning,
+  Frown,
+} from "lucide-react";
 import { Link } from "react-router-dom";
 import { MagneticCard } from "@/components/ui/magnetic-card";
 import { ElasticText } from "@/components/ui/elastic-text";
@@ -200,7 +209,10 @@ const CyberScamsSection = () => {
                   >
                     <Card className="h-full border border-border hover:border-destructive/30 transition-all duration-500 hover:shadow-2xl bg-card/80 backdrop-blur-sm cursor-pointer">
                       <CardContent className="p-4 sm:p-6 h-full flex flex-col">
-                        <a href={scam.path} className="flex flex-col h-full text-inherit no-underline">
+                        <a
+                          href={scam.path}
+                          className="flex flex-col h-full text-inherit no-underline"
+                        >
                           <div className="flex items-center justify-between mb-4">
                             <motion.div
                               className="p-3 bg-destructive/10 rounded-lg group-hover:bg-destructive/20 transition-colors"
@@ -228,7 +240,9 @@ const CyberScamsSection = () => {
                               className={`text-xs font-medium px-2 py-1 rounded-full ${getSeverityColor(scam.severity)} bg-accent`}
                               animate={{
                                 scale:
-                                  scam.severity === "critical" ? [1, 1.1, 1] : 1,
+                                  scam.severity === "critical"
+                                    ? [1, 1.1, 1]
+                                    : 1,
                               }}
                               transition={{
                                 duration: 1.5,
@@ -262,7 +276,11 @@ const CyberScamsSection = () => {
           {/* CTA Section */}
           <motion.div variants={cardVariants} className="text-center">
             <MagneticCard intensity={0.3} scale={1.08}>
-              <Button size="lg" className="inline-flex items-center gap-2 justify-center" asChild>
+              <Button
+                size="lg"
+                className="inline-flex items-center gap-2 justify-center"
+                asChild
+              >
                 <a href="/cyberscams">
                   <motion.div
                     animate={{

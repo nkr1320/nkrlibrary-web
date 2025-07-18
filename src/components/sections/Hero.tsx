@@ -266,7 +266,13 @@ const Hero = () => {
                 }}
               >
                 <Button asChild variant="default" size="lg">
-                  <a href="https://www.youtube.com/@nkrlibrary/playlists" target="_blank" rel="noopener noreferrer" aria-label={t("hero.ctaYoutubeAria")} className="flex items-center gap-2">
+                  <a
+                    href="https://www.youtube.com/@nkrlibrary/playlists"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={t("hero.ctaYoutubeAria")}
+                    className="flex items-center gap-2"
+                  >
                     <Play />
                     {t("hero.ctaYoutube")}
                   </a>
@@ -288,7 +294,11 @@ const Hero = () => {
                 }}
               >
                 <Button asChild variant="outline" size="lg">
-                  <Link to="/courses" aria-label={t("hero.ctaCoursesAria")} className="flex items-center gap-2">
+                  <Link
+                    to="/courses"
+                    aria-label={t("hero.ctaCoursesAria")}
+                    className="flex items-center gap-2"
+                  >
                     <Globe />
                     {t("hero.ctaCourses")}
                   </Link>

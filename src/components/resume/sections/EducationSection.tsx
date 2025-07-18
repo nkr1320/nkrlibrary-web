@@ -34,7 +34,10 @@ const EducationSection: React.FC = () => {
     <div className="space-y-6">
       {/* Existing Education Items */}
       {state.resumeData.education.map((edu) => (
-        <div key={edu.id} className="p-4 glass-card rounded-lg border border-border">
+        <div
+          key={edu.id}
+          className="p-4 glass-card rounded-lg border border-border"
+        >
           <div className="flex justify-between items-start mb-4">
             <h3 className="font-semibold">Education Entry</h3>
             <Button
@@ -50,12 +53,16 @@ const EducationSection: React.FC = () => {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium mb-1">Institution</label>
+              <label className="block text-sm font-medium mb-1">
+                Institution
+              </label>
               <input
                 type="text"
                 className="w-full border rounded px-3 py-2 focus:outline-none focus:ring focus:border-primary"
                 value={edu.institution}
-                onChange={(e) => handleUpdateEducation(edu.id, "institution", e.target.value)}
+                onChange={(e) =>
+                  handleUpdateEducation(edu.id, "institution", e.target.value)
+                }
               />
             </div>
             <div>
@@ -64,16 +71,22 @@ const EducationSection: React.FC = () => {
                 type="text"
                 className="w-full border rounded px-3 py-2 focus:outline-none focus:ring focus:border-primary"
                 value={edu.degree}
-                onChange={(e) => handleUpdateEducation(edu.id, "degree", e.target.value)}
+                onChange={(e) =>
+                  handleUpdateEducation(edu.id, "degree", e.target.value)
+                }
               />
             </div>
             <div>
-              <label className="block text-sm font-medium mb-1">Graduation Year</label>
+              <label className="block text-sm font-medium mb-1">
+                Graduation Year
+              </label>
               <input
                 type="text"
                 className="w-full border rounded px-3 py-2 focus:outline-none focus:ring focus:border-primary"
                 value={edu.year}
-                onChange={(e) => handleUpdateEducation(edu.id, "year", e.target.value)}
+                onChange={(e) =>
+                  handleUpdateEducation(edu.id, "year", e.target.value)
+                }
               />
             </div>
             <div>
@@ -82,16 +95,22 @@ const EducationSection: React.FC = () => {
                 type="text"
                 className="w-full border rounded px-3 py-2 focus:outline-none focus:ring focus:border-primary"
                 value={edu.location}
-                onChange={(e) => handleUpdateEducation(edu.id, "location", e.target.value)}
+                onChange={(e) =>
+                  handleUpdateEducation(edu.id, "location", e.target.value)
+                }
               />
             </div>
             <div>
-              <label className="block text-sm font-medium mb-1">GPA (optional)</label>
+              <label className="block text-sm font-medium mb-1">
+                GPA (optional)
+              </label>
               <input
                 type="text"
                 className="w-full border rounded px-3 py-2 focus:outline-none focus:ring focus:border-primary"
                 value={edu.gpa}
-                onChange={(e) => handleUpdateEducation(edu.id, "gpa", e.target.value)}
+                onChange={(e) =>
+                  handleUpdateEducation(edu.id, "gpa", e.target.value)
+                }
               />
             </div>
           </div>
@@ -102,12 +121,19 @@ const EducationSection: React.FC = () => {
         <h3 className="font-semibold mb-4">Add Education</h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
-            <label className="block text-sm font-medium mb-1">Institution</label>
+            <label className="block text-sm font-medium mb-1">
+              Institution
+            </label>
             <input
               type="text"
               className="w-full border rounded px-3 py-2 focus:outline-none focus:ring focus:border-primary"
               value={newEducation.institution}
-              onChange={(e) => setNewEducation({ ...newEducation, institution: e.target.value })}
+              onChange={(e) =>
+                setNewEducation({
+                  ...newEducation,
+                  institution: e.target.value,
+                })
+              }
             />
           </div>
           <div>
@@ -116,16 +142,22 @@ const EducationSection: React.FC = () => {
               type="text"
               className="w-full border rounded px-3 py-2 focus:outline-none focus:ring focus:border-primary"
               value={newEducation.degree}
-              onChange={(e) => setNewEducation({ ...newEducation, degree: e.target.value })}
+              onChange={(e) =>
+                setNewEducation({ ...newEducation, degree: e.target.value })
+              }
             />
           </div>
           <div>
-            <label className="block text-sm font-medium mb-1">Graduation Year</label>
+            <label className="block text-sm font-medium mb-1">
+              Graduation Year
+            </label>
             <input
               type="text"
               className="w-full border rounded px-3 py-2 focus:outline-none focus:ring focus:border-primary"
               value={newEducation.year}
-              onChange={(e) => setNewEducation({ ...newEducation, year: e.target.value })}
+              onChange={(e) =>
+                setNewEducation({ ...newEducation, year: e.target.value })
+              }
             />
           </div>
           <div>
@@ -134,22 +166,34 @@ const EducationSection: React.FC = () => {
               type="text"
               className="w-full border rounded px-3 py-2 focus:outline-none focus:ring focus:border-primary"
               value={newEducation.location}
-              onChange={(e) => setNewEducation({ ...newEducation, location: e.target.value })}
+              onChange={(e) =>
+                setNewEducation({ ...newEducation, location: e.target.value })
+              }
             />
           </div>
           <div>
-            <label className="block text-sm font-medium mb-1">GPA (optional)</label>
+            <label className="block text-sm font-medium mb-1">
+              GPA (optional)
+            </label>
             <input
               type="text"
               className="w-full border rounded px-3 py-2 focus:outline-none focus:ring focus:border-primary"
               value={newEducation.gpa}
-              onChange={(e) => setNewEducation({ ...newEducation, gpa: e.target.value })}
+              onChange={(e) =>
+                setNewEducation({ ...newEducation, gpa: e.target.value })
+              }
             />
           </div>
         </div>
         <Button
           onClick={handleAddEducation}
-          disabled={!(newEducation.institution && newEducation.degree && newEducation.year)}
+          disabled={
+            !(
+              newEducation.institution &&
+              newEducation.degree &&
+              newEducation.year
+            )
+          }
           className="mt-4 flex items-center gap-2"
         >
           <Plus className="w-4 h-4" /> Add Education

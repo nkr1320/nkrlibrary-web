@@ -65,9 +65,7 @@ const ResumePreview: React.FC<ResumePreviewProps> = ({ mode }) => {
       {/* Preview Header */}
       <div className="p-4 border-b border-border">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-          <h2 className="font-semibold">
-            Resume Preview
-          </h2>
+          <h2 className="font-semibold">Resume Preview</h2>
 
           <div className="flex flex-col sm:flex-row gap-2">
             {/* Template Selector */}
@@ -76,10 +74,18 @@ const ResumePreview: React.FC<ResumePreviewProps> = ({ mode }) => {
                 <Button
                   key={template.id}
                   onClick={() => setTemplate(template.id)}
-                  variant={resumeData.template === template.id ? "default" : "outline"}
+                  variant={
+                    resumeData.template === template.id ? "default" : "outline"
+                  }
                   style={{
-                    backgroundColor: resumeData.template === template.id ? template.color : undefined,
-                    color: resumeData.template === template.id ? "white" : template.color,
+                    backgroundColor:
+                      resumeData.template === template.id
+                        ? template.color
+                        : undefined,
+                    color:
+                      resumeData.template === template.id
+                        ? "white"
+                        : template.color,
                     borderColor: template.color,
                   }}
                   className="text-xs font-semibold px-3 py-1"
@@ -235,14 +241,10 @@ const ResumePreview: React.FC<ResumePreviewProps> = ({ mode }) => {
                       marginBottom: "4px",
                     }}
                   >
-                    <h6
-                      style={{ fontWeight: "bold", fontSize: "1.1rem" }}
-                    >
+                    <h6 style={{ fontWeight: "bold", fontSize: "1.1rem" }}>
                       {exp.position}
                     </h6>
-                    <p
-                      style={{ fontStyle: "italic", color: "#666" }}
-                    >
+                    <p style={{ fontStyle: "italic", color: "#666" }}>
                       {exp.duration}
                     </p>
                   </div>
@@ -255,9 +257,7 @@ const ResumePreview: React.FC<ResumePreviewProps> = ({ mode }) => {
                   >
                     {exp.company} {exp.location && `• ${exp.location}`}
                   </p>
-                  <p
-                    style={{ lineHeight: 1.5, color: "#444" }}
-                  >
+                  <p style={{ lineHeight: 1.5, color: "#444" }}>
                     {exp.description}
                   </p>
                 </div>
@@ -295,20 +295,12 @@ const ResumePreview: React.FC<ResumePreviewProps> = ({ mode }) => {
                     }}
                   >
                     <div>
-                      <h6
-                        style={{ fontWeight: "bold" }}
-                      >
-                        {edu.degree}
-                      </h6>
-                      <p
-                        style={{ color: styles.accentColor }}
-                      >
+                      <h6 style={{ fontWeight: "bold" }}>{edu.degree}</h6>
+                      <p style={{ color: styles.accentColor }}>
                         {edu.institution} {edu.location && `• ${edu.location}`}
                       </p>
                     </div>
-                    <p
-                      style={{ fontStyle: "italic", color: "#666" }}
-                    >
+                    <p style={{ fontStyle: "italic", color: "#666" }}>
                       {edu.year}
                     </p>
                   </div>
@@ -335,9 +327,7 @@ const ResumePreview: React.FC<ResumePreviewProps> = ({ mode }) => {
 
               {resumeData.skills.technical.length > 0 && (
                 <div style={{ marginBottom: "12px" }}>
-                  <h6
-                    style={{ fontWeight: "bold", marginBottom: "8px" }}
-                  >
+                  <h6 style={{ fontWeight: "bold", marginBottom: "8px" }}>
                     Technical Skills:
                   </h6>
                   <div
@@ -373,9 +363,7 @@ const ResumePreview: React.FC<ResumePreviewProps> = ({ mode }) => {
 
               {resumeData.skills.soft.length > 0 && (
                 <div>
-                  <h6
-                    style={{ fontWeight: "bold", marginBottom: "8px" }}
-                  >
+                  <h6 style={{ fontWeight: "bold", marginBottom: "8px" }}>
                     Soft Skills:
                   </h6>
                   <p style={{ lineHeight: 1.5 }}>
@@ -408,20 +396,14 @@ const ResumePreview: React.FC<ResumePreviewProps> = ({ mode }) => {
                       index === resumeData.projects.length - 1 ? 0 : "16px",
                   }}
                 >
-                  <h6
-                    style={{ fontWeight: "bold", marginBottom: "4px" }}
-                  >
+                  <h6 style={{ fontWeight: "bold", marginBottom: "4px" }}>
                     {project.name}
                   </h6>
-                  <p
-                    style={{ marginBottom: "4px", lineHeight: 1.5 }}
-                  >
+                  <p style={{ marginBottom: "4px", lineHeight: 1.5 }}>
                     {project.description}
                   </p>
                   {project.technologies && (
-                    <p
-                      style={{ color: "#666", fontStyle: "italic" }}
-                    >
+                    <p style={{ color: "#666", fontStyle: "italic" }}>
                       Technologies: {project.technologies}
                     </p>
                   )}
@@ -462,20 +444,10 @@ const ResumePreview: React.FC<ResumePreviewProps> = ({ mode }) => {
                     }}
                   >
                     <div>
-                      <h6
-                        style={{ fontWeight: "bold" }}
-                      >
-                        {cert.name}
-                      </h6>
-                      <p
-                        style={{ color: styles.accentColor }}
-                      >
-                        {cert.issuer}
-                      </p>
+                      <h6 style={{ fontWeight: "bold" }}>{cert.name}</h6>
+                      <p style={{ color: styles.accentColor }}>{cert.issuer}</p>
                     </div>
-                    <p
-                      style={{ fontStyle: "italic", color: "#666" }}
-                    >
+                    <p style={{ fontStyle: "italic", color: "#666" }}>
                       {cert.date}
                     </p>
                   </div>

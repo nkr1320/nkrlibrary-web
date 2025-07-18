@@ -50,7 +50,12 @@ const ResumeBuilder: React.FC<ResumeBuilderProps> = ({ mode }) => {
                   <span>{state.resumeData.completionPercentage}%</span>
                 </div>
                 <div className="w-full h-2 bg-muted rounded-full overflow-hidden">
-                  <div className="h-full bg-primary rounded-full transition-all" style={{ width: `${state.resumeData.completionPercentage}%` }} />
+                  <div
+                    className="h-full bg-primary rounded-full transition-all"
+                    style={{
+                      width: `${state.resumeData.completionPercentage}%`,
+                    }}
+                  />
                 </div>
               </div>
 
@@ -60,7 +65,18 @@ const ResumeBuilder: React.FC<ResumeBuilderProps> = ({ mode }) => {
                   <span>{state.resumeData.atsScore}/100</span>
                 </div>
                 <div className="w-full h-2 bg-muted rounded-full overflow-hidden">
-                  <div className="h-full rounded-full transition-all" style={{ width: `${state.resumeData.atsScore}%`, backgroundColor: state.resumeData.atsScore >= 80 ? '#10b981' : state.resumeData.atsScore >= 60 ? '#f59e0b' : '#ef4444' }} />
+                  <div
+                    className="h-full rounded-full transition-all"
+                    style={{
+                      width: `${state.resumeData.atsScore}%`,
+                      backgroundColor:
+                        state.resumeData.atsScore >= 80
+                          ? "#10b981"
+                          : state.resumeData.atsScore >= 60
+                            ? "#f59e0b"
+                            : "#ef4444",
+                    }}
+                  />
                 </div>
               </div>
             </div>
@@ -80,7 +96,9 @@ const ResumeBuilder: React.FC<ResumeBuilderProps> = ({ mode }) => {
           >
             {mode === "ai" && sentrumState.isOpen ? (
               <div className="p-6 glass-card h-[600px] flex flex-col rounded-lg shadow bg-card border border-border">
-                <h3 className="text-lg font-semibold mb-4">AI Assistant Active</h3>
+                <h3 className="text-lg font-semibold mb-4">
+                  AI Assistant Active
+                </h3>
                 <p className="text-muted-foreground">
                   Your SENTRUM AI assistant is helping you build your resume.
                   Use the chat to provide information and get suggestions.
@@ -97,20 +115,24 @@ const ResumeBuilder: React.FC<ResumeBuilderProps> = ({ mode }) => {
               <div className="glass-card rounded-lg shadow bg-card border border-border">
                 <div className="flex border-b border-border">
                   <button
-                    className={`flex-1 py-3 text-center font-semibold transition-colors ${builderTab === 0 ? 'text-primary border-b-2 border-primary' : 'text-muted-foreground'}`}
+                    className={`flex-1 py-3 text-center font-semibold transition-colors ${builderTab === 0 ? "text-primary border-b-2 border-primary" : "text-muted-foreground"}`}
                     onClick={() => setBuilderTab(0)}
                   >
                     Wizard Mode
                   </button>
                   <button
-                    className={`flex-1 py-3 text-center font-semibold transition-colors ${builderTab === 1 ? 'text-primary border-b-2 border-primary' : 'text-muted-foreground'}`}
+                    className={`flex-1 py-3 text-center font-semibold transition-colors ${builderTab === 1 ? "text-primary border-b-2 border-primary" : "text-muted-foreground"}`}
                     onClick={() => setBuilderTab(1)}
                   >
                     Compact Mode
                   </button>
                 </div>
                 <div className="p-6">
-                  {builderTab === 0 ? <ResumeWizard /> : <CompactResumeBuilder />}
+                  {builderTab === 0 ? (
+                    <ResumeWizard />
+                  ) : (
+                    <CompactResumeBuilder />
+                  )}
                 </div>
               </div>
             )}

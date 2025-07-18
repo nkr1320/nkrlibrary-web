@@ -15,14 +15,14 @@ const SentrumResumeWrapper: React.FC = () => {
 
   useEffect(() => {
     setMounted(true);
-    if (import.meta.env.MODE === 'development') {
+    if (import.meta.env.MODE === "development") {
       console.log("SentrumResumeWrapper: Component mounted");
       console.log("SentrumResumeWrapper: Context available:", !!context);
       console.log("SentrumResumeWrapper: Context value:", context);
     }
     // If context is not available after mounting, use local provider
     if (!context) {
-      if (import.meta.env.MODE === 'development') {
+      if (import.meta.env.MODE === "development") {
         console.log(
           "SentrumResumeWrapper: No context found, will use local provider",
         );
@@ -106,9 +106,12 @@ const SentrumResumeWrapper: React.FC = () => {
   }
 
   // Context is available or we're using local provider
-  if (import.meta.env.MODE === 'development') {
+  if (import.meta.env.MODE === "development") {
     console.log("SentrumResumeWrapper: Rendering SentrumResume");
-    console.log("SentrumResumeWrapper: Using local provider:", useLocalProvider);
+    console.log(
+      "SentrumResumeWrapper: Using local provider:",
+      useLocalProvider,
+    );
   }
 
   if (useLocalProvider) {

@@ -1,8 +1,8 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Globe, Gift, Code, Users } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { motion } from "framer-motion";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Globe, Gift, Code, Users } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const FreeWebsites = () => {
   const containerVariants = {
@@ -36,9 +36,16 @@ const FreeWebsites = () => {
         {/* Breadcrumb */}
         <motion.nav variants={itemVariants} className="mb-6">
           <div className="flex items-center space-x-2 text-sm text-muted-foreground">
-            <Link to="/" className="hover:text-foreground transition-colors">Home</Link>
+            <Link to="/" className="hover:text-foreground transition-colors">
+              Home
+            </Link>
             <span>/</span>
-            <Link to="/about" className="hover:text-foreground transition-colors">About</Link>
+            <Link
+              to="/about"
+              className="hover:text-foreground transition-colors"
+            >
+              About
+            </Link>
             <span>/</span>
             <span className="text-foreground">Free Websites</span>
           </div>
@@ -53,13 +60,16 @@ const FreeWebsites = () => {
             Free Website Program
           </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Empowering students with professional websites at no cost. Build your digital presence 
-            and showcase your skills to the world.
+            Empowering students with professional websites at no cost. Build
+            your digital presence and showcase your skills to the world.
           </p>
         </motion.div>
 
         {/* Program Benefits */}
-        <motion.div variants={itemVariants} className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+        <motion.div
+          variants={itemVariants}
+          className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12"
+        >
           <Card>
             <CardHeader>
               <Gift className="w-8 h-8 text-primary mb-2" />
@@ -67,7 +77,7 @@ const FreeWebsites = () => {
             </CardHeader>
             <CardContent>
               <p className="text-muted-foreground">
-                No hidden costs, no subscription fees. Professional websites 
+                No hidden costs, no subscription fees. Professional websites
                 provided free to all students in our programs.
               </p>
             </CardContent>
@@ -80,7 +90,7 @@ const FreeWebsites = () => {
             </CardHeader>
             <CardContent>
               <p className="text-muted-foreground">
-                Modern, responsive designs built with latest web technologies. 
+                Modern, responsive designs built with latest web technologies.
                 Portfolio-quality websites that impress employers.
               </p>
             </CardContent>
@@ -93,7 +103,7 @@ const FreeWebsites = () => {
             </CardHeader>
             <CardContent>
               <p className="text-muted-foreground">
-                Showcase your projects, skills, and achievements. Build your 
+                Showcase your projects, skills, and achievements. Build your
                 professional brand and online presence.
               </p>
             </CardContent>
@@ -106,8 +116,8 @@ const FreeWebsites = () => {
             </CardHeader>
             <CardContent>
               <p className="text-muted-foreground">
-                Make your work visible worldwide. Connect with opportunities 
-                and build networks beyond geographical boundaries.
+                Make your work visible worldwide. Connect with opportunities and
+                build networks beyond geographical boundaries.
               </p>
             </CardContent>
           </Card>

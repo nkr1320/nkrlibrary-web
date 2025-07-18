@@ -44,7 +44,9 @@ const PersonalInfoSection: React.FC = () => {
         />
       </div>
       <div className="sm:col-span-2">
-        <label className="block text-sm font-medium mb-1">Professional Summary</label>
+        <label className="block text-sm font-medium mb-1">
+          Professional Summary
+        </label>
         <textarea
           className="w-full border rounded px-3 py-2 focus:outline-none focus:ring focus:border-primary"
           rows={4}

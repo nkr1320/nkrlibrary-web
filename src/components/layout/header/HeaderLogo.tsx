@@ -14,7 +14,14 @@ const HeaderLogo: React.FC = () => {
         to="/"
         className="flex items-center text-lg sm:text-xl md:text-2xl font-bold text-primary no-underline"
       >
-        <img src={logo} alt="NKR Logo" className="h-8 w-auto mr-2" loading="lazy" width="32" height="32" />{" "}
+        <img
+          src={logo}
+          alt="NKR Logo"
+          className="h-8 w-auto mr-2"
+          loading="lazy"
+          width="32"
+          height="32"
+        />{" "}
         <span>NKR LIBRARY</span>
       </Link>
     </motion.div>

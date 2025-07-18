@@ -1,49 +1,74 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import { Download, User, Plus, Trash2, MessageCircle, FileText, Eye } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { ScrollArea } from '@/components/ui/scroll-area';
-import { Label } from '@/components/ui/label';
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
-import { useResume } from '@/contexts/ResumeContext';
-import { useSentrum } from '@/contexts/SentrumContext';
-import ProfessionalResumeTemplate from '@/components/resume/ProfessionalResumeTemplate';
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+import {
+  Download,
+  User,
+  Plus,
+  Trash2,
+  MessageCircle,
+  FileText,
+  Eye,
+} from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { Label } from "@/components/ui/label";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { useResume } from "@/contexts/ResumeContext";
+import { useSentrum } from "@/contexts/SentrumContext";
+import ProfessionalResumeTemplate from "@/components/resume/ProfessionalResumeTemplate";
 
 const CompactResumeBuilder: React.FC = () => {
-  const { state, updatePersonalInfo, addExperience, removeExperience, updateExperience,
-          addEducation, removeEducation, updateEducation, addProject, removeProject, 
-          updateProject, updateSkills } = useResume();
+  const {
+    state,
+    updatePersonalInfo,
+    addExperience,
+    removeExperience,
+    updateExperience,
+    addEducation,
+    removeEducation,
+    updateEducation,
+    addProject,
+    removeProject,
+    updateProject,
+    updateSkills,
+  } = useResume();
   const { sendMessage } = useSentrum();
-  
-  const [newSkill, setNewSkill] = useState('');
+
+  const [newSkill, setNewSkill] = useState("");
   const { resumeData } = state;
 
   const handleAddExperience = () => {
     addExperience({
-      company: '',
-      position: '',
-      duration: '',
-      description: '',
-      location: '',
+      company: "",
+      position: "",
+      duration: "",
+      description: "",
+      location: "",
     });
   };
 
   const handleAddEducation = () => {
     addEducation({
-      institution: '',
-      degree: '',
-      year: '',
-      location: '',
+      institution: "",
+      degree: "",
+      year: "",
+      location: "",
     });
   };
 
   const handleAddProject = () => {
     addProject({
-      name: '',
-      description: '',
-      technologies: '',
+      name: "",
+      description: "",
+      technologies: "",
     });
   };
 
@@ -51,12 +76,14 @@ const CompactResumeBuilder: React.FC = () => {
     if (newSkill.trim()) {
       const newTechnical = [...resumeData.skills.technical, newSkill.trim()];
       updateSkills({ technical: newTechnical });
-      setNewSkill('');
+      setNewSkill("");
     }
   };
 
   const removeSkill = (index: number) => {
-    const newTechnical = resumeData.skills.technical.filter((_, i) => i !== index);
+    const newTechnical = resumeData.skills.technical.filter(
+      (_, i) => i !== index,
+    );
     updateSkills({ technical: newTechnical });
   };
 
@@ -66,7 +93,7 @@ const CompactResumeBuilder: React.FC = () => {
 
   const generateProfessionalResume = () => {
     // Create a new window to display the professional resume
-    const newWindow = window.open('', '_blank');
+    const newWindow = window.open("", "_blank");
     if (newWindow) {
       newWindow.document.write(`
         <!DOCTYPE html>
@@ -119,24 +146,26 @@ const CompactResumeBuilder: React.FC = () => {
                     <h3>CONTACT</h3>
                     <div class="contact-item">
                       <span>📧</span>
-                      <span>${resumeData.personalInfo.email || 'email@example.com'}</span>
+                      <span>${resumeData.personalInfo.email || "email@example.com"}</span>
                     </div>
                     <div class="contact-item">
                       <span>📱</span>
-                      <span>${resumeData.personalInfo.phone || '+1 (555) 123-4567'}</span>
+                      <span>${resumeData.personalInfo.phone || "+1 (555) 123-4567"}</span>
                     </div>
                     <div class="contact-item">
                       <span>📍</span>
-                      <span>${resumeData.personalInfo.address || 'City, State'}</span>
+                      <span>${resumeData.personalInfo.address || "City, State"}</span>
                     </div>
                   </div>
                   
                   <div class="section">
                     <h3>SKILLS</h3>
-                    ${resumeData.skills.technical.slice(0, 8).map((skill, index) => {
-                      const levels = [90, 85, 80, 75, 95, 70, 88, 82];
-                      const level = levels[index % levels.length] || 80;
-                      return `
+                    ${resumeData.skills.technical
+                      .slice(0, 8)
+                      .map((skill, index) => {
+                        const levels = [90, 85, 80, 75, 95, 70, 88, 82];
+                        const level = levels[index % levels.length] || 80;
+                        return `
                         <div class="skill-item">
                           <div style="display: flex; justify-content: space-between; font-size: 0.875rem;">
                             <span>${skill}</span>
@@ -147,7 +176,8 @@ const CompactResumeBuilder: React.FC = () => {
                           </div>
                         </div>
                       `;
-                    }).join('')}
+                      })
+                      .join("")}
                   </div>
                   
                   <div class="section">
@@ -171,21 +201,25 @@ const CompactResumeBuilder: React.FC = () => {
                 
                 <div class="content">
                   <div style="border-bottom: 1px solid #E5E7EB; padding-bottom: 1.5rem; margin-bottom: 2rem;">
-                    <h1 class="main-title">${resumeData.personalInfo.fullName || 'John Doe'}</h1>
-                    <p class="job-title">${resumeData.experience[0]?.position || 'Professional Title'}</p>
+                    <h1 class="main-title">${resumeData.personalInfo.fullName || "John Doe"}</h1>
+                    <p class="job-title">${resumeData.experience[0]?.position || "Professional Title"}</p>
                   </div>
                   
                   <div class="content-section">
                     <h2>OBJECTIVE</h2>
                     <p style="color: #374151; line-height: 1.6;">
-                      ${resumeData.personalInfo.summary || 'Dedicated professional with extensive experience in delivering high-quality solutions and driving organizational success through innovative approaches and collaborative teamwork.'}
+                      ${resumeData.personalInfo.summary || "Dedicated professional with extensive experience in delivering high-quality solutions and driving organizational success through innovative approaches and collaborative teamwork."}
                     </p>
                   </div>
                   
-                  ${resumeData.experience.length > 0 ? `
+                  ${
+                    resumeData.experience.length > 0
+                      ? `
                     <div class="content-section">
                       <h2>EXPERIENCE</h2>
-                      ${resumeData.experience.map(exp => `
+                      ${resumeData.experience
+                        .map(
+                          (exp) => `
                         <div class="timeline-item">
                           <div class="timeline-dot"></div>
                           <h3 style="font-size: 1.125rem; font-weight: bold; color: #1F2937; margin-bottom: 0.5rem;">${exp.position}</h3>
@@ -195,14 +229,22 @@ const CompactResumeBuilder: React.FC = () => {
                           </div>
                           <p style="color: #374151; line-height: 1.6;">${exp.description}</p>
                         </div>
-                      `).join('')}
+                      `,
+                        )
+                        .join("")}
                     </div>
-                  ` : ''}
+                  `
+                      : ""
+                  }
                   
-                  ${resumeData.education.length > 0 ? `
+                  ${
+                    resumeData.education.length > 0
+                      ? `
                     <div class="content-section">
                       <h2>EDUCATION</h2>
-                      ${resumeData.education.map(edu => `
+                      ${resumeData.education
+                        .map(
+                          (edu) => `
                         <div style="margin-bottom: 1rem;">
                           <h3 style="font-size: 1.125rem; font-weight: bold; color: #1F2937; margin-bottom: 0.5rem;">${edu.degree}</h3>
                           <div style="display: flex; gap: 1rem; color: #2563EB; font-weight: 500;">
@@ -210,22 +252,34 @@ const CompactResumeBuilder: React.FC = () => {
                             <span>📅 ${edu.year}</span>
                           </div>
                         </div>
-                      `).join('')}
+                      `,
+                        )
+                        .join("")}
                     </div>
-                  ` : ''}
+                  `
+                      : ""
+                  }
                   
-                  ${resumeData.projects.length > 0 ? `
+                  ${
+                    resumeData.projects.length > 0
+                      ? `
                     <div class="content-section">
                       <h2>PROJECTS</h2>
-                      ${resumeData.projects.map(project => `
+                      ${resumeData.projects
+                        .map(
+                          (project) => `
                         <div style="margin-bottom: 1rem;">
                           <h3 style="font-size: 1.125rem; font-weight: bold; color: #1F2937; margin-bottom: 0.5rem;">${project.name}</h3>
                           <p style="color: #374151; margin-bottom: 0.5rem;">${project.description}</p>
                           <p style="color: #2563EB; font-weight: 500;">Technologies: ${project.technologies}</p>
                         </div>
-                      `).join('')}
+                      `,
+                        )
+                        .join("")}
                     </div>
-                  ` : ''}
+                  `
+                      : ""
+                  }
                 </div>
               </div>
             </div>
@@ -263,68 +317,100 @@ const CompactResumeBuilder: React.FC = () => {
             </div>
           </div>
           
-          ${resumeData.personalInfo.summary ? `
+          ${
+            resumeData.personalInfo.summary
+              ? `
             <div class="section">
               <h2>Professional Summary</h2>
               <p>${resumeData.personalInfo.summary}</p>
             </div>
-          ` : ''}
+          `
+              : ""
+          }
           
-          ${resumeData.experience.length > 0 ? `
+          ${
+            resumeData.experience.length > 0
+              ? `
             <div class="section">
               <h2>Experience</h2>
-              ${resumeData.experience.map(exp => `
+              ${resumeData.experience
+                .map(
+                  (exp) => `
                 <div class="experience-item">
                   <h3>${exp.position} at ${exp.company}</h3>
                   <p><strong>${exp.duration}</strong></p>
                   <p>${exp.description}</p>
                 </div>
-              `).join('')}
+              `,
+                )
+                .join("")}
             </div>
-          ` : ''}
+          `
+              : ""
+          }
           
-          ${resumeData.education.length > 0 ? `
+          ${
+            resumeData.education.length > 0
+              ? `
             <div class="section">
               <h2>Education</h2>
-              ${resumeData.education.map(edu => `
+              ${resumeData.education
+                .map(
+                  (edu) => `
                 <div class="education-item">
                   <h3>${edu.degree}</h3>
                   <p>${edu.institution} - ${edu.year}</p>
                 </div>
-              `).join('')}
+              `,
+                )
+                .join("")}
             </div>
-          ` : ''}
+          `
+              : ""
+          }
           
-          ${resumeData.skills.technical.length > 0 ? `
+          ${
+            resumeData.skills.technical.length > 0
+              ? `
             <div class="section">
               <h2>Skills</h2>
               <div class="skills">
-                ${resumeData.skills.technical.map(skill => `<span class="skill">${skill}</span>`).join('')}
+                ${resumeData.skills.technical.map((skill) => `<span class="skill">${skill}</span>`).join("")}
               </div>
             </div>
-          ` : ''}
+          `
+              : ""
+          }
           
-          ${resumeData.projects.length > 0 ? `
+          ${
+            resumeData.projects.length > 0
+              ? `
             <div class="section">
               <h2>Projects</h2>
-              ${resumeData.projects.map(project => `
+              ${resumeData.projects
+                .map(
+                  (project) => `
                 <div class="project-item">
                   <h3>${project.name}</h3>
                   <p>${project.description}</p>
                   <p><strong>Technologies:</strong> ${project.technologies}</p>
                 </div>
-              `).join('')}
+              `,
+                )
+                .join("")}
             </div>
-          ` : ''}
+          `
+              : ""
+          }
         </body>
       </html>
     `;
 
-    const blob = new Blob([resumeHTML], { type: 'text/html' });
+    const blob = new Blob([resumeHTML], { type: "text/html" });
     const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
+    const a = document.createElement("a");
     a.href = url;
-    a.download = `${resumeData.personalInfo.fullName || 'Resume'}.html`;
+    a.download = `${resumeData.personalInfo.fullName || "Resume"}.html`;
     a.click();
     URL.revokeObjectURL(url);
   };
@@ -335,12 +421,18 @@ const CompactResumeBuilder: React.FC = () => {
       <div className="p-4 border-b border-border">
         <div className="flex items-center justify-between">
           <div>
-            <h3 className="text-lg font-semibold text-foreground">Compact AI Resume Builder</h3>
-            <p className="text-sm text-muted-foreground">Quick form-based resume creation with AI assistance</p>
+            <h3 className="text-lg font-semibold text-foreground">
+              Compact AI Resume Builder
+            </h3>
+            <p className="text-sm text-muted-foreground">
+              Quick form-based resume creation with AI assistance
+            </p>
           </div>
-          <Button 
-            onClick={() => askAI("Help me improve my resume content and formatting")}
-            variant="outline" 
+          <Button
+            onClick={() =>
+              askAI("Help me improve my resume content and formatting")
+            }
+            variant="outline"
             size="sm"
           >
             <MessageCircle className="h-4 w-4 mr-1" />
@@ -362,55 +454,65 @@ const CompactResumeBuilder: React.FC = () => {
               <User className="h-4 w-4" />
               Personal Information
             </h4>
-            
+
             <div className="grid grid-cols-1 gap-3">
               <div>
                 <Label htmlFor="name">Full Name</Label>
                 <Input
                   id="name"
                   value={resumeData.personalInfo.fullName}
-                  onChange={(e) => updatePersonalInfo({ fullName: e.target.value })}
+                  onChange={(e) =>
+                    updatePersonalInfo({ fullName: e.target.value })
+                  }
                   placeholder="John Doe"
                 />
               </div>
-              
+
               <div>
                 <Label htmlFor="email">Email</Label>
                 <Input
                   id="email"
                   type="email"
                   value={resumeData.personalInfo.email}
-                  onChange={(e) => updatePersonalInfo({ email: e.target.value })}
+                  onChange={(e) =>
+                    updatePersonalInfo({ email: e.target.value })
+                  }
                   placeholder="john@example.com"
                 />
               </div>
-              
+
               <div>
                 <Label htmlFor="phone">Phone</Label>
                 <Input
                   id="phone"
                   value={resumeData.personalInfo.phone}
-                  onChange={(e) => updatePersonalInfo({ phone: e.target.value })}
+                  onChange={(e) =>
+                    updatePersonalInfo({ phone: e.target.value })
+                  }
                   placeholder="+1 (555) 123-4567"
                 />
               </div>
-              
+
               <div>
                 <Label htmlFor="location">Location</Label>
                 <Input
                   id="location"
                   value={resumeData.personalInfo.address}
-                  onChange={(e) => updatePersonalInfo({ address: e.target.value })}
+                  onChange={(e) =>
+                    updatePersonalInfo({ address: e.target.value })
+                  }
                   placeholder="City, State"
                 />
               </div>
-              
+
               <div>
                 <Label htmlFor="summary">Professional Summary</Label>
                 <Textarea
                   id="summary"
                   value={resumeData.personalInfo.summary}
-                  onChange={(e) => updatePersonalInfo({ summary: e.target.value })}
+                  onChange={(e) =>
+                    updatePersonalInfo({ summary: e.target.value })
+                  }
                   placeholder="Brief summary of your professional background..."
                   rows={3}
                 />
@@ -426,19 +528,19 @@ const CompactResumeBuilder: React.FC = () => {
             className="space-y-4"
           >
             <h4 className="font-medium text-foreground">Skills</h4>
-            
+
             <div className="flex gap-2">
               <Input
                 value={newSkill}
                 onChange={(e) => setNewSkill(e.target.value)}
                 placeholder="Add a skill..."
-                onKeyPress={(e) => e.key === 'Enter' && addSkill()}
+                onKeyPress={(e) => e.key === "Enter" && addSkill()}
               />
               <Button onClick={addSkill} size="sm">
                 <Plus className="h-4 w-4" />
               </Button>
             </div>
-            
+
             <div className="flex flex-wrap gap-2">
               {resumeData.skills.technical.map((skill, index) => (
                 <div
@@ -473,9 +575,12 @@ const CompactResumeBuilder: React.FC = () => {
                 Add
               </Button>
             </div>
-            
+
             {resumeData.experience.map((exp) => (
-              <div key={exp.id} className="p-3 border border-border rounded-lg space-y-2">
+              <div
+                key={exp.id}
+                className="p-3 border border-border rounded-lg space-y-2"
+              >
                 <div className="flex justify-between">
                   <h5 className="font-medium">Experience</h5>
                   <Button
@@ -486,26 +591,34 @@ const CompactResumeBuilder: React.FC = () => {
                     <Trash2 className="h-4 w-4" />
                   </Button>
                 </div>
-                
+
                 <div className="grid grid-cols-1 gap-2">
                   <Input
                     value={exp.company}
-                    onChange={(e) => updateExperience(exp.id, { company: e.target.value })}
+                    onChange={(e) =>
+                      updateExperience(exp.id, { company: e.target.value })
+                    }
                     placeholder="Company Name"
                   />
                   <Input
                     value={exp.position}
-                    onChange={(e) => updateExperience(exp.id, { position: e.target.value })}
+                    onChange={(e) =>
+                      updateExperience(exp.id, { position: e.target.value })
+                    }
                     placeholder="Job Title"
                   />
                   <Input
                     value={exp.duration}
-                    onChange={(e) => updateExperience(exp.id, { duration: e.target.value })}
+                    onChange={(e) =>
+                      updateExperience(exp.id, { duration: e.target.value })
+                    }
                     placeholder="Jan 2020 - Present"
                   />
                   <Textarea
                     value={exp.description}
-                    onChange={(e) => updateExperience(exp.id, { description: e.target.value })}
+                    onChange={(e) =>
+                      updateExperience(exp.id, { description: e.target.value })
+                    }
                     placeholder="Describe your responsibilities and achievements..."
                     rows={2}
                   />
@@ -528,9 +641,12 @@ const CompactResumeBuilder: React.FC = () => {
                 Add
               </Button>
             </div>
-            
+
             {resumeData.education.map((edu) => (
-              <div key={edu.id} className="p-3 border border-border rounded-lg space-y-2">
+              <div
+                key={edu.id}
+                className="p-3 border border-border rounded-lg space-y-2"
+              >
                 <div className="flex justify-between">
                   <h5 className="font-medium">Education</h5>
                   <Button
@@ -541,21 +657,27 @@ const CompactResumeBuilder: React.FC = () => {
                     <Trash2 className="h-4 w-4" />
                   </Button>
                 </div>
-                
+
                 <div className="grid grid-cols-1 gap-2">
                   <Input
                     value={edu.institution}
-                    onChange={(e) => updateEducation(edu.id, { institution: e.target.value })}
+                    onChange={(e) =>
+                      updateEducation(edu.id, { institution: e.target.value })
+                    }
                     placeholder="University/College Name"
                   />
                   <Input
                     value={edu.degree}
-                    onChange={(e) => updateEducation(edu.id, { degree: e.target.value })}
+                    onChange={(e) =>
+                      updateEducation(edu.id, { degree: e.target.value })
+                    }
                     placeholder="Degree/Certification"
                   />
                   <Input
                     value={edu.year}
-                    onChange={(e) => updateEducation(edu.id, { year: e.target.value })}
+                    onChange={(e) =>
+                      updateEducation(edu.id, { year: e.target.value })
+                    }
                     placeholder="Graduation Year"
                   />
                 </div>
@@ -577,9 +699,12 @@ const CompactResumeBuilder: React.FC = () => {
                 Add
               </Button>
             </div>
-            
+
             {resumeData.projects.map((project) => (
-              <div key={project.id} className="p-3 border border-border rounded-lg space-y-2">
+              <div
+                key={project.id}
+                className="p-3 border border-border rounded-lg space-y-2"
+              >
                 <div className="flex justify-between">
                   <h5 className="font-medium">Project</h5>
                   <Button
@@ -590,22 +715,30 @@ const CompactResumeBuilder: React.FC = () => {
                     <Trash2 className="h-4 w-4" />
                   </Button>
                 </div>
-                
+
                 <div className="grid grid-cols-1 gap-2">
                   <Input
                     value={project.name}
-                    onChange={(e) => updateProject(project.id, { name: e.target.value })}
+                    onChange={(e) =>
+                      updateProject(project.id, { name: e.target.value })
+                    }
                     placeholder="Project Name"
                   />
                   <Textarea
                     value={project.description}
-                    onChange={(e) => updateProject(project.id, { description: e.target.value })}
+                    onChange={(e) =>
+                      updateProject(project.id, { description: e.target.value })
+                    }
                     placeholder="Project description..."
                     rows={2}
                   />
                   <Input
                     value={project.technologies}
-                    onChange={(e) => updateProject(project.id, { technologies: e.target.value })}
+                    onChange={(e) =>
+                      updateProject(project.id, {
+                        technologies: e.target.value,
+                      })
+                    }
                     placeholder="Technologies used (React, Node.js, etc.)"
                   />
                 </div>
@@ -633,9 +766,13 @@ const CompactResumeBuilder: React.FC = () => {
             </ScrollArea>
           </DialogContent>
         </Dialog>
-        
+
         <div className="grid grid-cols-2 gap-2">
-          <Button onClick={generateProfessionalResume} variant="outline" size="sm">
+          <Button
+            onClick={generateProfessionalResume}
+            variant="outline"
+            size="sm"
+          >
             <FileText className="h-4 w-4 mr-1" />
             Professional
           </Button>

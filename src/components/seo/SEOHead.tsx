@@ -1,5 +1,5 @@
-import React from 'react';
-import { Helmet } from 'react-helmet-async';
+import React from "react";
+import { Helmet } from "react-helmet-async";
 
 interface SEOHeadProps {
   title?: string;
@@ -9,10 +9,10 @@ interface SEOHeadProps {
 }
 
 export const SEOHead: React.FC<SEOHeadProps> = ({
-  title = 'NKR Library — Free Tech Tutorials, Scam Awareness & Student Websites',
-  description = 'Master software skills with free tutorials, stay safe from digital scams, and get custom websites. NKR Library empowers students with practical tech education.',
-  image = '/og-image.png',
-  url = 'https://nkrlibrary.com'
+  title = "NKR Library — Free Tech Tutorials, Scam Awareness & Student Websites",
+  description = "Master software skills with free tutorials, stay safe from digital scams, and get custom websites. NKR Library empowers students with practical tech education.",
+  image = "/og-image.png",
+  url = "https://nkrlibrary.com",
 }) => {
   return (
     <Helmet>

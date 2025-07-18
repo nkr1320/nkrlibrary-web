@@ -291,9 +291,7 @@ const VideoShowcase = React.memo(() => {
               <ElasticText delay={0.2}>{t("videoShowcase.header")}</ElasticText>
             </h2>
             {/* Subtitle is perfectly centered using flex and text-center */}
-            <p
-              className="text-lg sm:text-xl text-muted-foreground max-w-2xl mb-6 sm:mb-8 px-4 text-center"
-            >
+            <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mb-6 sm:mb-8 px-4 text-center">
               {t("videoShowcase.subtitle")}
             </p>
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>

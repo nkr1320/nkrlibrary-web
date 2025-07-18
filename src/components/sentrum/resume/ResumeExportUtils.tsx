@@ -1,7 +1,9 @@
-import { ResumeData } from '@/types/resume';
+import { ResumeData } from "@/types/resume";
 
-export const generateProfessionalResumeHTML = (resumeData: ResumeData): void => {
-  const newWindow = window.open('', '_blank');
+export const generateProfessionalResumeHTML = (
+  resumeData: ResumeData,
+): void => {
+  const newWindow = window.open("", "_blank");
   if (newWindow) {
     newWindow.document.write(`
       <!DOCTYPE html>
@@ -52,24 +54,26 @@ export const generateProfessionalResumeHTML = (resumeData: ResumeData): void => 
                   <h3>CONTACT</h3>
                   <div class="contact-item">
                     <span>📧</span>
-                    <span>${resumeData.personalInfo.email || 'email@example.com'}</span>
+                    <span>${resumeData.personalInfo.email || "email@example.com"}</span>
                   </div>
                   <div class="contact-item">
                     <span>📱</span>
-                    <span>${resumeData.personalInfo.phone || '+1 (555) 123-4567'}</span>
+                    <span>${resumeData.personalInfo.phone || "+1 (555) 123-4567"}</span>
                   </div>
                   <div class="contact-item">
                     <span>📍</span>
-                    <span>${resumeData.personalInfo.address || 'City, State'}</span>
+                    <span>${resumeData.personalInfo.address || "City, State"}</span>
                   </div>
                 </div>
                 
                 <div class="section">
                   <h3>SKILLS</h3>
-                  ${resumeData.skills.technical.slice(0, 8).map((skill, index) => {
-                    const levels = [90, 85, 80, 75, 95, 70, 88, 82];
-                    const level = levels[index % levels.length] || 80;
-                    return `
+                  ${resumeData.skills.technical
+                    .slice(0, 8)
+                    .map((skill, index) => {
+                      const levels = [90, 85, 80, 75, 95, 70, 88, 82];
+                      const level = levels[index % levels.length] || 80;
+                      return `
                       <div class="skill-item">
                         <div style="display: flex; justify-content: space-between; font-size: 0.875rem;">
                           <span>${skill}</span>
@@ -80,7 +84,8 @@ export const generateProfessionalResumeHTML = (resumeData: ResumeData): void => 
                         </div>
                       </div>
                     `;
-                  }).join('')}
+                    })
+                    .join("")}
                 </div>
                 
                 <div class="section">
@@ -104,21 +109,25 @@ export const generateProfessionalResumeHTML = (resumeData: ResumeData): void => 
               
               <div class="content">
                 <div style="border-bottom: 1px solid #E5E7EB; padding-bottom: 1.5rem; margin-bottom: 2rem;">
-                  <h1 class="main-title">${resumeData.personalInfo.fullName || 'John Doe'}</h1>
-                  <p class="job-title">${resumeData.experience[0]?.position || 'Professional Title'}</p>
+                  <h1 class="main-title">${resumeData.personalInfo.fullName || "John Doe"}</h1>
+                  <p class="job-title">${resumeData.experience[0]?.position || "Professional Title"}</p>
                 </div>
                 
                 <div class="content-section">
                   <h2>OBJECTIVE</h2>
                   <p style="color: #374151; line-height: 1.6;">
-                    ${resumeData.personalInfo.summary || 'Dedicated professional with extensive experience in delivering high-quality solutions and driving organizational success through innovative approaches and collaborative teamwork.'}
+                    ${resumeData.personalInfo.summary || "Dedicated professional with extensive experience in delivering high-quality solutions and driving organizational success through innovative approaches and collaborative teamwork."}
                   </p>
                 </div>
                 
-                ${resumeData.experience.length > 0 ? `
+                ${
+                  resumeData.experience.length > 0
+                    ? `
                   <div class="content-section">
                     <h2>EXPERIENCE</h2>
-                    ${resumeData.experience.map(exp => `
+                    ${resumeData.experience
+                      .map(
+                        (exp) => `
                       <div class="timeline-item">
                         <div class="timeline-dot"></div>
                         <h3 style="font-size: 1.125rem; font-weight: bold; color: #1F2937; margin-bottom: 0.5rem;">${exp.position}</h3>
@@ -128,14 +137,22 @@ export const generateProfessionalResumeHTML = (resumeData: ResumeData): void => 
                         </div>
                         <p style="color: #374151; line-height: 1.6;">${exp.description}</p>
                       </div>
-                    `).join('')}
+                    `,
+                      )
+                      .join("")}
                   </div>
-                ` : ''}
+                `
+                    : ""
+                }
                 
-                ${resumeData.education.length > 0 ? `
+                ${
+                  resumeData.education.length > 0
+                    ? `
                   <div class="content-section">
                     <h2>EDUCATION</h2>
-                    ${resumeData.education.map(edu => `
+                    ${resumeData.education
+                      .map(
+                        (edu) => `
                       <div style="margin-bottom: 1rem;">
                         <h3 style="font-size: 1.125rem; font-weight: bold; color: #1F2937; margin-bottom: 0.5rem;">${edu.degree}</h3>
                         <div style="display: flex; gap: 1rem; color: #2563EB; font-weight: 500;">
@@ -143,22 +160,34 @@ export const generateProfessionalResumeHTML = (resumeData: ResumeData): void => 
                           <span>📅 ${edu.year}</span>
                         </div>
                       </div>
-                    `).join('')}
+                    `,
+                      )
+                      .join("")}
                   </div>
-                ` : ''}
+                `
+                    : ""
+                }
                 
-                ${resumeData.projects.length > 0 ? `
+                ${
+                  resumeData.projects.length > 0
+                    ? `
                   <div class="content-section">
                     <h2>PROJECTS</h2>
-                    ${resumeData.projects.map(project => `
+                    ${resumeData.projects
+                      .map(
+                        (project) => `
                       <div style="margin-bottom: 1rem;">
                         <h3 style="font-size: 1.125rem; font-weight: bold; color: #1F2937; margin-bottom: 0.5rem;">${project.name}</h3>
                         <p style="color: #374151; margin-bottom: 0.5rem;">${project.description}</p>
                         <p style="color: #2563EB; font-weight: 500;">Technologies: ${project.technologies}</p>
                       </div>
-                    `).join('')}
+                    `,
+                      )
+                      .join("")}
                   </div>
-                ` : ''}
+                `
+                    : ""
+                }
               </div>
             </div>
           </div>
@@ -196,68 +225,100 @@ export const generateBasicResumeHTML = (resumeData: ResumeData): void => {
           </div>
         </div>
         
-        ${resumeData.personalInfo.summary ? `
+        ${
+          resumeData.personalInfo.summary
+            ? `
           <div class="section">
             <h2>Professional Summary</h2>
             <p>${resumeData.personalInfo.summary}</p>
           </div>
-        ` : ''}
+        `
+            : ""
+        }
         
-        ${resumeData.experience.length > 0 ? `
+        ${
+          resumeData.experience.length > 0
+            ? `
           <div class="section">
             <h2>Experience</h2>
-            ${resumeData.experience.map(exp => `
+            ${resumeData.experience
+              .map(
+                (exp) => `
               <div class="experience-item">
                 <h3>${exp.position} at ${exp.company}</h3>
                 <p><strong>${exp.duration}</strong></p>
                 <p>${exp.description}</p>
               </div>
-            `).join('')}
+            `,
+              )
+              .join("")}
           </div>
-        ` : ''}
+        `
+            : ""
+        }
         
-        ${resumeData.education.length > 0 ? `
+        ${
+          resumeData.education.length > 0
+            ? `
           <div class="section">
             <h2>Education</h2>
-            ${resumeData.education.map(edu => `
+            ${resumeData.education
+              .map(
+                (edu) => `
               <div class="education-item">
                 <h3>${edu.degree}</h3>
                 <p>${edu.institution} - ${edu.year}</p>
               </div>
-            `).join('')}
+            `,
+              )
+              .join("")}
           </div>
-        ` : ''}
+        `
+            : ""
+        }
         
-        ${resumeData.skills.technical.length > 0 ? `
+        ${
+          resumeData.skills.technical.length > 0
+            ? `
           <div class="section">
             <h2>Skills</h2>
             <div class="skills">
-              ${resumeData.skills.technical.map(skill => `<span class="skill">${skill}</span>`).join('')}
+              ${resumeData.skills.technical.map((skill) => `<span class="skill">${skill}</span>`).join("")}
             </div>
           </div>
-        ` : ''}
+        `
+            : ""
+        }
         
-        ${resumeData.projects.length > 0 ? `
+        ${
+          resumeData.projects.length > 0
+            ? `
           <div class="section">
             <h2>Projects</h2>
-            ${resumeData.projects.map(project => `
+            ${resumeData.projects
+              .map(
+                (project) => `
               <div class="project-item">
                 <h3>${project.name}</h3>
                 <p>${project.description}</p>
                 <p><strong>Technologies:</strong> ${project.technologies}</p>
               </div>
-            `).join('')}
+            `,
+              )
+              .join("")}
           </div>
-        ` : ''}
+        `
+            : ""
+        }
       </body>
     </html>
   `;
 
-  const blob = new Blob([resumeHTML], { type: 'text/html' });
+  const blob = new Blob([resumeHTML], { type: "text/html" });
   const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
+  const a = document.createElement("a");
   a.href = url;
-  a.download = `${resumeData.personalInfo.fullName || 'Resume'}.html`;
+  a.download = `${resumeData.personalInfo.fullName || "Resume"}.html`;
   a.click();
   URL.revokeObjectURL(url);
 };

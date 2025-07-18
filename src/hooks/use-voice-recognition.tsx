@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useRef } from 'react';
+import { useState, useEffect, useCallback, useRef } from "react";
 
 interface VoiceRecognitionHook {
   isListening: boolean;
@@ -45,7 +45,7 @@ declare global {
 
 export const useVoiceRecognition = (
   onWakeWord: () => void,
-  wakeWord: string = 'sentrum'
+  wakeWord: string = "sentrum",
 ): VoiceRecognitionHook => {
   const [isListening, setIsListening] = useState(false);
   const [isSupported, setIsSupported] = useState(false);
@@ -53,17 +53,18 @@ export const useVoiceRecognition = (
   const recognitionRef = useRef<SpeechRecognition | null>(null);
 
   useEffect(() => {
-    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    const SpeechRecognition =
+      window.SpeechRecognition || window.webkitSpeechRecognition;
     setIsSupported(!!SpeechRecognition);
 
     if (SpeechRecognition) {
       const recognition = new SpeechRecognition();
       recognition.continuous = true;
       recognition.interimResults = true;
-      recognition.lang = 'en-US';
+      recognition.lang = "en-US";
 
       recognition.onresult = (event: SpeechRecognitionEvent) => {
-        let transcript = '';
+        let transcript = "";
         for (let i = 0; i < event.results.length; i++) {
           transcript += event.results[i][0].transcript;
         }

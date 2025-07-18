@@ -2,7 +2,18 @@ import React from "react";
 import { motion } from "framer-motion";
 import { HelmetProvider, Helmet } from "react-helmet-async";
 import { Card, CardContent } from "@/components/ui/card";
-import { Shield, AlertTriangle, Smartphone, Mail, KeyRound, Bug, FileWarning, Frown, ArrowLeft, CheckCircle } from "lucide-react";
+import {
+  Shield,
+  AlertTriangle,
+  Smartphone,
+  Mail,
+  KeyRound,
+  Bug,
+  FileWarning,
+  Frown,
+  ArrowLeft,
+  CheckCircle,
+} from "lucide-react";
 import { Link } from "react-router-dom";
 import { MagneticCard } from "@/components/ui/magnetic-card";
 import { ElasticText } from "@/components/ui/elastic-text";
@@ -357,7 +368,9 @@ const CyberScams = () => {
                                   <h3 className="text-xl font-bold mb-2">
                                     {scam.title}
                                   </h3>
-                                  <span className="inline-block px-2 py-0.5 rounded-full bg-muted text-xs font-medium border">{scam.severity.toUpperCase()}</span>
+                                  <span className="inline-block px-2 py-0.5 rounded-full bg-muted text-xs font-medium border">
+                                    {scam.severity.toUpperCase()}
+                                  </span>
                                   <p className="text-muted-foreground mt-3 text-sm leading-relaxed">
                                     {scam.description}
                                   </p>

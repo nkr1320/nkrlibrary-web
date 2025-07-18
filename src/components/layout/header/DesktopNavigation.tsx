@@ -45,17 +45,15 @@ const DesktopNavigation: React.FC<DesktopNavigationProps> = ({ navItems }) => {
                 Blog
               </button>
               {blogOpen && (
-                <div
-                  className="absolute left-0 mt-2 w-40 bg-white dark:bg-gray-900 border border-border rounded shadow-lg z-50"
-                >
+                <div className="absolute left-0 mt-2 w-40 bg-white dark:bg-gray-900 border border-border rounded shadow-lg z-50">
                   {[...Array(10)].map((_, i) => (
                     <Link
-                      key={`blog${i+1}`}
-                      to={`/blog${i+1}`}
-                      className={`block px-4 py-2 text-sm hover:bg-primary/10 ${location.pathname === `/blog${i+1}` ? "text-primary font-semibold" : "text-muted-foreground"}`}
+                      key={`blog${i + 1}`}
+                      to={`/blog${i + 1}`}
+                      className={`block px-4 py-2 text-sm hover:bg-primary/10 ${location.pathname === `/blog${i + 1}` ? "text-primary font-semibold" : "text-muted-foreground"}`}
                       onClick={() => setBlogOpen(false)}
                     >
-                      Blog {i+1}
+                      Blog {i + 1}
                     </Link>
                   ))}
                 </div>
@@ -70,7 +68,7 @@ const DesktopNavigation: React.FC<DesktopNavigationProps> = ({ navItems }) => {
                   : "text-muted-foreground"
               }`}
               style={{ minWidth: 0, maxWidth: "100%", whiteSpace: "nowrap" }}
-              onClick={e => {
+              onClick={(e) => {
                 if (location.pathname === item.path) {
                   window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
                   e.preventDefault();

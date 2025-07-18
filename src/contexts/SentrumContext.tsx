@@ -111,15 +111,20 @@ export const SentrumProvider: React.FC<SentrumProviderProps> = ({
         video.title.toLowerCase().includes(normalizedQuery) ||
         video.description?.toLowerCase().includes(normalizedQuery) ||
         video.category.toLowerCase().includes(normalizedQuery) ||
-        video.keywords?.some((k) => k.toLowerCase().includes(normalizedQuery))
+        video.keywords?.some((k) => k.toLowerCase().includes(normalizedQuery)),
     );
     const results = filtered
       .map((video) => {
         let relevance = 0;
         if (video.title.toLowerCase().includes(normalizedQuery)) relevance += 3;
-        if (video.description?.toLowerCase().includes(normalizedQuery)) relevance += 2;
-        if (video.category.toLowerCase().includes(normalizedQuery)) relevance += 2;
-        if (video.keywords?.some((k) => k.toLowerCase().includes(normalizedQuery))) relevance += 1;
+        if (video.description?.toLowerCase().includes(normalizedQuery))
+          relevance += 2;
+        if (video.category.toLowerCase().includes(normalizedQuery))
+          relevance += 2;
+        if (
+          video.keywords?.some((k) => k.toLowerCase().includes(normalizedQuery))
+        )
+          relevance += 1;
         return { video, relevance };
       })
       .sort((a, b) => b.relevance - a.relevance);

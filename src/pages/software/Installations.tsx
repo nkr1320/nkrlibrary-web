@@ -1,10 +1,10 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
-import { Download, Code, Globe, Palette } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { motion } from "framer-motion";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Download, Code, Globe, Palette } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Installations = () => {
   const containerVariants = {
@@ -32,50 +32,79 @@ const Installations = () => {
       title: "Git Installation & Setup",
       icon: Code,
       description: "Complete guide to installing Git for version control",
-      steps: ["Download Git for Windows", "Configure user settings", "Set up SSH keys", "First repository setup"],
+      steps: [
+        "Download Git for Windows",
+        "Configure user settings",
+        "Set up SSH keys",
+        "First repository setup",
+      ],
       difficulty: "Intermediate",
-      timeEstimate: "30 minutes"
+      timeEstimate: "30 minutes",
     },
     {
       title: "Node.js & NPM Setup",
       icon: Globe,
       description: "Install Node.js runtime and package manager",
-      steps: ["Download LTS version", "Verify installation", "Update NPM", "Global packages setup"],
+      steps: [
+        "Download LTS version",
+        "Verify installation",
+        "Update NPM",
+        "Global packages setup",
+      ],
       difficulty: "Beginner",
-      timeEstimate: "15 minutes"
+      timeEstimate: "15 minutes",
     },
     {
       title: "React JS Development Environment",
       icon: Code,
       description: "Set up complete React development workflow",
-      steps: ["Create React App", "VSCode extensions", "Development tools", "Project structure"],
+      steps: [
+        "Create React App",
+        "VSCode extensions",
+        "Development tools",
+        "Project structure",
+      ],
       difficulty: "Intermediate",
-      timeEstimate: "45 minutes"
+      timeEstimate: "45 minutes",
     },
     {
       title: "Windows Development Setup",
       icon: Download,
       description: "Essential development tools for Windows",
-      steps: ["Windows Subsystem for Linux", "PowerShell setup", "Development fonts", "Terminal configuration"],
+      steps: [
+        "Windows Subsystem for Linux",
+        "PowerShell setup",
+        "Development fonts",
+        "Terminal configuration",
+      ],
       difficulty: "Advanced",
-      timeEstimate: "60 minutes"
+      timeEstimate: "60 minutes",
     },
     {
       title: "Bootstrap Framework",
       icon: Palette,
       description: "Install and configure Bootstrap for responsive design",
-      steps: ["CDN vs NPM installation", "Custom theming", "Component usage", "Build optimization"],
+      steps: [
+        "CDN vs NPM installation",
+        "Custom theming",
+        "Component usage",
+        "Build optimization",
+      ],
       difficulty: "Beginner",
-      timeEstimate: "20 minutes"
-    }
+      timeEstimate: "20 minutes",
+    },
   ];
 
   const quickInstalls = [
     { name: "Visual Studio Code", category: "Code Editor", status: "Popular" },
     { name: "Chrome DevTools", category: "Debugging", status: "Essential" },
     { name: "Postman", category: "API Testing", status: "Recommended" },
-    { name: "Docker Desktop", category: "Containerization", status: "Advanced" },
-    { name: "MongoDB Compass", category: "Database", status: "Useful" }
+    {
+      name: "Docker Desktop",
+      category: "Containerization",
+      status: "Advanced",
+    },
+    { name: "MongoDB Compass", category: "Database", status: "Useful" },
   ];
 
   return (
@@ -89,9 +118,16 @@ const Installations = () => {
         {/* Breadcrumb */}
         <motion.nav variants={itemVariants} className="mb-6">
           <div className="flex items-center space-x-2 text-sm text-muted-foreground">
-            <Link to="/" className="hover:text-foreground transition-colors">Home</Link>
+            <Link to="/" className="hover:text-foreground transition-colors">
+              Home
+            </Link>
             <span>/</span>
-            <Link to="/#software" className="hover:text-foreground transition-colors">Software</Link>
+            <Link
+              to="/#software"
+              className="hover:text-foreground transition-colors"
+            >
+              Software
+            </Link>
             <span>/</span>
             <span className="text-foreground">Installations</span>
           </div>
@@ -106,14 +142,17 @@ const Installations = () => {
             Software Installation Guides
           </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Master the art of software installation with our comprehensive, step-by-step guides. 
-            From development tools to frameworks, get everything set up correctly.
+            Master the art of software installation with our comprehensive,
+            step-by-step guides. From development tools to frameworks, get
+            everything set up correctly.
           </p>
         </motion.div>
 
         {/* Installation Guides */}
         <motion.div variants={itemVariants} className="mb-12">
-          <h2 className="text-2xl font-bold mb-8 text-center">Detailed Installation Guides</h2>
+          <h2 className="text-2xl font-bold mb-8 text-center">
+            Detailed Installation Guides
+          </h2>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {installationGuides.map((guide, index) => (
               <motion.div
@@ -132,20 +171,37 @@ const Installations = () => {
                         <CardTitle className="text-lg">{guide.title}</CardTitle>
                       </div>
                       <div className="flex gap-2">
-                        <Badge variant={guide.difficulty === 'Beginner' ? 'default' : guide.difficulty === 'Intermediate' ? 'secondary' : 'destructive'}>
+                        <Badge
+                          variant={
+                            guide.difficulty === "Beginner"
+                              ? "default"
+                              : guide.difficulty === "Intermediate"
+                                ? "secondary"
+                                : "destructive"
+                          }
+                        >
                           {guide.difficulty}
                         </Badge>
                       </div>
                     </div>
-                    <p className="text-muted-foreground mb-2">{guide.description}</p>
-                    <p className="text-sm text-muted-foreground">⏱️ {guide.timeEstimate}</p>
+                    <p className="text-muted-foreground mb-2">
+                      {guide.description}
+                    </p>
+                    <p className="text-sm text-muted-foreground">
+                      ⏱️ {guide.timeEstimate}
+                    </p>
                   </CardHeader>
                   <CardContent>
                     <div className="space-y-3">
-                      <h4 className="font-semibold text-sm">Installation Steps:</h4>
+                      <h4 className="font-semibold text-sm">
+                        Installation Steps:
+                      </h4>
                       <div className="space-y-2">
                         {guide.steps.map((step, stepIndex) => (
-                          <div key={stepIndex} className="flex items-center space-x-3">
+                          <div
+                            key={stepIndex}
+                            className="flex items-center space-x-3"
+                          >
                             <div className="flex items-center justify-center w-6 h-6 bg-primary/10 rounded-full text-primary font-semibold text-xs">
                               {stepIndex + 1}
                             </div>
@@ -178,12 +234,21 @@ const Installations = () => {
             <CardContent>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {quickInstalls.map((tool, index) => (
-                  <div key={index} className="flex items-center justify-between p-4 bg-muted/50 rounded-lg hover:bg-muted transition-colors">
+                  <div
+                    key={index}
+                    className="flex items-center justify-between p-4 bg-muted/50 rounded-lg hover:bg-muted transition-colors"
+                  >
                     <div>
                       <h4 className="font-semibold">{tool.name}</h4>
-                      <p className="text-sm text-muted-foreground">{tool.category}</p>
+                      <p className="text-sm text-muted-foreground">
+                        {tool.category}
+                      </p>
                     </div>
-                    <Badge variant={tool.status === 'Essential' ? 'default' : 'outline'}>
+                    <Badge
+                      variant={
+                        tool.status === "Essential" ? "default" : "outline"
+                      }
+                    >
                       {tool.status}
                     </Badge>
                   </div>
@@ -197,7 +262,9 @@ const Installations = () => {
         <motion.div variants={itemVariants} className="mb-12">
           <Card className="bg-gradient-to-r from-orange-50 to-red-50 dark:from-orange-950/20 dark:to-red-950/20 border-orange-200 dark:border-orange-800">
             <CardHeader>
-              <CardTitle className="text-xl">Installation Troubleshooting</CardTitle>
+              <CardTitle className="text-xl">
+                Installation Troubleshooting
+              </CardTitle>
             </CardHeader>
             <CardContent>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -244,10 +311,13 @@ const Installations = () => {
         <motion.div variants={itemVariants} className="text-center">
           <Card className="bg-gradient-to-r from-primary/5 to-accent/5 border-primary/20">
             <CardContent className="p-8">
-              <h3 className="text-2xl font-bold mb-4">Need Installation Help?</h3>
+              <h3 className="text-2xl font-bold mb-4">
+                Need Installation Help?
+              </h3>
               <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-                Our step-by-step video tutorials make software installation simple and error-free. 
-                Get personalized help if you encounter any issues.
+                Our step-by-step video tutorials make software installation
+                simple and error-free. Get personalized help if you encounter
+                any issues.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button size="lg" className="px-8">

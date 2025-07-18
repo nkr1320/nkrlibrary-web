@@ -9,9 +9,10 @@ const ATSAnalyzer: React.FC = () => {
   const { resumeData } = state;
   const [expanded, setExpanded] = useState<string | false>("overview");
 
-  const handleChange = (panel: string) => (_event: React.SyntheticEvent, isExpanded: boolean) => {
-    setExpanded(isExpanded ? panel : false);
-  };
+  const handleChange =
+    (panel: string) => (_event: React.SyntheticEvent, isExpanded: boolean) => {
+      setExpanded(isExpanded ? panel : false);
+    };
 
   const getScoreColor = (score: number) => {
     if (score >= 80) return "#10b981";
@@ -163,39 +164,68 @@ const ATSAnalyzer: React.FC = () => {
       </div>
       <div className="p-4">
         {/* Overall Score */}
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-6">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="mb-6"
+        >
           <div className="flex items-center justify-between mb-2">
             <h2 className="font-bold text-xl">Overall ATS Score</h2>
-            <span className="rounded-full px-3 py-1 font-bold text-sm" style={{backgroundColor: getScoreColor(analysisResults.overall) + '20', color: getScoreColor(analysisResults.overall)}}>
+            <span
+              className="rounded-full px-3 py-1 font-bold text-sm"
+              style={{
+                backgroundColor: getScoreColor(analysisResults.overall) + "20",
+                color: getScoreColor(analysisResults.overall),
+              }}
+            >
               {getScoreLabel(analysisResults.overall)}
             </span>
           </div>
           <div className="flex items-center gap-4 mb-2">
             <div className="w-full bg-gray-200 rounded-full h-3">
-              <div className="h-3 rounded-full" style={{ width: `${analysisResults.overall}%`, backgroundColor: getScoreColor(analysisResults.overall) }}></div>
+              <div
+                className="h-3 rounded-full"
+                style={{
+                  width: `${analysisResults.overall}%`,
+                  backgroundColor: getScoreColor(analysisResults.overall),
+                }}
+              ></div>
             </div>
-            <span className="font-bold text-lg">{analysisResults.overall}%</span>
+            <span className="font-bold text-lg">
+              {analysisResults.overall}%
+            </span>
           </div>
         </motion.div>
         {/* Section Scores */}
         <div className="mb-6">
           <h3 className="font-semibold mb-2">Section Analysis</h3>
           <ul className="space-y-2">
-            {Object.entries(analysisResults.sections).map(([section, data]: [string, { score: number; issues: string[] }]) => (
-              <li key={section} className="flex items-center gap-3">
-                <span className="font-medium capitalize w-32">{section}</span>
-                <span className="rounded px-2 py-1 text-xs font-semibold" style={{backgroundColor: getScoreColor(data.score) + '20', color: getScoreColor(data.score)}}>
-                  {data.score}%
-                </span>
-                {data.issues.length > 0 && (
-                  <ul className="ml-4 list-disc text-xs text-destructive">
-                    {data.issues.map((issue: string, idx: number) => (
-                      <li key={idx}>{issue}</li>
-                    ))}
-                  </ul>
-                )}
-              </li>
-            ))}
+            {Object.entries(analysisResults.sections).map(
+              ([section, data]: [
+                string,
+                { score: number; issues: string[] },
+              ]) => (
+                <li key={section} className="flex items-center gap-3">
+                  <span className="font-medium capitalize w-32">{section}</span>
+                  <span
+                    className="rounded px-2 py-1 text-xs font-semibold"
+                    style={{
+                      backgroundColor: getScoreColor(data.score) + "20",
+                      color: getScoreColor(data.score),
+                    }}
+                  >
+                    {data.score}%
+                  </span>
+                  {data.issues.length > 0 && (
+                    <ul className="ml-4 list-disc text-xs text-destructive">
+                      {data.issues.map((issue: string, idx: number) => (
+                        <li key={idx}>{issue}</li>
+                      ))}
+                    </ul>
+                  )}
+                </li>
+              ),
+            )}
           </ul>
         </div>
         {/* Recommendations */}
@@ -204,7 +234,8 @@ const ATSAnalyzer: React.FC = () => {
             <ul className="list-disc pl-5">
               {recommendations.map((rec, idx) => (
                 <li key={idx} className="mb-1">
-                  <span className="font-semibold">{rec.title}:</span> {rec.description}
+                  <span className="font-semibold">{rec.title}:</span>{" "}
+                  {rec.description}
                 </li>
               ))}
             </ul>

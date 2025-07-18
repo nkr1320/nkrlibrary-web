@@ -38,16 +38,23 @@ const Resume = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <h1 className="text-4xl md:text-6xl font-bold mb-6">Resume Builder</h1>
+              <h1 className="text-4xl md:text-6xl font-bold mb-6">
+                Resume Builder
+              </h1>
               <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
-                Create professional, ATS-friendly resumes with AI assistance or build manually with our guided wizard.
+                Create professional, ATS-friendly resumes with AI assistance or
+                build manually with our guided wizard.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
                 <Button onClick={handleAIMode} className="flex items-center">
                   <Bot className="mr-2" />
                   Build with AI
                 </Button>
-                <Button onClick={() => setBuildMode("manual")} variant="outline" className="flex items-center">
+                <Button
+                  onClick={() => setBuildMode("manual")}
+                  variant="outline"
+                  className="flex items-center"
+                >
                   <FileText className="mr-2" />
                   Manual Builder
                 </Button>
@@ -58,21 +65,31 @@ const Resume = () => {
                   <CardContent className="p-6 text-center">
                     <Wand2 className="h-12 w-12 text-primary mx-auto mb-4" />
                     <h2 className="font-semibold mb-2 text-lg">AI-Powered</h2>
-                    <p className="text-muted-foreground">Smart suggestions, content optimization, and role-based tailoring</p>
+                    <p className="text-muted-foreground">
+                      Smart suggestions, content optimization, and role-based
+                      tailoring
+                    </p>
                   </CardContent>
                 </Card>
                 <Card className="glass-card">
                   <CardContent className="p-6 text-center">
                     <FileText className="h-12 w-12 text-primary mx-auto mb-4" />
                     <h2 className="font-semibold mb-2 text-lg">ATS-Friendly</h2>
-                    <p className="text-muted-foreground">Optimized for applicant tracking systems with score analysis</p>
+                    <p className="text-muted-foreground">
+                      Optimized for applicant tracking systems with score
+                      analysis
+                    </p>
                   </CardContent>
                 </Card>
                 <Card className="glass-card">
                   <CardContent className="p-6 text-center">
                     <Download className="h-12 w-12 text-primary mx-auto mb-4" />
-                    <h2 className="font-semibold mb-2 text-lg">Multiple Formats</h2>
-                    <p className="text-muted-foreground">Export as PDF, HTML, or generate QR codes for easy sharing</p>
+                    <h2 className="font-semibold mb-2 text-lg">
+                      Multiple Formats
+                    </h2>
+                    <p className="text-muted-foreground">
+                      Export as PDF, HTML, or generate QR codes for easy sharing
+                    </p>
                   </CardContent>
                 </Card>
               </div>

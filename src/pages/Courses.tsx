@@ -1,7 +1,14 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Play, Code, Shield, Globe, GraduationCap, ArrowRight } from "lucide-react";
+import {
+  Play,
+  Code,
+  Shield,
+  Globe,
+  GraduationCap,
+  ArrowRight,
+} from "lucide-react";
 import { SEOHead } from "@/components/seo/SEOHead";
 
 const Courses = () => {
@@ -77,11 +84,7 @@ const Courses = () => {
               cybersecurity.
             </p>
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Button
-                asChild
-                variant="default"
-                size="lg"
-              >
+              <Button asChild variant="default" size="lg">
                 <a
                   href="https://www.youtube.com/@nkrlibrary/playlists"
                   target="_blank"
@@ -185,11 +188,7 @@ const Courses = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <Button
-                  asChild
-                  variant="default"
-                  size="lg"
-                >
+                <Button asChild variant="default" size="lg">
                   <a
                     href="https://www.youtube.com/@nkrlibrary/playlists"
                     target="_blank"
@@ -204,11 +203,7 @@ const Courses = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <Button
-                  asChild
-                  variant="outline"
-                  size="lg"
-                >
+                <Button asChild variant="outline" size="lg">
                   <a href="/contact">Get in Touch</a>
                 </Button>
               </motion.div>

@@ -9,7 +9,7 @@ import { SEOHead } from "@/components/seo/SEOHead";
 import { Card, CardContent } from "@/components/ui/card";
 import { Alert } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
-import DOMPurify from 'dompurify';
+import DOMPurify from "dompurify";
 
 const contactSchema = z.object({
   fullName: z.string().min(1, "Full name is required"),
@@ -303,7 +303,10 @@ const Contact = () => {
                   <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
                     <div className="grid md:grid-cols-2 gap-6">
                       <div className="flex flex-col">
-                        <label htmlFor="fullName" className="text-sm font-medium mb-1">
+                        <label
+                          htmlFor="fullName"
+                          className="text-sm font-medium mb-1"
+                        >
                           Full Name
                         </label>
                         <input
@@ -314,11 +317,16 @@ const Contact = () => {
                           placeholder="Enter your full name"
                         />
                         {errors.fullName && (
-                          <p className="text-red-500 text-xs mt-1">{errors.fullName.message}</p>
+                          <p className="text-red-500 text-xs mt-1">
+                            {errors.fullName.message}
+                          </p>
                         )}
                       </div>
                       <div className="flex flex-col">
-                        <label htmlFor="email" className="text-sm font-medium mb-1">
+                        <label
+                          htmlFor="email"
+                          className="text-sm font-medium mb-1"
+                        >
                           Email Address
                         </label>
                         <input
@@ -329,13 +337,18 @@ const Contact = () => {
                           placeholder="Enter your email address"
                         />
                         {errors.email && (
-                          <p className="text-red-500 text-xs mt-1">{errors.email.message}</p>
+                          <p className="text-red-500 text-xs mt-1">
+                            {errors.email.message}
+                          </p>
                         )}
                       </div>
                     </div>
 
                     <div className="flex flex-col">
-                      <label htmlFor="purpose" className="text-sm font-medium mb-1">
+                      <label
+                        htmlFor="purpose"
+                        className="text-sm font-medium mb-1"
+                      >
                         Purpose
                       </label>
                       <select
@@ -351,12 +364,17 @@ const Contact = () => {
                         ))}
                       </select>
                       {errors.purpose && (
-                        <p className="text-red-500 text-xs mt-1">{errors.purpose.message}</p>
+                        <p className="text-red-500 text-xs mt-1">
+                          {errors.purpose.message}
+                        </p>
                       )}
                     </div>
 
                     <div className="flex flex-col">
-                      <label htmlFor="message" className="text-sm font-medium mb-1">
+                      <label
+                        htmlFor="message"
+                        className="text-sm font-medium mb-1"
+                      >
                         Message
                       </label>
                       <textarea
@@ -367,7 +385,9 @@ const Contact = () => {
                         placeholder="Tell us about your project, question, or how we can help you..."
                       />
                       {errors.message && (
-                        <p className="text-red-500 text-xs mt-1">{errors.message.message}</p>
+                        <p className="text-red-500 text-xs mt-1">
+                          {errors.message.message}
+                        </p>
                       )}
                     </div>
 

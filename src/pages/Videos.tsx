@@ -161,7 +161,9 @@ const Videos = () => {
                   {categories.map((category) => (
                     <button
                       key={category.key}
-                      onClick={(event) => handleTabChange(event, categories.indexOf(category))}
+                      onClick={(event) =>
+                        handleTabChange(event, categories.indexOf(category))
+                      }
                       className={`flex items-center space-x-2 px-3 py-2 rounded-md text-lg font-medium transition-colors ${
                         activeTab === categories.indexOf(category)
                           ? "bg-primary text-primary-foreground"

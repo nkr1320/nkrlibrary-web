@@ -1,25 +1,25 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Search, X, Clock, TrendingUp, ArrowRight } from 'lucide-react';
-import { Input } from '@/components/ui/input';
-import { Button } from '@/components/ui/button';
-import { useSearch } from '@/hooks/use-search';
-import { useNavigate } from 'react-router-dom';
-import { useIsMobile } from '@/hooks/use-mobile';
-import { cn } from '@/lib/utils';
+import React, { useState, useRef, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Search, X, Clock, TrendingUp, ArrowRight } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { useSearch } from "@/hooks/use-search";
+import { useNavigate } from "react-router-dom";
+import { useIsMobile } from "@/hooks/use-mobile";
+import { cn } from "@/lib/utils";
 
 interface SearchBarProps {
   className?: string;
   placeholder?: string;
   onSearchFocus?: (focused: boolean) => void;
-  variant?: 'header' | 'page';
+  variant?: "header" | "page";
 }
 
 export const SearchBar: React.FC<SearchBarProps> = ({
-  className = '',
-  placeholder = 'Search videos...',
+  className = "",
+  placeholder = "Search videos...",
   onSearchFocus,
-  variant = 'header'
+  variant = "header",
 }) => {
   const [isFocused, setIsFocused] = useState(false);
   const [showSuggestions, setShowSuggestions] = useState(false);
@@ -27,7 +27,7 @@ export const SearchBar: React.FC<SearchBarProps> = ({
   const searchRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
   const isMobile = useIsMobile();
-  
+
   const {
     query,
     setQuery,
@@ -35,7 +35,7 @@ export const SearchBar: React.FC<SearchBarProps> = ({
     getSuggestions,
     recentSearches,
     addToRecentSearches,
-    clearRecentSearches
+    clearRecentSearches,
   } = useSearch();
 
   const suggestions = getSuggestions(query);
@@ -44,15 +44,15 @@ export const SearchBar: React.FC<SearchBarProps> = ({
   // Handle search submission
   const handleSearch = (searchTerm: string) => {
     if (!searchTerm.trim()) return;
-    
+
     addToRecentSearches(searchTerm);
     setQuery(searchTerm);
     setShowSuggestions(false);
     setIsFocused(false);
-    
+
     // Navigate to videos page with search parameter
     navigate(`/videos?search=${encodeURIComponent(searchTerm)}`);
-    
+
     // Blur input on mobile
     if (isMobile && inputRef.current) {
       inputRef.current.blur();
@@ -83,9 +83,9 @@ export const SearchBar: React.FC<SearchBarProps> = ({
 
   // Handle key press
   const handleKeyPress = (e: React.KeyboardEvent) => {
-    if (e.key === 'Enter') {
+    if (e.key === "Enter") {
       handleSearch(query);
-    } else if (e.key === 'Escape') {
+    } else if (e.key === "Escape") {
       setShowSuggestions(false);
       setIsFocused(false);
       inputRef.current?.blur();
@@ -95,41 +95,44 @@ export const SearchBar: React.FC<SearchBarProps> = ({
   // Close suggestions when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (searchRef.current && !searchRef.current.contains(event.target as Node)) {
+      if (
+        searchRef.current &&
+        !searchRef.current.contains(event.target as Node)
+      ) {
         setShowSuggestions(false);
         setIsFocused(false);
       }
     };
 
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
   const searchVariants = {
     initial: { opacity: 0, y: -10 },
-    animate: { 
-      opacity: 1, 
+    animate: {
+      opacity: 1,
       y: 0,
-      transition: { duration: 0.2 }
+      transition: { duration: 0.2 },
     },
-    exit: { 
-      opacity: 0, 
+    exit: {
+      opacity: 0,
       y: -10,
-      transition: { duration: 0.15 }
-    }
+      transition: { duration: 0.15 },
+    },
   };
 
   const suggestionVariants = {
     initial: { opacity: 0, x: -10 },
-    animate: { 
-      opacity: 1, 
+    animate: {
+      opacity: 1,
       x: 0,
-      transition: { duration: 0.2 }
-    }
+      transition: { duration: 0.2 },
+    },
   };
 
   return (
-    <div ref={searchRef} className={cn('relative', className)}>
+    <div ref={searchRef} className={cn("relative", className)}>
       {/* Search Input */}
       <div className="relative">
         <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
@@ -143,12 +146,12 @@ export const SearchBar: React.FC<SearchBarProps> = ({
           onBlur={handleBlur}
           onKeyDown={handleKeyPress}
           className={cn(
-            'pl-10 pr-10 transition-all duration-200',
-            variant === 'header' 
-              ? 'bg-background/50 backdrop-blur-sm border-border/50 focus:bg-background focus:border-primary/50' 
-              : 'bg-background border-border',
-            isFocused && 'ring-2 ring-primary/20',
-            className
+            "pl-10 pr-10 transition-all duration-200",
+            variant === "header"
+              ? "bg-background/50 backdrop-blur-sm border-border/50 focus:bg-background focus:border-primary/50"
+              : "bg-background border-border",
+            isFocused && "ring-2 ring-primary/20",
+            className,
           )}
         />
         {query && (
@@ -156,7 +159,7 @@ export const SearchBar: React.FC<SearchBarProps> = ({
             variant="ghost"
             size="sm"
             onClick={() => {
-              setQuery('');
+              setQuery("");
               inputRef.current?.focus();
             }}
             className="absolute right-1 top-1/2 transform -translate-y-1/2 h-8 w-8 p-0 hover:bg-muted"
@@ -175,7 +178,7 @@ export const SearchBar: React.FC<SearchBarProps> = ({
             animate="animate"
             exit="exit"
             className="absolute top-full left-0 right-0 mt-2 bg-background/95 backdrop-blur-lg border border-border rounded-lg shadow-2xl z-50 max-h-80 overflow-y-auto"
-            style={{ willChange: 'transform, opacity' }}
+            style={{ willChange: "transform, opacity" }}
           >
             {/* Recent Searches */}
             {!query && hasRecentSearches && (

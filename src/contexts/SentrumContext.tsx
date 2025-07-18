@@ -6,6 +6,7 @@ import React, {
   ReactNode,
 } from "react";
 import { getCriticalVideos, type Video } from "@/lib/video-data-chunks";
+import { useNavigate } from "react-router-dom";
 
 export interface ChatMessage {
   id: string;
@@ -74,6 +75,7 @@ interface SentrumProviderProps {
 export const SentrumProvider: React.FC<SentrumProviderProps> = ({
   children,
 }) => {
+  const navigate = useNavigate();
   const [state, setState] = useState<SentrumState>({
     isOpen: false,
     currentView: "chat",
@@ -103,28 +105,28 @@ export const SentrumProvider: React.FC<SentrumProviderProps> = ({
   const searchContent = useCallback((query: string) => {
     const normalizedQuery = query.toLowerCase();
     const criticalVideos = getCriticalVideos();
-    const results = criticalVideos
+    const filtered = criticalVideos.filter(
+      (video) =>
+        video.title.toLowerCase().includes(normalizedQuery) ||
+        video.description?.toLowerCase().includes(normalizedQuery) ||
+        video.category.toLowerCase().includes(normalizedQuery) ||
+        video.keywords?.some((k) => k.toLowerCase().includes(normalizedQuery))
+    );
+    const results = filtered
       .map((video) => {
         let relevance = 0;
         if (video.title.toLowerCase().includes(normalizedQuery)) relevance += 3;
-        if (video.description?.toLowerCase().includes(normalizedQuery))
-          relevance += 2;
-        if (video.category.toLowerCase().includes(normalizedQuery))
-          relevance += 2;
-        if (
-          video.keywords?.some((k) => k.toLowerCase().includes(normalizedQuery))
-        )
-          relevance += 1;
+        if (video.description?.toLowerCase().includes(normalizedQuery)) relevance += 2;
+        if (video.category.toLowerCase().includes(normalizedQuery)) relevance += 2;
+        if (video.keywords?.some((k) => k.toLowerCase().includes(normalizedQuery))) relevance += 1;
         return { video, relevance };
       })
-      .filter((result) => result.relevance > 0)
       .sort((a, b) => b.relevance - a.relevance);
-
     return results;
-  }, []);
+  }, [navigate]);
 
   const navigateToPage = useCallback((path: string) => {
-    window.location.href = path;
+    navigate(path);
     setState((prev) => ({
       ...prev,
       currentContext: {
@@ -133,7 +135,7 @@ export const SentrumProvider: React.FC<SentrumProviderProps> = ({
         visitedPages: [...prev.currentContext.visitedPages, path],
       },
     }));
-  }, []);
+  }, [navigate]);
 
   // Enhanced content database for comprehensive responses
   const getTopicContent = useCallback((topic: string) => {

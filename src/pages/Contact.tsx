@@ -9,6 +9,7 @@ import { SEOHead } from "@/components/seo/SEOHead";
 import { Card, CardContent } from "@/components/ui/card";
 import { Alert } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
+import DOMPurify from 'dompurify';
 
 const contactSchema = z.object({
   fullName: z.string().min(1, "Full name is required"),
@@ -54,9 +55,14 @@ const Contact = () => {
 
   const onSubmit = async (data: ContactFormData) => {
     setSubmitStatus("loading");
-
-    // Simulate form submission
+    // Sanitize user input
+    const sanitizedData = {
+      ...data,
+      fullName: DOMPurify.sanitize(data.fullName),
+      message: DOMPurify.sanitize(data.message),
+    };
     try {
+      // Use sanitizedData instead of data
       await new Promise((resolve) => setTimeout(resolve, 2000));
       setSubmitStatus("success");
       setSnackbarOpen(true);

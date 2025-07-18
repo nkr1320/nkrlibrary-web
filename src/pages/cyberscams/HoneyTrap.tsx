@@ -75,7 +75,6 @@ const HoneyTrap = () => {
               <Button
                 component={Link}
                 to="/cyberscams"
-                startIcon={<AlertTriangle />}
                 variant="outlined"
                 className="mb-6"
                 sx={{
@@ -87,6 +86,7 @@ const HoneyTrap = () => {
                   },
                 }}
               >
+                <AlertTriangle className="mr-2" />
                 Back to Digital Safety
               </Button>
 

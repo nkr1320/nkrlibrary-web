@@ -105,7 +105,6 @@ const GBWhatsApp = () => {
               <Button
                 component={Link}
                 to="/cyberscams"
-                startIcon={<ArrowBack />}
                 variant="outlined"
                 className="mb-6"
                 sx={{
@@ -117,6 +116,7 @@ const GBWhatsApp = () => {
                   },
                 }}
               >
+                <ArrowBack className="mr-2" />
                 Back to Digital Safety
               </Button>
 

@@ -303,8 +303,6 @@ const VideoShowcase = React.memo(() => {
                 rel="noopener noreferrer"
                 variant="outlined"
                 size="large"
-                startIcon={<Youtube />}
-                endIcon={<ArrowRight />}
                 sx={{
                   borderColor: "hsl(var(--primary))",
                   color: "hsl(var(--primary))",
@@ -320,7 +318,9 @@ const VideoShowcase = React.memo(() => {
                   },
                 }}
               >
+                <Youtube className="mr-2" />
                 {t("videoShowcase.viewAllVideos")}
+                <ArrowRight className="ml-2" />
               </Button>
             </motion.div>
           </motion.div>

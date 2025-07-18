@@ -104,7 +104,6 @@ const Phishing = () => {
               <Button
                 component={Link}
                 to="/cyberscams"
-                startIcon={<AlertTriangle />}
                 variant="outlined"
                 className="mb-6"
                 sx={{
@@ -116,6 +115,7 @@ const Phishing = () => {
                   },
                 }}
               >
+                <AlertTriangle className="mr-2" />
                 Back to Digital Safety
               </Button>
 
@@ -303,6 +303,7 @@ const Phishing = () => {
                           fontWeight: 600,
                         }}
                       >
+                        <AlertTriangle className="mr-2" />
                         Get Emergency Help
                       </Button>
                     </MagneticCard>

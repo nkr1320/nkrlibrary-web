@@ -103,7 +103,6 @@ const StrangerCalls = () => {
               <Button
                 component={Link}
                 to="/cyberscams"
-                startIcon={<AlertTriangle />}
                 variant="outlined"
                 className="mb-6"
                 sx={{
@@ -115,6 +114,7 @@ const StrangerCalls = () => {
                   },
                 }}
               >
+                <AlertTriangle className="mr-2" />
                 Back to Digital Safety
               </Button>
 
@@ -302,6 +302,7 @@ const StrangerCalls = () => {
                           fontWeight: 600,
                         }}
                       >
+                        <AlertTriangle className="mr-2" />
                         Report a Scam Call
                       </Button>
                     </MagneticCard>

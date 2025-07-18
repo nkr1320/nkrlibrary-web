@@ -254,7 +254,6 @@ const Services = () => {
                               service.highlight ? "contained" : "outlined"
                             }
                             fullWidth
-                            endIcon={<ArrowRight />}
                             sx={{
                               py: 1.5,
                               borderRadius: 2,
@@ -285,6 +284,7 @@ const Services = () => {
                             {service.title === t("services.customWebsitesTitle")
                               ? t("services.requestYours")
                               : t("services.learnMore")}
+                            <ArrowRight className="ml-2" />
                           </Button>
                         </MagneticCard>
                       </div>

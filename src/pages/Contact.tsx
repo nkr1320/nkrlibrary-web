@@ -375,7 +375,6 @@ const Contact = () => {
                         size="large"
                         fullWidth
                         disabled={submitStatus === "loading"}
-                        startIcon={<Send />}
                         className="bg-primary hover:bg-primary/90 text-primary-foreground"
                       >
                         {submitStatus === "loading"

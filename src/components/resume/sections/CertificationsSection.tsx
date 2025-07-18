@@ -205,7 +205,6 @@ const CertificationsSection: React.FC = () => {
             !newCertification.issuer ||
             !newCertification.date
           }
-          startIcon={<Plus />}
           variant="contained"
           sx={{
             backgroundColor: "hsl(var(--primary))",
@@ -216,6 +215,7 @@ const CertificationsSection: React.FC = () => {
             },
           }}
         >
+          <Plus className="mr-2" />
           Add Certification
         </button>
       </div>

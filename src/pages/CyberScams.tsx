@@ -9,6 +9,7 @@ import { ElasticText } from "@/components/ui/elastic-text";
 import { ParticleSystem } from "@/components/ui/particle-system";
 import { useMotionPreferences } from "@/hooks/use-motion-preferences";
 import { SEOHead } from "@/components/seo/SEOHead";
+import { Button } from "@/components/ui/button";
 
 const CyberScams = () => {
   const { prefersReducedMotion } = useMotionPreferences();
@@ -252,7 +253,6 @@ const CyberScams = () => {
                   <Button
                     component={Link}
                     to="/"
-                    startIcon={<ArrowLeft />}
                     variant="outlined"
                     className="mb-4"
                     sx={{
@@ -264,6 +264,7 @@ const CyberScams = () => {
                       },
                     }}
                   >
+                    <ArrowLeft className="mr-2" />
                     Back to Home
                   </Button>
                 </div>
@@ -465,7 +466,6 @@ const CyberScams = () => {
                           to="/contact"
                           variant="contained"
                           size="large"
-                          startIcon={<Mail />}
                           sx={{
                             background:
                               "linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%)",
@@ -482,6 +482,7 @@ const CyberScams = () => {
                             },
                           }}
                         >
+                          <Mail className="mr-2" />
                           Contact Us
                         </Button>
                       </MagneticCard>
@@ -494,7 +495,6 @@ const CyberScams = () => {
                           rel="noopener noreferrer"
                           variant="outlined"
                           size="large"
-                          startIcon={<Smartphone />}
                           sx={{
                             borderColor: "hsl(var(--border))",
                             color: "hsl(var(--foreground))",
@@ -511,6 +511,7 @@ const CyberScams = () => {
                             },
                           }}
                         >
+                          <Smartphone className="mr-2" />
                           Watch Tutorials
                         </Button>
                       </MagneticCard>

@@ -345,59 +345,61 @@ const ResumeExport: React.FC = () => {
       <div className="flex flex-col gap-2">
         <Button
           onClick={handleDownloadPDF}
-          startIcon={<Download />}
           variant="contained"
           sx={{
             backgroundColor: "hsl(var(--primary))",
             color: "hsl(var(--primary-foreground))",
           }}
         >
+          <Download className="mr-2" />
           Download PDF
         </Button>
 
         <Button
           onClick={generateProfessionalResume}
-          startIcon={<FileText />}
           variant="outlined"
           sx={{
             borderColor: "hsl(var(--border))",
             color: "hsl(var(--foreground))",
           }}
         >
+          <FileText className="mr-2" />
           Professional Export
         </Button>
 
         <Button
           onClick={generateBasicResume}
-          startIcon={<Download />}
           variant="outlined"
           sx={{
             borderColor: "hsl(var(--border))",
             color: "hsl(var(--foreground))",
           }}
         >
+          <Download className="mr-2" />
           Basic HTML Export
         </Button>
 
         <Button
-          startIcon={<QrCode />}
+          onClick={() => {}} // No action for QR Code button
           variant="outlined"
           sx={{
             borderColor: "hsl(var(--border))",
             color: "hsl(var(--foreground))",
           }}
         >
+          <QrCode className="mr-2" />
           Generate QR Code
         </Button>
 
         <Button
-          startIcon={<Share />}
+          onClick={() => {}} // No action for Share Link button
           variant="outlined"
           sx={{
             borderColor: "hsl(var(--border))",
             color: "hsl(var(--foreground))",
           }}
         >
+          <Share className="mr-2" />
           Share Link
         </Button>
       </div>

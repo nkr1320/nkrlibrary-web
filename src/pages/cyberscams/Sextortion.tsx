@@ -75,7 +75,6 @@ const Sextortion = () => {
               <Button
                 component={Link}
                 to="/cyberscams"
-                startIcon={<ArrowLeft />}
                 variant="outlined"
                 className="mb-6"
                 sx={{
@@ -87,6 +86,7 @@ const Sextortion = () => {
                   },
                 }}
               >
+                <ArrowLeft className="mr-2" />
                 Back to Digital Safety
               </Button>
 

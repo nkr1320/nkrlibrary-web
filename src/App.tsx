@@ -42,10 +42,10 @@ const App = () => (
     <TooltipProvider>
       <HelmetProvider>
         <ResumeProvider>
-          <SentrumProvider>
-            <Toaster />
-            <Sonner />
-            <BrowserRouter>
+          <BrowserRouter>
+            <SentrumProvider>
+              <Toaster />
+              <Sonner />
               <ScrollToTop />
               <Layout>
                 <Suspense fallback={<PageLoader />}>
@@ -63,8 +63,8 @@ const App = () => (
                 </Suspense>
                 <SentrumModal />
               </Layout>
-            </BrowserRouter>
-          </SentrumProvider>
+            </SentrumProvider>
+          </BrowserRouter>
         </ResumeProvider>
       </HelmetProvider>
     </TooltipProvider>

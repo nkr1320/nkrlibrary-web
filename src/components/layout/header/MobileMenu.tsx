@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useTheme } from "next-themes";
 import { useTranslation } from "react-i18next";
 import { X } from "lucide-react";
+import { useState } from "react";
 
 interface NavItem {
   label: string;
@@ -29,6 +30,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
   const changeLanguage = (e: React.ChangeEvent<HTMLSelectElement>) => {
     i18n.changeLanguage(e.target.value);
   };
+  const [blogOpen, setBlogOpen] = useState(false);
 
   return (
     <AnimatePresence>
@@ -63,7 +65,37 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.1 }}
                 >
-                  {item.path ? (
+                  {item.label === "Blog" ? (
+                    <div>
+                      <button
+                        onClick={() => setBlogOpen((open) => !open)}
+                        className="block w-full text-left px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 flex items-center justify-between"
+                        aria-haspopup="true"
+                        aria-expanded={blogOpen}
+                      >
+                        <span>Blog</span>
+                        <span className="ml-2">{blogOpen ? "▲" : "▼"}</span>
+                      </button>
+                      {blogOpen && (
+                        <ul className="ml-4 mt-1 bg-white dark:bg-gray-900 border border-border rounded shadow-lg z-50">
+                          {[...Array(10)].map((_, i) => (
+                            <li key={`blog${i+1}`}>
+                              <Link
+                                to={`/blog${i+1}`}
+                                onClick={() => {
+                                  setBlogOpen(false);
+                                  onClose();
+                                }}
+                                className={`block px-4 py-2 text-sm hover:bg-primary/10 ${location.pathname === `/blog${i+1}` ? "text-primary font-semibold" : "text-muted-foreground"}`}
+                              >
+                                Blog {i+1}
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                    </div>
+                  ) : item.path ? (
                     <Link
                       to={item.path}
                       onClick={e => {

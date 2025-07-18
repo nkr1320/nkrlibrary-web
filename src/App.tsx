@@ -20,6 +20,16 @@ const Resume = lazy(() => import("./pages/Resume"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
 const TermsOfService = lazy(() => import("./pages/TermsOfService"));
+const Blog1 = lazy(() => import("./pages/Blog1"));
+const Blog2 = lazy(() => import("./pages/Blog2"));
+const Blog3 = lazy(() => import("./pages/Blog3"));
+const Blog4 = lazy(() => import("./pages/Blog4"));
+const Blog5 = lazy(() => import("./pages/Blog5"));
+const Blog6 = lazy(() => import("./pages/Blog6"));
+const Blog7 = lazy(() => import("./pages/Blog7"));
+const Blog8 = lazy(() => import("./pages/Blog8"));
+const Blog9 = lazy(() => import("./pages/Blog9"));
+const Blog10 = lazy(() => import("./pages/Blog10"));
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -57,6 +67,16 @@ const App = () => (
                     <Route path="/contact" element={<Contact />} />
                     <Route path="/privacy" element={<PrivacyPolicy />} />
                     <Route path="/terms" element={<TermsOfService />} />
+                    <Route path="/blog1" element={<Blog1 />} />
+                    <Route path="/blog2" element={<Blog2 />} />
+                    <Route path="/blog3" element={<Blog3 />} />
+                    <Route path="/blog4" element={<Blog4 />} />
+                    <Route path="/blog5" element={<Blog5 />} />
+                    <Route path="/blog6" element={<Blog6 />} />
+                    <Route path="/blog7" element={<Blog7 />} />
+                    <Route path="/blog8" element={<Blog8 />} />
+                    <Route path="/blog9" element={<Blog9 />} />
+                    <Route path="/blog10" element={<Blog10 />} />
                     {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                     <Route path="*" element={<NotFound />} />
                   </Routes>

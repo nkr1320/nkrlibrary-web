@@ -21,6 +21,7 @@ const Header = () => {
     { label: "About", path: "/about" },
     { label: "Courses", path: "/courses" },
     { label: "Videos", path: "/videos" },
+    { label: "Blog" },
     { label: "Resume", action: () => openSentrum("resume") },
     { label: "Notebook", action: () => openSentrum("notebook") },
     { label: "Freebies", path: "/freebies" },

@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Sun, Moon } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useTranslation } from "react-i18next";
+import { useState } from "react";
 
 interface NavItem {
   label: string;
@@ -20,6 +21,7 @@ const DesktopNavigation: React.FC<DesktopNavigationProps> = ({ navItems }) => {
   const navigate = useNavigate();
   const { theme, setTheme } = useTheme();
   const { i18n } = useTranslation();
+  const [blogOpen, setBlogOpen] = useState(false);
   const changeLanguage = (e: React.ChangeEvent<HTMLSelectElement>) => {
     i18n.changeLanguage(e.target.value);
   };
@@ -32,7 +34,34 @@ const DesktopNavigation: React.FC<DesktopNavigationProps> = ({ navItems }) => {
           whileHover={{ y: -2 }}
           transition={{ duration: 0.2 }}
         >
-          {item.path ? (
+          {item.label === "Blog" ? (
+            <div className="relative">
+              <button
+                className={`text-[11px] sm:text-xs font-medium transition-colors hover:text-primary px-1.5 py-0.5 rounded-md ${blogOpen ? "text-primary bg-primary/10" : "text-muted-foreground"}`}
+                onClick={() => setBlogOpen((open) => !open)}
+                aria-haspopup="true"
+                aria-expanded={blogOpen}
+              >
+                Blog
+              </button>
+              {blogOpen && (
+                <div
+                  className="absolute left-0 mt-2 w-40 bg-white dark:bg-gray-900 border border-border rounded shadow-lg z-50"
+                >
+                  {[...Array(10)].map((_, i) => (
+                    <Link
+                      key={`blog${i+1}`}
+                      to={`/blog${i+1}`}
+                      className={`block px-4 py-2 text-sm hover:bg-primary/10 ${location.pathname === `/blog${i+1}` ? "text-primary font-semibold" : "text-muted-foreground"}`}
+                      onClick={() => setBlogOpen(false)}
+                    >
+                      Blog {i+1}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+          ) : item.path ? (
             <Link
               to={item.path}
               className={`text-[11px] sm:text-xs font-medium transition-colors hover:text-primary px-1.5 py-0.5 rounded-md ${

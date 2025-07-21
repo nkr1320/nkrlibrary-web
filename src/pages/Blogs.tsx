@@ -118,13 +118,13 @@ const Blogs: React.FC = () => {
                     </div>
                   </CardContent>
                 </Card>
-          </Link>
+              </Link>
             </MagneticCard>
           </motion.div>
-      ))}
+        ))}
       </motion.div>
     </div>
-);
+  );
 };
 
 export default Blogs;

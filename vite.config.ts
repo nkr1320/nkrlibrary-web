@@ -15,7 +15,7 @@ export default defineConfig(({ mode }) => ({
     react(),
     // Removed componentTagger()
     viteCompression(),
-    visualizer({ open: false })
+    visualizer({ open: true })
   ],
   resolve: {
     alias: {

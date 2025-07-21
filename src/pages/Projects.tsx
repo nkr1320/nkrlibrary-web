@@ -35,7 +35,8 @@ const projects = [
     videoUrl: "https://www.youtube.com/embed/P9-0iWH9TXk",
     testimonial: {
       client: "Rohit K.",
-      feedback: "The new website helped us attract more clients and looks fantastic!",
+      feedback:
+        "The new website helped us attract more clients and looks fantastic!",
     },
   },
   {
@@ -48,7 +49,8 @@ const projects = [
     videoUrl: "https://www.youtube.com/embed/McMYEuwTCnk",
     testimonial: {
       client: "Naveen R.",
-      feedback: "The portfolio site is clean, modern, and helped me land new opportunities!",
+      feedback:
+        "The portfolio site is clean, modern, and helped me land new opportunities!",
     },
   },
 ];
@@ -99,7 +101,9 @@ const Projects: React.FC = () => {
                 />
                 <CardContent className="flex-1 flex flex-col text-center p-6 pt-0 justify-between">
                   <div>
-                    <CardTitle className="mb-0 text-lg font-bold line-clamp-2 min-h-[0.25rem] flex items-center justify-center">{project.title}</CardTitle>
+                    <CardTitle className="mb-0 text-lg font-bold line-clamp-2 min-h-[0.25rem] flex items-center justify-center">
+                      {project.title}
+                    </CardTitle>
                     <CardDescription className="mb-4 flex-grow line-clamp-3 min-h-[3.5rem] flex items-center justify-center">
                       {project.description}
                     </CardDescription>

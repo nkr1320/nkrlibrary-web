@@ -31,7 +31,9 @@ const FloatingWhatsApp: React.FC = () => {
       {open && (
         <div className="fixed bottom-6 right-6 z-50 w-80 max-w-xs bg-white dark:bg-gray-900 border border-border rounded-xl shadow-2xl p-4 flex flex-col">
           <div className="flex items-center justify-between mb-2">
-            <span className="font-semibold text-primary">Chat with us on WhatsApp</span>
+            <span className="font-semibold text-primary">
+              Chat with us on WhatsApp
+            </span>
             <button
               onClick={() => setOpen(false)}
               className="text-muted-foreground hover:text-primary"
@@ -44,7 +46,7 @@ const FloatingWhatsApp: React.FC = () => {
             className="w-full border rounded p-2 mb-3 text-sm resize-none focus:outline-none focus:ring focus:border-primary min-h-[60px]"
             placeholder="Type your message..."
             value={message}
-            onChange={e => setMessage(e.target.value)}
+            onChange={(e) => setMessage(e.target.value)}
             rows={3}
             maxLength={500}
           />

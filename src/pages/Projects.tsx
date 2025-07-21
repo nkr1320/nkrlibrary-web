@@ -32,7 +32,7 @@ const projects = [
     tech: ["Next.js", "Stripe", "MongoDB"],
     liveUrl: "https://clothingstore.com",
     github: "https://github.com/username/ecommerce-store",
-    videoUrl: "",
+    videoUrl: "https://www.youtube.com/embed/P9-0iWH9TXk",
     testimonial: {
       client: "Rohit K.",
       feedback: "The new website helped us attract more clients and looks fantastic!",
@@ -45,7 +45,7 @@ const projects = [
     tech: ["React", "Framer Motion"],
     liveUrl: "https://myportfolio.com",
     github: "",
-    videoUrl: "https://www.youtube.com/embed/1Y03y5IC8ng",
+    videoUrl: "https://www.youtube.com/embed/McMYEuwTCnk",
     testimonial: {
       client: "Naveen R.",
       feedback: "The portfolio site is clean, modern, and helped me land new opportunities!",

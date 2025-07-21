@@ -11,21 +11,21 @@ import { Github, ExternalLink } from "lucide-react";
 
 const projects = [
   {
-    // title: "Yoga Studio Website",
+    title: "Yoga Studio Website",
     description:
       "A modern, responsive website for a local yoga studio with class schedules and booking.",
     image: "https://placehold.co/400x220?text=Yoga+Studio+Website",
     tech: ["React", "Tailwind CSS", "Firebase"],
     liveUrl: "https://yogastudio.com",
     github: "https://github.com/username/yoga-studio",
-    videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    videoUrl: "https://www.youtube.com/embed/cQaQ9hHPM_c",
     testimonial: {
       client: "Priya S.",
       feedback: "The website is beautiful and easy to use. My clients love it!",
     },
   },
   {
-    // title: "Interior Designing Website",
+    title: "Interior Designing Website",
     description:
       "Full-featured online store with shopping cart, payments, and admin dashboard.",
     image: "https://placehold.co/400x220?text=Interior+Designing+Website",
@@ -39,13 +39,13 @@ const projects = [
     },
   },
   {
-    // title: "Personal Portfolio",
+    title: "Personal Portfolio",
     description: "A portfolio to showcase my work, skills, and contact info.",
-    image: "https://placehold.co/400x220?text=Personal+Portfolio+Website",
+    image: "https://placehold.co/400x220?text=Education+Website",
     tech: ["React", "Framer Motion"],
     liveUrl: "https://myportfolio.com",
     github: "",
-    videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    videoUrl: "https://www.youtube.com/embed/1Y03y5IC8ng",
     testimonial: {
       client: "Naveen R.",
       feedback: "The portfolio site is clean, modern, and helped me land new opportunities!",

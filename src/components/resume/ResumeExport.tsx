@@ -341,26 +341,17 @@ const ResumeExport: React.FC = () => {
       <h6 className="font-semibold mb-4">Export & Share</h6>
 
       <div className="flex flex-col gap-2">
-        <Button
-          onClick={handleDownloadPDF}
-          variant="default"
-        >
+        <Button onClick={handleDownloadPDF} variant="default">
           <Download className="mr-2" />
           Download PDF
         </Button>
 
-        <Button
-          onClick={generateProfessionalResume}
-          variant="outline"
-        >
+        <Button onClick={generateProfessionalResume} variant="outline">
           <FileText className="mr-2" />
           Professional Export
         </Button>
 
-        <Button
-          onClick={generateBasicResume}
-          variant="outline"
-        >
+        <Button onClick={generateBasicResume} variant="outline">
           <Download className="mr-2" />
           Basic HTML Export
         </Button>

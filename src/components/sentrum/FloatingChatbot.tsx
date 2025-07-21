@@ -1,68 +1,64 @@
-import { useState } from "react";
-import { Dialog } from "@/components/ui/dialog";
-import {
-  XMarkIcon,
-  ChatBubbleLeftRightIcon,
-} from "@heroicons/react/24/outline";
-import Chatbot from "@/pages/Chatbot";
+import React, { useState } from "react";
+import { MessageCircle, X, Send } from "lucide-react";
 
-// Set to 'drawer' for a right-side drawer, 'modal' for centered modal
-const CHATBOT_STYLE: "modal" | "drawer" = "drawer";
+const WHATSAPP_NUMBER = "918309800253";
 
-export default function FloatingChatbot() {
+const FloatingWhatsApp: React.FC = () => {
   const [open, setOpen] = useState(false);
+  const [message, setMessage] = useState("");
+
+  const handleSend = () => {
+    if (!message.trim()) return;
+    const encoded = encodeURIComponent(message);
+    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encoded}`, "_blank");
+    setMessage("");
+    setOpen(false);
+  };
 
   return (
-    <>
+    <div>
       {/* Floating Button */}
-      <button
-        className="fixed z-50 bottom-4 right-4 sm:bottom-6 sm:right-6 bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow-lg p-3 sm:p-4 flex items-center justify-center focus:outline-none focus:ring"
-        aria-label="Open chatbot"
-        onClick={() => setOpen(true)}
-      >
-        <ChatBubbleLeftRightIcon className="w-6 h-6 sm:w-7 sm:h-7" />
-      </button>
-
-      {/* Modal or Drawer */}
-      {CHATBOT_STYLE === "modal" ? (
-        <Dialog open={open} onOpenChange={setOpen}>
-          <div className="fixed inset-0 bg-black/40 z-50 flex items-center justify-center">
-            <div className="relative bg-white dark:bg-gray-900 rounded-lg shadow-lg w-full max-w-xs sm:max-w-md mx-auto">
-              <button
-                className="absolute top-2 right-2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200"
-                aria-label="Close chatbot"
-                onClick={() => setOpen(false)}
-              >
-                <XMarkIcon className="w-5 h-5 sm:w-6 sm:h-6" />
-              </button>
-              <div className="p-0">
-                <Chatbot />
-              </div>
-            </div>
-          </div>
-        </Dialog>
-      ) : null}
-      {CHATBOT_STYLE === "drawer" && open ? (
-        <div className="fixed inset-0 z-50">
-          <div
-            className="absolute inset-0 bg-black/40"
-            onClick={() => setOpen(false)}
-            aria-label="Close chatbot overlay"
-          />
-          <div className="absolute right-0 top-0 h-full w-full max-w-xs sm:max-w-md bg-white dark:bg-gray-900 shadow-lg flex flex-col">
+      {!open && (
+        <button
+          className="fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-600 text-white rounded-full p-4 shadow-lg flex items-center justify-center transition-colors"
+          onClick={() => setOpen(true)}
+          aria-label="Open WhatsApp Chat"
+        >
+          <MessageCircle className="w-6 h-6" />
+        </button>
+      )}
+      {/* Popup */}
+      {open && (
+        <div className="fixed bottom-6 right-6 z-50 w-80 max-w-xs bg-white dark:bg-gray-900 border border-border rounded-xl shadow-2xl p-4 flex flex-col">
+          <div className="flex items-center justify-between mb-2">
+            <span className="font-semibold text-primary">Chat with us on WhatsApp</span>
             <button
-              className="absolute top-2 right-2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200"
-              aria-label="Close chatbot"
               onClick={() => setOpen(false)}
+              className="text-muted-foreground hover:text-primary"
+              aria-label="Close chat popup"
             >
-              <XMarkIcon className="w-5 h-5 sm:w-6 sm:h-6" />
+              <X className="w-5 h-5" />
             </button>
-            <div className="p-0 h-full overflow-y-auto">
-              <Chatbot />
-            </div>
           </div>
+          <textarea
+            className="w-full border rounded p-2 mb-3 text-sm resize-none focus:outline-none focus:ring focus:border-primary min-h-[60px]"
+            placeholder="Type your message..."
+            value={message}
+            onChange={e => setMessage(e.target.value)}
+            rows={3}
+            maxLength={500}
+          />
+          <button
+            onClick={handleSend}
+            disabled={!message.trim()}
+            className="flex items-center justify-center gap-2 px-4 py-2 bg-green-500 hover:bg-green-600 text-white rounded font-semibold transition-colors disabled:opacity-60"
+          >
+            <Send className="w-4 h-4" /> Send
+          </button>
         </div>
-      ) : null}
-    </>
+      )}
+    </div>
   );
-}
+};
+
+export default FloatingWhatsApp;

@@ -248,10 +248,7 @@ const Services = () => {
                           {service.price}
                         </motion.div>
                         <MagneticCard intensity={0.15} scale={1.03}>
-                          <Button
-                            asChild
-                            variant="default"
-                          >
+                          <Button asChild variant="default">
                             {service.title === t("services.customWebsitesTitle")
                               ? t("services.requestYours")
                               : t("services.learnMore")}

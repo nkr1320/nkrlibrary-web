@@ -296,7 +296,11 @@ const VideoShowcase = React.memo(() => {
             </p>
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Button asChild variant="outline">
-                <a href="https://www.youtube.com/@nkrlibrary/playlists" target="_blank" rel="noopener noreferrer">
+                <a
+                  href="https://www.youtube.com/@nkrlibrary/playlists"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <Youtube className="mr-2" />
                   {t("videoShowcase.viewAllVideos")}
                   <ArrowRight className="ml-2" />
@@ -354,9 +358,7 @@ const VideoShowcase = React.memo(() => {
             className="text-center mt-8 sm:mt-12 px-4"
           >
             <Button asChild variant="default">
-              <a href="/videos">
-                {t("videoShowcase.exploreAllCategories")}
-              </a>
+              <a href="/videos">{t("videoShowcase.exploreAllCategories")}</a>
             </Button>
           </motion.div>
         </motion.div>

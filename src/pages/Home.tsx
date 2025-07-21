@@ -9,6 +9,7 @@ import VisionSection from "@/components/sections/VisionSection";
 import VideoShowcase from "@/components/sections/VideoShowcase";
 import Newsletter from "@/components/sections/Newsletter";
 import { StructuredData } from "@/components/seo/structured-data";
+import FloatingWhatsApp from "@/components/sentrum/FloatingChatbot";
 
 const Home = () => {
   const structuredData = {
@@ -96,6 +97,7 @@ const Home = () => {
         <CyberScamsSection />
         <VisionSection />
         <Newsletter />
+        <FloatingWhatsApp />
       </motion.main>
     </HelmetProvider>
   );

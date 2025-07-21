@@ -1,12 +1,18 @@
 import React from "react";
-import { Card, CardContent, CardTitle, CardDescription } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardTitle,
+  CardDescription,
+} from "@/components/ui/card";
 import { motion } from "framer-motion";
 import { SEOHead } from "@/components/seo/SEOHead";
 import { Link } from "react-router-dom";
 
 const blogData = {
   title: "Understanding JavaScript Closures",
-  excerpt: "A deep dive into closures in JavaScript and how to use them effectively.",
+  excerpt:
+    "A deep dive into closures in JavaScript and how to use them effectively.",
   date: "2024-04-20",
   tags: ["JavaScript", "Closures"],
   image: "https://placehold.co/800x320?text=JS+Closures",
@@ -34,14 +40,23 @@ const Blog2: React.FC = () => (
         <CardContent className="p-6 pt-0">
           <div className="flex flex-wrap gap-2 mb-2">
             {blogData.tags.map((tag) => (
-              <span key={tag} className="px-2 py-0.5 bg-primary/10 text-primary text-xs rounded-full font-medium">
+              <span
+                key={tag}
+                className="px-2 py-0.5 bg-primary/10 text-primary text-xs rounded-full font-medium"
+              >
                 {tag}
               </span>
             ))}
-            <span className="text-xs text-muted-foreground ml-auto">{new Date(blogData.date).toLocaleDateString()}</span>
+            <span className="text-xs text-muted-foreground ml-auto">
+              {new Date(blogData.date).toLocaleDateString()}
+            </span>
           </div>
-          <CardTitle className="mb-2 text-2xl font-bold">{blogData.title}</CardTitle>
-          <CardDescription className="mb-6 text-lg">{blogData.excerpt}</CardDescription>
+          <CardTitle className="mb-2 text-2xl font-bold">
+            {blogData.title}
+          </CardTitle>
+          <CardDescription className="mb-6 text-lg">
+            {blogData.excerpt}
+          </CardDescription>
           <div className="my-6">
             <iframe
               width="100%"
@@ -58,7 +73,9 @@ const Blog2: React.FC = () => (
               Watch our latest video on mastering JavaScript closures!
             </p>
           </div>
-          <h2 className="text-xl font-semibold mt-6 mb-2">Featured Tutorials</h2>
+          <h2 className="text-xl font-semibold mt-6 mb-2">
+            Featured Tutorials
+          </h2>
           <ul className="list-disc ml-6 mb-4">
             <li>
               <a
@@ -88,17 +105,22 @@ const Blog2: React.FC = () => (
           </ul>
           <h2 className="text-xl font-semibold mt-6 mb-2">Tips for Success</h2>
           <ul className="list-disc ml-6 mb-4">
-            <li>Practice with real-world projects to reinforce your learning.</li>
-            <li>Stay updated with the latest software releases and features.</li>
             <li>
-              Join online communities and forums to ask questions and share knowledge.
+              Practice with real-world projects to reinforce your learning.
+            </li>
+            <li>
+              Stay updated with the latest software releases and features.
+            </li>
+            <li>
+              Join online communities and forums to ask questions and share
+              knowledge.
             </li>
             <li>Watch step-by-step video tutorials for hands-on guidance.</li>
           </ul>
           <p className="mb-4">
-            By dedicating time to learn and experiment with these tools, you’ll gain
-            the confidence and skills needed to succeed in the tech industry. Explore
-            our video tutorials for more in-depth guidance!
+            By dedicating time to learn and experiment with these tools, you’ll
+            gain the confidence and skills needed to succeed in the tech
+            industry. Explore our video tutorials for more in-depth guidance!
           </p>
           <h3 className="text-lg font-semibold mt-8 mb-2">Related Blogs</h3>
           <ul className="list-disc ml-6 mb-4">

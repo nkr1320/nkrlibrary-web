@@ -1,5 +1,10 @@
 import React from "react";
-import { Card, CardContent, CardTitle, CardDescription } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardTitle,
+  CardDescription,
+} from "@/components/ui/card";
 import { motion } from "framer-motion";
 import { SEOHead } from "@/components/seo/SEOHead";
 import { Link } from "react-router-dom";
@@ -34,14 +39,23 @@ const Blog4: React.FC = () => (
         <CardContent className="p-6 pt-0">
           <div className="flex flex-wrap gap-2 mb-2">
             {blogData.tags.map((tag) => (
-              <span key={tag} className="px-2 py-0.5 bg-primary/10 text-primary text-xs rounded-full font-medium">
+              <span
+                key={tag}
+                className="px-2 py-0.5 bg-primary/10 text-primary text-xs rounded-full font-medium"
+              >
                 {tag}
               </span>
             ))}
-            <span className="text-xs text-muted-foreground ml-auto">{new Date(blogData.date).toLocaleDateString()}</span>
+            <span className="text-xs text-muted-foreground ml-auto">
+              {new Date(blogData.date).toLocaleDateString()}
+            </span>
           </div>
-          <CardTitle className="mb-2 text-2xl font-bold">{blogData.title}</CardTitle>
-          <CardDescription className="mb-6 text-lg">{blogData.excerpt}</CardDescription>
+          <CardTitle className="mb-2 text-2xl font-bold">
+            {blogData.title}
+          </CardTitle>
+          <CardDescription className="mb-6 text-lg">
+            {blogData.excerpt}
+          </CardDescription>
           <div className="my-6">
             <iframe
               width="100%"
@@ -55,22 +69,32 @@ const Blog4: React.FC = () => (
               loading="lazy"
             ></iframe>
           </div>
-          <h2 className="text-xl font-semibold mt-6 mb-2">Key Topics in Responsive Design</h2>
+          <h2 className="text-xl font-semibold mt-6 mb-2">
+            Key Topics in Responsive Design
+          </h2>
           <ul className="list-disc ml-6 mb-4">
             <li>ICD guidelines: The foundation of medical coding</li>
             <li>Pregnancy coding: Special considerations and best practices</li>
             <li>HIV/AIDS coding: Ensuring accuracy and confidentiality</li>
             <li>BMI and obesity coding: Why it matters for patient care</li>
           </ul>
-          <h2 className="text-xl font-semibold mt-6 mb-2">Tips for Aspiring Designers</h2>
+          <h2 className="text-xl font-semibold mt-6 mb-2">
+            Tips for Aspiring Designers
+          </h2>
           <ul className="list-disc ml-6 mb-4">
             <li>Take certified courses to build a strong foundation.</li>
             <li>Practice coding with real-world case studies.</li>
-            <li>Stay updated with the latest coding standards and regulations.</li>
-            <li>Watch our medical coding video tutorials for practical guidance.</li>
+            <li>
+              Stay updated with the latest coding standards and regulations.
+            </li>
+            <li>
+              Watch our medical coding video tutorials for practical guidance.
+            </li>
           </ul>
           <p className="mb-4">
-            Responsive design offers stability, growth, and the chance to make a difference in web development. Explore our resources to start your journey today!
+            Responsive design offers stability, growth, and the chance to make a
+            difference in web development. Explore our resources to start your
+            journey today!
           </p>
           <h3 className="text-lg font-semibold mt-8 mb-2">Related Blogs</h3>
           <ul className="list-disc ml-6 mb-4">

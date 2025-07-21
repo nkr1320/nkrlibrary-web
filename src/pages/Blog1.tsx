@@ -1,12 +1,18 @@
 import React from "react";
-import { Card, CardContent, CardTitle, CardDescription } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardTitle,
+  CardDescription,
+} from "@/components/ui/card";
 import { motion } from "framer-motion";
 import { SEOHead } from "@/components/seo/SEOHead";
 import { Link } from "react-router-dom";
 
 const blogData = {
   title: "How to Build a Modern Portfolio Website",
-  excerpt: "Step-by-step guide to creating a stunning portfolio using React and Tailwind CSS.",
+  excerpt:
+    "Step-by-step guide to creating a stunning portfolio using React and Tailwind CSS.",
   date: "2024-05-01",
   tags: ["React", "Tailwind CSS", "Portfolio"],
   image: "https://placehold.co/800x320?text=Portfolio+Blog",
@@ -34,14 +40,23 @@ const Blog1: React.FC = () => (
         <CardContent className="p-6 pt-0">
           <div className="flex flex-wrap gap-2 mb-2">
             {blogData.tags.map((tag) => (
-              <span key={tag} className="px-2 py-0.5 bg-primary/10 text-primary text-xs rounded-full font-medium">
+              <span
+                key={tag}
+                className="px-2 py-0.5 bg-primary/10 text-primary text-xs rounded-full font-medium"
+              >
                 {tag}
               </span>
             ))}
-            <span className="text-xs text-muted-foreground ml-auto">{new Date(blogData.date).toLocaleDateString()}</span>
+            <span className="text-xs text-muted-foreground ml-auto">
+              {new Date(blogData.date).toLocaleDateString()}
+            </span>
           </div>
-          <CardTitle className="mb-2 text-2xl font-bold">{blogData.title}</CardTitle>
-          <CardDescription className="mb-6 text-lg">{blogData.excerpt}</CardDescription>
+          <CardTitle className="mb-2 text-2xl font-bold">
+            {blogData.title}
+          </CardTitle>
+          <CardDescription className="mb-6 text-lg">
+            {blogData.excerpt}
+          </CardDescription>
           <div className="my-6">
             <iframe
               width="100%"
@@ -58,7 +73,9 @@ const Blog1: React.FC = () => (
               Watch our latest video on building a modern portfolio website!
             </p>
           </div>
-          <h2 className="text-xl font-semibold mt-6 mb-2">Benefits of a Modern Portfolio</h2>
+          <h2 className="text-xl font-semibold mt-6 mb-2">
+            Benefits of a Modern Portfolio
+          </h2>
           <ul className="list-disc ml-6 mb-4">
             <li>Showcase your skills and projects professionally.</li>
             <li>Attract potential employers or clients.</li>

@@ -1,5 +1,10 @@
 import React from "react";
-import { Card, CardContent, CardTitle, CardDescription } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardTitle,
+  CardDescription,
+} from "@/components/ui/card";
 import { MagneticCard } from "@/components/ui/magnetic-card";
 import { motion } from "framer-motion";
 
@@ -14,7 +19,8 @@ const projects = [
   },
   {
     title: "E-Commerce Store",
-    description: "A full-featured e-commerce platform with shopping cart and payment integration.",
+    description:
+      "A full-featured e-commerce platform with shopping cart and payment integration.",
     liveUrl: "https://mystore.com",
     github: "https://github.com/username/ecommerce-store",
     tech: ["Next.js", "Stripe", "MongoDB"],
@@ -22,7 +28,8 @@ const projects = [
   },
   {
     title: "Blog Platform",
-    description: "A multi-user blog platform with markdown support and comments.",
+    description:
+      "A multi-user blog platform with markdown support and comments.",
     liveUrl: "https://myblog.com",
     github: "https://github.com/username/blog-platform",
     tech: ["Vue.js", "Node.js", "Express", "MongoDB"],
@@ -59,7 +66,9 @@ const Projects: React.FC = () => {
   return (
     <div className="max-w-7xl mx-auto py-12 px-2 sm:px-4 md:px-8">
       <h1 className="text-3xl font-bold mb-4">Projects</h1>
-      <p className="text-lg text-muted-foreground mb-10">Explore my previously built websites and web apps below.</p>
+      <p className="text-lg text-muted-foreground mb-10">
+        Explore my previously built websites and web apps below.
+      </p>
       <motion.div
         variants={containerVariants}
         initial="hidden"
@@ -67,7 +76,11 @@ const Projects: React.FC = () => {
         className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6"
       >
         {projects.map((project) => (
-          <motion.div key={project.title} variants={cardVariants} className="h-full group">
+          <motion.div
+            key={project.title}
+            variants={cardVariants}
+            className="h-full group"
+          >
             <MagneticCard intensity={0.2} scale={1.06} className="h-full">
               <Card className="h-full border border-border hover:border-primary/30 transition-all duration-500 hover:shadow-2xl bg-card/80 backdrop-blur-sm cursor-pointer flex flex-col">
                 <img
@@ -77,11 +90,18 @@ const Projects: React.FC = () => {
                   loading="lazy"
                 />
                 <CardContent className="flex-1 flex flex-col items-center text-center p-6 pt-0">
-                  <CardTitle className="mb-2 text-lg font-bold">{project.title}</CardTitle>
-                  <CardDescription className="mb-4 flex-grow">{project.description}</CardDescription>
+                  <CardTitle className="mb-2 text-lg font-bold">
+                    {project.title}
+                  </CardTitle>
+                  <CardDescription className="mb-4 flex-grow">
+                    {project.description}
+                  </CardDescription>
                   <div className="flex flex-wrap gap-2 justify-center mb-4">
                     {project.tech.map((tech) => (
-                      <span key={tech} className="px-2 py-0.5 bg-primary/10 text-primary text-xs rounded-full font-medium">
+                      <span
+                        key={tech}
+                        className="px-2 py-0.5 bg-primary/10 text-primary text-xs rounded-full font-medium"
+                      >
                         {tech}
                       </span>
                     ))}
@@ -114,4 +134,4 @@ const Projects: React.FC = () => {
   );
 };
 
-export default Projects; 
+export default Projects;

@@ -27,7 +27,7 @@ const DesktopNavigation: React.FC<DesktopNavigationProps> = ({ navItems }) => {
   };
 
   return (
-    <div className="flex items-center flex-wrap gap-1 sm:gap-2 px-1 sm:px-0">
+    <div className="flex items-center flex-wrap gap-0.5 sm:gap-1 px-0.5 sm:px-0">
       {navItems.map((item) => (
         <motion.div
           key={item.path || item.label}
@@ -37,12 +37,10 @@ const DesktopNavigation: React.FC<DesktopNavigationProps> = ({ navItems }) => {
           {item.label === "Blog" ? (
             <div
               className="relative group"
-              onMouseLeave={() => setBlogOpen(false)}
             >
               <button
-                className={`text-[11px] sm:text-xs font-medium transition-colors hover:text-primary px-1.5 py-0.5 rounded-md ${blogOpen || location.pathname.startsWith("/blog") ? "text-primary bg-primary/10" : "text-muted-foreground"}`}
+                className={`text-[10px] sm:text-xs font-medium transition-colors hover:text-primary px-1 py-0.5 rounded-md ${blogOpen || location.pathname.startsWith("/blog") ? "text-primary bg-primary/10" : "text-muted-foreground"}`}
                 onClick={() => setBlogOpen((open) => !open)}
-                onMouseEnter={() => setBlogOpen(true)}
                 aria-haspopup="true"
                 aria-expanded={blogOpen}
               >
@@ -53,7 +51,6 @@ const DesktopNavigation: React.FC<DesktopNavigationProps> = ({ navItems }) => {
                   <Link
                     to="/blogs"
                     className={`block px-4 py-2 text-sm hover:bg-primary/10 ${location.pathname === "/blogs" ? "text-primary font-semibold" : "text-muted-foreground"}`}
-                    onClick={() => setBlogOpen(false)}
                   >
                     All Blogs
                   </Link>
@@ -62,7 +59,6 @@ const DesktopNavigation: React.FC<DesktopNavigationProps> = ({ navItems }) => {
                       key={`blog${i + 1}`}
                       to={`/blog${i + 1}`}
                       className={`block px-4 py-2 text-sm hover:bg-primary/10 ${location.pathname === `/blog${i + 1}` ? "text-primary font-semibold" : "text-muted-foreground"}`}
-                      onClick={() => setBlogOpen(false)}
                     >
                       Blog {i + 1}
                     </Link>
@@ -73,7 +69,7 @@ const DesktopNavigation: React.FC<DesktopNavigationProps> = ({ navItems }) => {
           ) : item.path ? (
             <Link
               to={item.path}
-              className={`text-[11px] sm:text-xs font-medium transition-colors hover:text-primary px-1.5 py-0.5 rounded-md ${
+              className={`text-[10px] sm:text-xs font-medium transition-colors hover:text-primary px-1 py-0.5 rounded-md ${
                 location.pathname === item.path
                   ? "text-primary bg-primary/10"
                   : "text-muted-foreground"
@@ -91,7 +87,7 @@ const DesktopNavigation: React.FC<DesktopNavigationProps> = ({ navItems }) => {
           ) : (
             <button
               onClick={item.action}
-              className="text-[11px] sm:text-xs font-medium transition-colors hover:text-primary text-muted-foreground px-1.5 py-0.5 rounded-md"
+              className="text-[10px] sm:text-xs font-medium transition-colors hover:text-primary text-muted-foreground px-1 py-0.5 rounded-md"
               style={{ minWidth: 0, maxWidth: "100%", whiteSpace: "nowrap" }}
             >
               {item.label}

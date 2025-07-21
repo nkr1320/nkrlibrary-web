@@ -27,7 +27,7 @@ const DesktopNavigation: React.FC<DesktopNavigationProps> = ({ navItems }) => {
   };
 
   return (
-    <div className="flex items-center flex-wrap gap-0.5 sm:gap-1 px-0.5 sm:px-0">
+    <div className="flex items-center flex-wrap gap-2 sm:gap-4 px-0.5 sm:px-0">
       {navItems.map((item) => (
         <motion.div
           key={item.path || item.label}

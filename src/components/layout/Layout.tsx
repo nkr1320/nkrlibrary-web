@@ -24,9 +24,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
           className="flex-1 w-full flex flex-col"
           style={{ scrollMarginTop: "72px" }}
         >
-          <div className="container mx-auto px-2 sm:px-4 md:px-8 flex-1 w-full">
-            {children}
-          </div>
+          {children}
         </main>
         <Footer />
         <FloatingChatbot />

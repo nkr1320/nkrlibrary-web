@@ -40,13 +40,13 @@ const Header = () => {
         className="fixed top-0 left-0 right-0 z-50"
       >
         <div className="glass-nav border-b border-white/10 dark:border-white/5">
-          <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 md:px-8 py-3 sm:py-4 flex items-center">
+          <div className="max-w-screen-2xl mx-auto w-full px-4 sm:px-6 md:px-8 py-3 sm:py-4 flex items-center">
             {/* Logo */}
             <HeaderLogo />
 
             {/* Search Bar - Desktop */}
             {!isMobile && (
-              <div className="flex-1 max-w-md ml-12 mr-8">
+              <div className="flex-1 max-w-xs ml-6 mr-6">
                 <SearchBar
                   className="w-full"
                   placeholder="Search videos..."

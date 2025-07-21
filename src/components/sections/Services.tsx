@@ -250,36 +250,7 @@ const Services = () => {
                         <MagneticCard intensity={0.15} scale={1.03}>
                           <Button
                             asChild
-                            variant={
-                              service.highlight ? "contained" : "outlined"
-                            }
-                            fullWidth
-                            sx={{
-                              py: 1.5,
-                              borderRadius: 2,
-                              textTransform: "none",
-                              fontWeight: 600,
-                              ...(service.highlight
-                                ? {
-                                    background: "hsl(var(--primary))",
-                                    color: "hsl(var(--primary-foreground))",
-                                    "&:hover": {
-                                      background: "hsl(var(--primary))",
-                                      filter: "brightness(0.9)",
-                                      transform: "translateY(-2px)",
-                                    },
-                                  }
-                                : {
-                                    borderColor: "hsl(var(--primary))",
-                                    color: "hsl(var(--primary))",
-                                    "&:hover": {
-                                      borderColor: "hsl(var(--primary))",
-                                      background: "hsl(var(--primary) / 0.1)",
-                                      transform: "translateY(-2px)",
-                                    },
-                                  }),
-                              transition: "all 0.3s ease",
-                            }}
+                            variant="default"
                           >
                             {service.title === t("services.customWebsitesTitle")
                               ? t("services.requestYours")

@@ -295,30 +295,12 @@ const VideoShowcase = React.memo(() => {
               {t("videoShowcase.subtitle")}
             </p>
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Button
-                href="https://www.youtube.com/@nkrlibrary/playlists"
-                target="_blank"
-                rel="noopener noreferrer"
-                variant="outlined"
-                size="large"
-                sx={{
-                  borderColor: "hsl(var(--primary))",
-                  color: "hsl(var(--primary))",
-                  px: 4,
-                  py: 1.5,
-                  borderRadius: 2,
-                  textTransform: "none",
-                  fontSize: "1.1rem",
-                  fontWeight: 600,
-                  "&:hover": {
-                    borderColor: "hsl(var(--primary))",
-                    background: "hsl(var(--primary) / 0.1)",
-                  },
-                }}
-              >
-                <Youtube className="mr-2" />
-                {t("videoShowcase.viewAllVideos")}
-                <ArrowRight className="ml-2" />
+              <Button asChild variant="outline">
+                <a href="https://www.youtube.com/@nkrlibrary/playlists" target="_blank" rel="noopener noreferrer">
+                  <Youtube className="mr-2" />
+                  {t("videoShowcase.viewAllVideos")}
+                  <ArrowRight className="ml-2" />
+                </a>
               </Button>
             </motion.div>
           </motion.div>
@@ -371,26 +353,10 @@ const VideoShowcase = React.memo(() => {
             variants={itemVariants}
             className="text-center mt-8 sm:mt-12 px-4"
           >
-            <Button
-              href="/videos"
-              variant="contained"
-              size="large"
-              sx={{
-                background: "hsl(var(--primary))",
-                color: "hsl(var(--primary-foreground))",
-                px: 6,
-                py: 1.5,
-                borderRadius: 2,
-                textTransform: "none",
-                fontSize: "1.1rem",
-                fontWeight: 600,
-                "&:hover": {
-                  background: "hsl(var(--primary))",
-                  filter: "brightness(0.9)",
-                },
-              }}
-            >
-              {t("videoShowcase.exploreAllCategories")}
+            <Button asChild variant="default">
+              <a href="/videos">
+                {t("videoShowcase.exploreAllCategories")}
+              </a>
             </Button>
           </motion.div>
         </motion.div>
